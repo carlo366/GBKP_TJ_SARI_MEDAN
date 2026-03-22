@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { getSession } from '@/lib/auth';
+import cloudinary from '@/lib/cloudinary';
 
 export async function POST(req: NextRequest) {
   const session = await getSession();
@@ -20,13 +20,31 @@ export async function POST(req: NextRequest) {
   if (file.size > 10 * 1024 * 1024)
     return NextResponse.json({ error: 'File maksimal 10MB' }, { status: 400 });
 
-  const filename = `momo_${Date.now()}${ext}`;
-  const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(path.join(uploadDir, filename), Buffer.from(await file.arrayBuffer()));
+  try {
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-  return NextResponse.json({
-    fileUrl: `/uploads/${filename}`,
-    fileName: file.name,
-  });
+    const result: any = await new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        {
+          resource_type: 'auto', 
+          folder: 'momo',
+          type: 'upload',
+          access_mode: 'public',
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      ).end(buffer);
+    });
+
+    return NextResponse.json({
+      fileUrl: result.secure_url,
+      fileName: file.name,
+    });
+
+  } catch (error) {
+    return NextResponse.json({ error: 'Upload gagal' }, { status: 500 });
+  }
 }
