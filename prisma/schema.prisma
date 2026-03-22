@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Momo {
+  id                 Int      @id @default(autoincrement())
+  tanggal            DateTime
+  sesi               String   // "pagi" | "sore"
+  judul              String
+  pengkhotbah        String?
+  ayatNas            String?
+  persembahanPujian  String?  // JSON array of strings
+  fileUrl            String?
+  fileName           String?
+  createdAt          DateTime @default(now())
+}
+
+model SiteConfig {
+  id              Int    @id @default(1)
+  // Ibadah Pagi
+  pagiMulai       String @default("08.00")
+  pagiSelesai     String @default("10.30")
+  pagiBahasa      String @default("Bahasa Karo / Indonesia")
+  // Ibadah Sore
+  soreMulai       String @default("17.00")
+  soreSelesai     String @default("19.00")
+  soreBahasa      String @default("Bahasa Indonesia")
+  // Kontak & Lokasi
+  alamat          String @default("GJVF+3R3, Sempakata, Kec. Medan Selayang, Kota Medan, Sumatera Utara 20133")
+  telepon         String @default("")
+  whatsapp        String @default("")
+  email           String @default("gbkptanjungsari@gmail.com")
+  mapsUrl         String @default("https://www.google.com/maps/place/GBKP+Tanjung+Sari/@3.5431815,98.6246419,19z/data=!4m6!3m5!1s0x30312f87a64539d7:0xcb68077110b05047!8m2!3d3.5426388!4d98.6245348!16s%2Fg%2F11cny2_wmp")
+  mapsEmbed       String @default("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.9!2d98.6245348!3d3.5426388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312f87a64539d7%3A0xcb68077110b05047!2sGBKP%20Tanjung%20Sari!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid")
+  // Logo
+  logoUrl         String @default("/logo-gbkp.png")
+}
