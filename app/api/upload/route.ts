@@ -27,20 +27,24 @@ export async function POST(req: NextRequest) {
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
-          resource_type: file.type === 'application/pdf' ? 'raw' : 'image',
+          resource_type: 'auto', // 🔥 balik ke ini
           folder: 'momo',
           type: 'upload',
         },
         (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
+          if (error) {
+            console.log("CLOUDINARY ERROR:", error);
+            reject(error);
+          } else {
+            resolve(result);
+          }
         }
       ).end(buffer);
     });
 
     let fileUrl = result.secure_url;
 
-    // kalau PDF → pakai raw
+    // 🔥 FIX KHUSUS PDF SAJA
     if (file.type === 'application/pdf') {
       fileUrl = fileUrl.replace('/image/upload/', '/raw/upload/');
     }
