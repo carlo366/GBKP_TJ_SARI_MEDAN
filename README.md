@@ -78,9 +78,22 @@ Panel admin: [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ## Deploy 
 
-### Vercel + Neon 
+### Vercel + Neon
 
-### Railway
+1. Daftar di [neon.tech](https://neon.tech) → buat database → copy `DATABASE_URL`
+2. Push repo ke GitHub
+3. Daftar di [vercel.com](https://vercel.com) → import repo
+4. Tambahkan environment variables di Vercel dashboard:
+   - `DATABASE_URL`
+   - `JWT_SECRET`
+   - `ADMIN_USERNAME`
+   - `ADMIN_PASSWORD`
+5. Deploy → setelah selesai jalankan:
+   ```bash
+   npx vercel env pull .env.local
+   npm run db:push
+   npm run db:seed
+   ```
 
 ---
 

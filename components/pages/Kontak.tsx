@@ -66,14 +66,14 @@ export default function Kontak() {
             </div>
           </div>
           <div className="addr-badge-strip">
-            <div className="addr-badge"><i className="fa-solid fa-clock" />Sekretariat: Senin–Jumat, 08.00–15.00 WIB</div>
+            {/* <div className="addr-badge"><i className="fa-solid fa-clock" />Sekretariat: Senin–Jumat, 08.00–15.00 WIB</div> */}
             <a href={config.mapsUrl} target="_blank" rel="noreferrer" className="btn-maps-gold">
               <i className="fa-solid fa-map-location-dot" />Buka di Google Maps
             </a>
           </div>
         </div>
       </div>
-
+{/* 
       <div className="fullmap-section" style={{ marginTop: 48 }}>
         <h3><i className="fa-solid fa-map" style={{ marginRight: 8 }} />Peta Lokasi</h3>
         <div className="fullmap-wrap">
@@ -85,9 +85,9 @@ export default function Kontak() {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-      </div>
+      </div> */}
 
-      <div style={{ background: 'var(--red-deep)', padding: '48px 20px 56px' }}>
+      {/* {/* <div style={{ background: 'var(--red-deep)', padding: '48px 20px 56px' }}>
         <div className="sh white"><h2>Jam Sekretariat</h2><p>Kami siap melayani di jam kerja</p><KaroDiv white /></div>
         <div className="jam-grid">
           {[
@@ -102,8 +102,8 @@ export default function Kontak() {
               <p>{time}</p>
             </div>
           ))}
-        </div>
-      </div>
+        </div> 
+      </div> */}
     </div>
   );
 }
