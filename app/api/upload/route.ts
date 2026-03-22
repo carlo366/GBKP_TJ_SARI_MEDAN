@@ -27,10 +27,9 @@ export async function POST(req: NextRequest) {
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
-          resource_type: 'auto', 
+          resource_type: 'auto',
           folder: 'momo',
           type: 'upload',
-          access_mode: 'public',
         },
         (error, result) => {
           if (error) reject(error);
@@ -39,12 +38,21 @@ export async function POST(req: NextRequest) {
       ).end(buffer);
     });
 
+    // 🔥 FIX DI SINI
+    let fileUrl = result.secure_url;
+
+    // kalau PDF → pakai raw
+    if (file.type === 'application/pdf') {
+      fileUrl = fileUrl.replace('/image/upload/', '/raw/upload/');
+    }
+
     return NextResponse.json({
-      fileUrl: result.secure_url,
+      fileUrl,
       fileName: file.name,
     });
 
   } catch (error) {
+    console.log("UPLOAD ERROR:", error);
     return NextResponse.json({ error: 'Upload gagal' }, { status: 500 });
   }
 }
