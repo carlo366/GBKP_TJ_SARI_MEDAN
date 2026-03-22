@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
-          resource_type: 'auto',
+          resource_type: file.type === 'application/pdf' ? 'raw' : 'image',
           folder: 'momo',
           type: 'upload',
         },
@@ -38,7 +38,6 @@ export async function POST(req: NextRequest) {
       ).end(buffer);
     });
 
-    // 🔥 FIX DI SINI
     let fileUrl = result.secure_url;
 
     // kalau PDF → pakai raw
