@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
         {
           resource_type: file.type === 'application/pdf' ? 'raw' : 'image',
           folder: 'momo',
+          format: file.type === 'application/pdf' ? 'pdf' : undefined,
         },
         (error, result) => {
           if (error) reject(error);
