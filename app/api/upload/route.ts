@@ -23,37 +23,26 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // 🔥 tentukan tipe file
-    const isPdf = file.type === 'application/pdf';
+    const ext = file.name.split('.').pop(); // 🔥 ambil extension asli
 
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
-          resource_type: isPdf ? 'raw' : 'image',
+          resource_type: 'raw', // 🔥 semua file selain image pakai raw
           folder: 'momo',
-
-          // 🔥 penting biar nama file konsisten
           public_id: file.name.replace(/\.[^/.]+$/, ''),
           use_filename: true,
           unique_filename: true,
         },
         (error, result) => {
-          if (error) {
-            console.error('CLOUDINARY ERROR:', error);
-            reject(error);
-          } else {
-            resolve(result);
-          }
+          if (error) reject(error);
+          else resolve(result);
         }
       ).end(buffer);
     });
 
-    let fileUrl = result.secure_url;
-
-    // 🔥 FIX PDF (WAJIB)
-    if (isPdf) {
-      fileUrl = `${fileUrl}.pdf`;
-    }
+    // 🔥 gunakan extension asli
+    const fileUrl = `${result.secure_url}.${ext}`;
 
     return NextResponse.json({
       fileUrl,
