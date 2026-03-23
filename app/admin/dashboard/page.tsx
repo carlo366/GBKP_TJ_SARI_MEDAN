@@ -47,7 +47,7 @@ export default function Dashboard() {
     fetch('/api/momo').then(r => r.json()).then(d => { setItems(Array.isArray(d) ? d : []); setLoading(false); }).catch(() => setLoading(false));
   };
   const fetchConfig = () => {
-    fetch('/api/config').then(r => r.json()).then(d => setCfg({ ...defaultConfig, ...d })).catch(() => {});
+    fetch('/api/config').then(r => r.json()).then(d => setCfg({ ...defaultConfig, ...d })).catch(() => { });
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function Dashboard() {
     if (!file) return;
     setUploading(true);
     const fd = new FormData(); fd.append('file', file);
-    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+    const res = await fetch('/api/upload', { method: 'POST', body: fd, credentials: 'include' });
     const data = await res.json(); setUploading(false);
     if (res.ok) { setForm(f => ({ ...f, fileUrl: data.fileUrl, fileName: data.fileName })); setMsg('File berhasil diupload.'); }
     else setMsg(data.error || 'Upload gagal.');
@@ -76,7 +76,7 @@ export default function Dashboard() {
     if (!logoFile) return;
     setLogoUploading(true);
     const fd = new FormData(); fd.append('file', logoFile);
-    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+    const res = await fetch('/api/upload', { method: 'POST', body: fd , credentials: 'include'});
     const data = await res.json(); setLogoUploading(false);
     if (res.ok) { setCfg(c => ({ ...c, logoUrl: data.fileUrl })); setCfgMsg('Logo berhasil diupload.'); }
     else setCfgMsg(data.error || 'Upload logo gagal.');

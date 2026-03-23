@@ -5,15 +5,12 @@ import cloudinary from '@/lib/cloudinary';
 
 export async function POST(req: NextRequest) {
   const session = await getSession();
-  console.log("SESSION:", session); // ✅ TAMBAH DI SINI
-
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const formData = await req.formData();
   const file = formData.get('file') as File | null;
-  console.log("FILE:", file); // ✅ TAMBAH DI SINI
 
   if (!file) {
     return NextResponse.json({ error: 'File tidak ditemukan' }, { status: 400 });
