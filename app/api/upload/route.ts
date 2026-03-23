@@ -33,9 +33,13 @@ export async function POST(req: NextRequest) {
         }
       ).end(buffer);
     });
+    let fileUrl = result.secure_url;
+    if (file.type === 'application/pdf') {
+      fileUrl = fileUrl.replace('/image/upload/', '/raw/upload/');
+    }
 
     return NextResponse.json({
-      fileUrl: result.secure_url,
+      fileUrl,
       fileName: file.name,
     });
 
