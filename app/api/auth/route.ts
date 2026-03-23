@@ -7,22 +7,31 @@ export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
 
   if (!username || !password)
-    return NextResponse.json({ error: 'Username dan password wajib diisi' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Username dan password wajib diisi' },
+      { status: 400 }
+    );
 
   const admin = await prisma.admin.findUnique({ where: { username } });
+
   if (!admin || !(await bcrypt.compare(password, admin.passwordHash)))
-    return NextResponse.json({ error: 'Username atau password salah' }, { status: 401 });
+    return NextResponse.json(
+      { error: 'Username atau password salah' },
+      { status: 401 }
+    );
 
   const token = signToken({ id: admin.id, username: admin.username });
 
   const res = NextResponse.json({ ok: true, username: admin.username });
+
   res.cookies.set('gbkp_token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: true,        // 🔥 penting
+    sameSite: 'none',    // 🔥 paling penting
     maxAge: 60 * 60 * 8,
     path: '/',
   });
+
   return res;
 }
 
