@@ -26,20 +26,19 @@ export async function POST(req: NextRequest) {
 
     const result: any = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream(
-        { resource_type: 'auto', folder: 'momo' },
+        {
+          resource_type: file.type === 'application/pdf' ? 'raw' : 'image',
+          folder: 'momo',
+        },
         (error, result) => {
           if (error) reject(error);
           else resolve(result);
         }
       ).end(buffer);
     });
-    let fileUrl = result.secure_url;
-    if (file.type === 'application/pdf') {
-      fileUrl = fileUrl.replace('/image/upload/', '/raw/upload/');
-    }
 
     return NextResponse.json({
-      fileUrl,
+      fileUrl: result.secure_url,
       fileName: file.name,
     });
 
