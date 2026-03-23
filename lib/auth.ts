@@ -10,14 +10,29 @@ export function signToken(payload: { id: number; username: string }) {
 export function verifyToken(token: string): { id: number; username: string } | null {
   try {
     return jwt.verify(token, SECRET) as { id: number; username: string };
-  } catch {
+  } catch (err) {
+    console.error("JWT ERROR:", err);
     return null;
   }
 }
 
-export async function getSession() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('gbkp_token')?.value;
-  if (!token) return null;
-  return verifyToken(token);
+export function getSession() {
+  try {
+    const cookieStore = cookies(); 
+
+    const token = cookieStore.get('gbkp_token')?.value;
+
+    console.log("TOKEN:", token); 
+
+    if (!token) return null;
+
+    const user = verifyToken(token);
+
+    console.log("USER SESSION:", user); 
+
+    return user;
+  } catch (error) {
+    console.error("GET SESSION ERROR:", error);
+    return null;
+  }
 }
