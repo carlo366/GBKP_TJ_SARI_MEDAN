@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GBKP Runggun Tanjung Sari â Portal Informasi Jemaat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --r:#B91C1C;--r2:#7F1D1D;--r3:#DC2626;--rp:#FEF2F2;
+  --g:#B45309;--g2:#D97706;--g3:#F59E0B;--gp:#FFFBEB;
+  --b:#1E3A5F;--b2:#1d4ed8;--bp:#EFF6FF;
+  --k:#111827;--k2:#1F2937;--k3:#374151;
+  --m:#6B7280;--m2:#9CA3AF;--m3:#D1D5DB;--m4:#E5E7EB;--m5:#F3F4F6;--m6:#F9FAFB;
+  --w:#FFFFFF;
+  --fh:'Playfair Display',serif;
+  --fb:'IBM Plex Sans',sans-serif;
+  --fs:'IBM Plex Serif',serif;
+  --s4:4px;--s8:8px;--s12:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--m6);color:var(--k);}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+button{cursor:pointer;font-family:var(--fb);}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--r);border-radius:2px;}
+
+/* âââ MASTHEAD âââ */
+.masthead{background:var(--k);border-bottom:3px solid var(--r);position:sticky;top:0;z-index:9999;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+.mh-top{max-width:1320px;margin:auto;padding:0 16px;height:54px;display:flex;align-items:center;gap:16px;}
+.mh-brand{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;}
+.mh-logo{width:38px;height:38px;border-radius:50%;border:2px solid var(--g3);object-fit:cover;}
+.mh-name{display:flex;flex-direction:column;line-height:1.2;}
+.mh-name .n1{font-family:var(--fh);font-size:13.5px;color:#fff;font-weight:700;letter-spacing:.2px;}
+.mh-name .n2{font-size:8.5px;color:var(--g3);letter-spacing:1.8px;text-transform:uppercase;}
+.mh-sep{width:1px;height:28px;background:rgba(255,255,255,.12);flex-shrink:0;}
+.mh-nav{display:flex;gap:0;height:54px;flex:1;overflow-x:auto;scrollbar-width:none;}
+.mh-nav::-webkit-scrollbar{display:none;}
+.mh-btn{color:rgba(255,255,255,.6);font-size:11.5px;font-weight:600;padding:0 13px;border:none;background:none;height:100%;letter-spacing:.6px;text-transform:uppercase;transition:.15s;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;}
+.mh-btn:hover{color:#fff;background:rgba(255,255,255,.05);}
+.mh-btn.on{color:var(--g3);border-bottom-color:var(--g3);}
+.mh-hbg{display:none;background:none;border:none;color:#fff;font-size:20px;padding:4px;margin-left:auto;}
+.mh-mob{display:none;background:var(--k2);border-top:1px solid rgba(255,255,255,.08);}
+.mh-mob.show{display:block;}
+.mh-mob a{display:block;color:rgba(255,255,255,.7);padding:11px 18px;font-size:13px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05);letter-spacing:.3px;}
+.mh-mob a:hover{background:rgba(255,255,255,.06);color:#fff;}
+
+/* TICKER */
+.ticker{background:var(--r);height:30px;display:flex;align-items:center;overflow:hidden;}
+.ticker-lbl{background:rgba(0,0,0,.3);color:var(--g3);font-size:10.5px;font-weight:700;letter-spacing:1.5px;padding:0 12px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;border-right:1px solid rgba(255,255,255,.2);}
+.ticker-wrap{flex:1;overflow:hidden;}
+.ticker-track{display:flex;gap:48px;animation:tick 35s linear infinite;padding:0 16px;}
+.ticker-track span{font-size:11.5px;color:rgba(255,255,255,.9);white-space:nowrap;font-weight:500;}
+@keyframes tick{0%{transform:translateX(100vw);}100%{transform:translateX(-200%)}}
+
+/* âââ PAGES âââ */
+.page{display:none;}
+.page.on{display:block;animation:pop .25s ease;}
+@keyframes pop{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* âââ PAGE HEADER âââ */
+.ph{background:linear-gradient(135deg,var(--k),var(--r2) 60%,var(--r));padding:48px 0 36px;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.ph::after{content:'';position:absolute;bottom:0;left:0;right:0;height:22px;background:#B91C1C;background-image:repeating-linear-gradient(90deg,transparent 0,transparent 8px,#F59E0B 8px,#F59E0B 10px,transparent 10px,transparent 18px,#fff 18px,#fff 19px,transparent 19px,transparent 27px,#9333EA 27px,#9333EA 29px,transparent 29px,transparent 37px,#F59E0B 37px,#F59E0B 39px,transparent 39px);}
+.ph-inner{max-width:1320px;margin:auto;padding:0 16px;position:relative;z-index:1;}
+.ph-eyebrow{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--g3);margin-bottom:8px;}
+.ph-title{font-family:var(--fh);font-size:2rem;font-weight:900;color:#fff;line-height:1.2;margin-bottom:6px;}
+.ph-sub{font-size:.88rem;color:rgba(255,255,255,.55);}
+
+/* âââ WRAP âââ */
+.wrap{max-width:1320px;margin:0 auto;padding:20px 16px;}
+
+/* âââ SEC LABEL (newspaper style) âââ */
+.sl{display:flex;align-items:stretch;margin-bottom:14px;border-bottom:2px solid var(--r);}
+.sl-main{background:var(--r);color:#fff;font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.8px;padding:5px 14px;text-transform:uppercase;}
+.sl-more{margin-left:auto;font-size:11.5px;color:var(--r);font-weight:700;padding:5px 0;cursor:pointer;display:flex;align-items:center;gap:4px;}
+.sl-more:hover{text-decoration:underline;}
+
+/* âââ FILTER CHIPS âââ */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{padding:5px 13px;border-radius:2px;border:1.5px solid var(--m4);background:var(--w);color:var(--k3);font-size:.76rem;font-weight:600;cursor:pointer;transition:.15s;letter-spacing:.2px;}
+.chip:hover{border-color:var(--r);color:var(--r);}
+.chip.on{background:var(--r);border-color:var(--r);color:#fff;}
+
+/* âââ BERANDA HERO GRID âââ */
+.hero-news{display:grid;grid-template-columns:5fr 3fr 3fr;grid-template-rows:280px 220px;gap:3px;background:var(--m4);border:1px solid var(--m4);margin-bottom:20px;min-height:500px;}
+.hn{background:var(--w);position:relative;overflow:hidden;cursor:pointer;}
+.hn:hover .hn-img{transform:scale(1.04);}
+.hn.big{grid-column:1;grid-row:1/3;}
+.hn.mid{grid-column:2;grid-row:1;}
+.hn.mid2{grid-column:3;grid-row:1;}
+.hn.sm{grid-column:2;grid-row:2;}
+.hn.sm2{grid-column:3;grid-row:2;}
+.hn-img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+.hn-img-wrap{position:absolute;inset:0;}
+.hn-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%);}
+.hn-body{position:absolute;bottom:0;left:0;right:0;padding:14px;}
+.hn.big .hn-body{padding:20px;}
+.hn-kat{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:1px;color:#fff;margin-bottom:6px;}
+.hn-title{font-family:var(--fh);color:#fff;font-weight:700;line-height:1.3;}
+.hn.big .hn-title{font-size:1.25rem;}
+.hn.mid .hn-title,.hn.mid2 .hn-title{font-size:.92rem;}
+.hn.sm .hn-title,.hn.sm2 .hn-title{font-size:.84rem;}
+.hn-meta{font-size:.7rem;color:rgba(255,255,255,.6);margin-top:4px;display:flex;gap:6px;}
+.hn-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:var(--m5);}
+
+/* âââ BERANDA 3-COL âââ */
+.b3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+/* Latest news list */
+.nlist{display:flex;flex-direction:column;}
+.ni{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--m5);cursor:pointer;transition:.1s;}
+.ni:last-child{border:none;}
+.ni:hover{background:var(--m6);padding-left:6px;padding-right:6px;margin:0 -6px;}
+.ni-img{width:84px;height:60px;min-width:84px;border-radius:3px;object-fit:cover;background:var(--m4);}
+.ni-kat{font-size:.67rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--r);margin-bottom:2px;}
+.ni-t{font-family:var(--fs);font-size:.88rem;font-weight:600;line-height:1.35;color:var(--k);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.ni-meta{font-size:.7rem;color:var(--m);margin-top:3px;}
+
+/* Renungan widget */
+.rw{border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.rw-head{background:var(--r2);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;}
+.rw-head .rh-lbl{font-family:var(--fh);font-size:.8rem;font-weight:700;color:var(--g3);letter-spacing:.5px;text-transform:uppercase;}
+.rw-head .rh-date{font-size:.72rem;color:rgba(255,255,255,.5);}
+.rw-body{background:linear-gradient(160deg,#4c0519,#7f1d1d);padding:14px;}
+.rw-verse{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:4px;}
+.rw-ref{font-size:.75rem;color:var(--g3);margin-bottom:10px;}
+.rw-text{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.65;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+.rw-ft{padding:8px 14px;background:rgba(0,0,0,.25);font-size:.7rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;align-items:center;}
+.rw-ft a{color:var(--g3);font-weight:600;cursor:pointer;}
+
+/* Jadwal & Keuangan mini */
+.widget-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.wb-head{background:var(--b);padding:8px 12px;}
+.wb-head span{font-family:var(--fh);font-size:.8rem;font-weight:700;color:#fff;letter-spacing:.3px;text-transform:uppercase;}
+.wbi{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--m5);}
+.wbi:last-child{border:none;}
+.wbi-icon{width:30px;height:30px;min-width:30px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.wbi-icon.sun{background:#FFFBEB;color:var(--g3);}
+.wbi-icon.moon{background:#EEF2FF;color:#6366F1;}
+.wbi-icon.in{background:#DCFCE7;color:#16A34A;}
+.wbi-icon.out{background:#FEE2E2;color:var(--r);}
+.wbi-t{font-weight:700;font-size:.83rem;}
+.wbi-s{font-size:.72rem;color:var(--m);}
+
+/* Warta mini */
+.warta-mini{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;}
+.wm-item{padding:10px 12px;border-bottom:1px solid var(--m5);cursor:pointer;}
+.wm-item:last-child{border:none;}
+.wm-item:hover{background:var(--m6);}
+.wm-sess{font-size:.65rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:2px;}
+.wm-sess.pagi{color:var(--g2);}
+.wm-sess.malam{color:#6366F1;}
+.wm-t{font-size:.82rem;font-weight:600;color:var(--k);line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.wm-meta{font-size:.7rem;color:var(--m);margin-top:2px;}
+
+/* âââ 4-GRID âââ */
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g4c{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;cursor:pointer;transition:.15s;}
+.g4c:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-2px);}
+.g4c-imgw{position:relative;overflow:hidden;height:150px;}
+.g4c-img{width:100%;height:100%;object-fit:cover;transition:.35s;}
+.g4c:hover .g4c-img{transform:scale(1.05);}
+.g4c-kat{position:absolute;top:8px;left:8px;font-size:.63rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 7px;color:#fff;border-radius:1px;}
+.g4c-body{padding:10px 12px 14px;}
+.g4c-t{font-family:var(--fs);font-size:.87rem;font-weight:600;color:var(--k);line-height:1.35;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.g4c-meta{font-size:.7rem;color:var(--m);display:flex;align-items:center;gap:5px;}
+
+/* âââ BERITA PAGE âââ */
+.berita-layout{display:grid;grid-template-columns:1fr 280px;gap:18px;}
+.bl-main{}
+.bl-side{}
+.bm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;}
+.bn-card{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;cursor:pointer;transition:.15s;}
+.bn-card:hover{box-shadow:0 3px 16px rgba(0,0,0,.09);transform:translateY(-2px);}
+.bn-imgw{position:relative;overflow:hidden;height:170px;}
+.bn-img{width:100%;height:100%;object-fit:cover;transition:.35s;}
+.bn-card:hover .bn-img{transform:scale(1.04);}
+.bn-kat{position:absolute;top:9px;left:9px;font-size:.62rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:2px 8px;color:#fff;border-radius:1px;}
+.bn-body{padding:12px 13px 14px;}
+.bn-t{font-family:var(--fs);font-size:.92rem;font-weight:600;color:var(--k);line-height:1.35;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.bn-desc{font-size:.8rem;color:var(--k3);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:6px;}
+.bn-meta{font-size:.7rem;color:var(--m);display:flex;align-items:center;gap:6px;}
+.bn-meta i{color:var(--r);font-size:.65rem;}
+/* side */
+.bs-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.bs-head{padding:8px 12px;border-bottom:2px solid var(--r);}
+.bs-head span{font-family:var(--fh);font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--r);}
+.bs-item{display:flex;gap:9px;padding:10px 11px;border-bottom:1px solid var(--m5);cursor:pointer;transition:.1s;align-items:flex-start;}
+.bs-item:last-child{border:none;}
+.bs-item:hover{background:var(--m6);}
+.bs-thumb{width:58px;height:42px;min-width:58px;object-fit:cover;border-radius:2px;background:var(--m4);}
+.bs-t{font-size:.8rem;font-weight:600;color:var(--k);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.bs-meta{font-size:.67rem;color:var(--m);margin-top:2px;}
+.btn-addnews{background:var(--r);color:#fff;padding:9px 16px;border:none;border-radius:3px;font-weight:700;font-size:.82rem;display:inline-flex;align-items:center;gap:6px;transition:.15s;}
+.btn-addnews:hover{background:var(--r2);}
+
+/* âââ DETAIL MODAL âââ */
+.dmodal{display:none;position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);overflow-y:auto;padding:16px;}
+.dmodal.show{display:flex;align-items:flex-start;justify-content:center;}
+.dmi{background:var(--w);border-radius:6px;width:100%;max-width:800px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);margin:auto;}
+.dmi-img{width:100%;height:320px;object-fit:cover;}
+.dmi-body{padding:28px 32px;}
+.dmi-kat{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:1px;color:#fff;margin-bottom:10px;}
+.dmi-title{font-family:var(--fh);font-size:1.6rem;font-weight:700;line-height:1.3;margin-bottom:10px;}
+.dmi-meta{display:flex;gap:14px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:16px;border-bottom:2px solid var(--m4);font-size:.8rem;color:var(--m);}
+.dmi-meta span{display:flex;align-items:center;gap:4px;}
+.dmi-content{font-size:.93rem;color:var(--k3);line-height:1.85;}
+.dmi-content p{margin-bottom:14px;}
+.dmi-close{padding:12px 28px;background:var(--m5);border-top:1px solid var(--m4);display:flex;justify-content:flex-end;}
+.btn-cls{background:var(--m4);color:var(--k);padding:7px 18px;border:none;border-radius:3px;font-weight:600;font-size:.82rem;cursor:pointer;transition:.15s;}
+.btn-cls:hover{background:var(--m3);}
+
+/* âââ ORGANISASI âââ */
+.org-wrap{max-width:1320px;margin:0 auto;padding:20px 16px;}
+/* Majelis */
+.mj-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+.mj-hd{background:linear-gradient(135deg,var(--k),var(--r2) 70%,var(--r));padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.mj-hd h2{font-family:var(--fh);font-size:1.15rem;color:#fff;font-weight:700;}
+.mj-hd span{font-size:.75rem;color:rgba(255,255,255,.55);}
+.mj-grid{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px;}
+.mj-card{border:1px solid var(--m4);border-radius:3px;padding:11px 13px;background:var(--m6);}
+.mj-role{font-size:.65rem;letter-spacing:.8px;text-transform:uppercase;color:var(--r);margin-bottom:3px;font-weight:700;}
+.mj-name{font-weight:600;font-size:.87rem;}
+
+/* Org tabs */
+.org-tabs{display:flex;gap:0;border-bottom:2px solid var(--m4);margin-bottom:18px;overflow-x:auto;scrollbar-width:none;}
+.org-tabs::-webkit-scrollbar{display:none;}
+.ot{padding:10px 18px;border:none;background:none;font-family:var(--fh);font-size:.85rem;font-weight:600;color:var(--m);cursor:pointer;white-space:nowrap;transition:.15s;border-bottom:3px solid transparent;margin-bottom:-2px;}
+.ot:hover{color:var(--r);}
+.ot.on{color:var(--r);border-bottom-color:var(--r);}
+.opanel{display:none;}
+.opanel.on{display:block;}
+
+/* Kat header */
+.kh{border-radius:4px;padding:18px 20px;color:#fff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.kh.saitun{background:linear-gradient(135deg,#14532d,#15803d);}
+.kh.mamre{background:linear-gradient(135deg,#7c2d12,#c2410c);}
+.kh.moria{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);}
+.kh.permata{background:linear-gradient(135deg,#581c87,#7e22ce);}
+.kh.seraya{background:linear-gradient(135deg,#134e4a,#0f766e);}
+.kh h2{font-family:var(--fh);font-size:1.25rem;font-weight:700;margin-bottom:3px;}
+.kh p{font-size:.82rem;color:rgba(255,255,255,.7);}
+.kh-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px 12px;font-size:.72rem;color:#fff;font-weight:600;}
+
+/* BP Section */
+.bp-sec{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.bp-hd{padding:9px 14px;background:var(--m6);border-bottom:1px solid var(--m4);display:flex;align-items:center;gap:8px;}
+.bp-hd h3{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--k);}
+.bp-badge{font-size:.67rem;font-weight:700;padding:2px 9px;border-radius:999px;color:#fff;}
+/* PERSON CARDS */
+.person-grid{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;}
+.pcard{border:1px solid var(--m4);border-radius:6px;overflow:hidden;background:var(--w);transition:.15s;}
+.pcard:hover{box-shadow:0 3px 14px rgba(0,0,0,.09);transform:translateY(-2px);}
+.pcard-photo{width:100%;height:110px;object-fit:cover;background:var(--m5);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--m3);}
+.pcard-body{padding:10px 11px 12px;}
+.pcard-role{font-size:.62rem;letter-spacing:.8px;text-transform:uppercase;font-weight:700;color:var(--r);margin-bottom:3px;}
+.pcard-name{font-weight:700;font-size:.88rem;color:var(--k);line-height:1.3;margin-bottom:5px;}
+.pcard-wa{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;color:#16A34A;font-weight:600;padding:3px 8px;background:#DCFCE7;border-radius:999px;transition:.15s;}
+.pcard-wa:hover{background:#BBF7D0;}
+.pcard-wa i{font-size:.7rem;}
+
+/* Sektor accordion */
+.sk-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.sk-item{border:1px solid var(--m4);border-radius:4px;overflow:hidden;background:var(--w);}
+.sk-hd{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:.1s;user-select:none;}
+.sk-hd:hover{background:var(--m6);}
+.sk-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;color:#fff;flex-shrink:0;}
+.sk-info{flex:1;}
+.sk-hd h4{font-weight:700;font-size:.88rem;}
+.sk-hd .sk-sub{font-size:.73rem;color:var(--m);}
+.sk-chev{color:var(--m);font-size:11px;transition:.25s;margin-left:auto;}
+.sk-item.open .sk-chev{transform:rotate(180deg);}
+.sk-body{display:none;border-top:1px solid var(--m5);}
+.sk-item.open .sk-body{display:block;}
+.sk-body-inner{padding:12px 14px;}
+.sk-person-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;}
+
+/* Prog kerja */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding:12px 14px;}
+.pg-item{background:var(--m6);border:1px solid var(--m4);border-radius:3px;padding:9px 11px;display:flex;align-items:flex-start;gap:7px;font-size:.81rem;color:var(--k3);}
+.pg-item i{color:var(--r);font-size:12px;margin-top:2px;flex-shrink:0;}
+
+/* âââ RENUNGAN âââ */
+.ren-layout{display:grid;grid-template-columns:1fr 290px;gap:18px;}
+.ren-featured{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.rf-top{background:linear-gradient(160deg,#450a0a,#7f1d1d,#b91c1c);padding:24px 28px;}
+.rf-lbl{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:6px;}
+.rf-date{font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:12px;}
+.rf-verse{font-family:var(--fh);font-size:1.4rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px;}
+.rf-ref{font-size:.8rem;color:var(--g3);}
+.rf-body{padding:20px 28px;}
+.rf-text{font-size:.92rem;color:var(--k3);line-height:1.85;}
+.rf-text p{margin-bottom:12px;}
+.rf-author{padding:10px 28px;background:var(--m6);border-top:1px solid var(--m4);font-size:.78rem;color:var(--m);display:flex;justify-content:space-between;}
+/* Video grid */
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
+.vc{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;cursor:pointer;transition:.15s;}
+.vc:hover{box-shadow:0 3px 14px rgba(0,0,0,.1);transform:translateY(-2px);}
+.vc-thumb{position:relative;height:130px;background:var(--k3);overflow:hidden;}
+.vc-thumb img{width:100%;height:100%;object-fit:cover;}
+.vc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.vc-pb{width:40px;height:40px;background:rgba(185,28,28,.88);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;}
+.vc-body{padding:9px 11px;}
+.vc-t{font-size:.82rem;font-weight:600;color:var(--k);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3;margin-bottom:3px;}
+.vc-meta{font-size:.7rem;color:var(--m);}
+/* Ren archive */
+.ra-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.ra-hd{background:var(--r);padding:8px 12px;}
+.ra-hd span{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;}
+.ra-item{display:flex;gap:8px;padding:9px 11px;border-bottom:1px solid var(--m5);cursor:pointer;transition:.1s;}
+.ra-item:last-child{border:none;}
+.ra-item:hover{background:var(--m6);}
+.ra-item.on{background:var(--rp);border-left:3px solid var(--r);}
+.ra-d{background:var(--r);color:#fff;border-radius:2px;padding:3px 7px;text-align:center;min-width:36px;font-size:.65rem;font-weight:700;line-height:1.35;}
+.ra-t{font-weight:600;font-size:.82rem;color:var(--k);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.ra-ref{font-size:.68rem;color:var(--m);margin-top:2px;}
+/* upload form */
+.uf-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.uf-hd{background:var(--b);padding:8px 12px;}
+.uf-hd span{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;}
+.uf-body{padding:13px;}
+
+/* âââ KEUANGAN âââ */
+.keu-wrap{max-width:1320px;margin:0 auto;padding:20px 16px;}
+.keu-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.kc{border-radius:4px;padding:16px 18px;border:1px solid var(--m4);background:var(--w);position:relative;overflow:hidden;}
+.kc-stripe{position:absolute;top:0;left:0;bottom:0;width:4px;}
+.kc-icon{position:absolute;top:14px;right:14px;font-size:1.6rem;opacity:.12;}
+.kc-lbl{font-size:.67rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-bottom:6px;}
+.kc-amt{font-family:var(--fh);font-size:1.3rem;font-weight:700;margin-bottom:3px;letter-spacing:-.3px;}
+.kc-sub{font-size:.7rem;color:var(--m);}
+.kc.in .kc-stripe{background:#16A34A;}.kc.in .kc-amt{color:#15803D;}
+.kc.out .kc-stripe{background:var(--r);}.kc.out .kc-amt{color:var(--r2);}
+.kc.bal .kc-stripe{background:var(--b2);}.kc.bal .kc-amt{color:var(--b);}
+.kc.ded .kc-stripe{background:var(--g3);}.kc.ded .kc-amt{color:var(--g);}
+.keu-body{display:grid;grid-template-columns:1fr 320px;gap:16px;}
+.ktable-wrap{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;}
+.kth{padding:12px 14px;border-bottom:1px solid var(--m4);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.kth h3{font-family:var(--fh);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+.kth select{padding:6px 10px;border:1px solid var(--m4);border-radius:3px;font-family:var(--fb);font-size:.8rem;outline:none;color:var(--k);background:var(--m6);}
+.ktbl{width:100%;border-collapse:collapse;}
+.ktbl th{background:var(--m6);padding:8px 12px;text-align:left;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--m);border-bottom:2px solid var(--m4);}
+.ktbl td{padding:11px 12px;border-bottom:1px solid var(--m5);font-size:.83rem;vertical-align:top;}
+.ktbl tr:last-child td{border:none;}
+.ktbl tr:hover td{background:var(--m6);}
+.kbadge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;font-size:.68rem;font-weight:700;}
+.kbadge.in{background:#DCFCE7;color:#15803D;}
+.kbadge.out{background:#FEE2E2;color:#B91C1C;}
+.kform-wrap{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;}
+.kf-hd{background:var(--b);padding:9px 14px;}
+.kf-hd h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;}
+.kf-body{padding:14px;}
+.type-toggle{display:flex;gap:6px;margin-bottom:12px;}
+.ttbtn{flex:1;padding:8px;border-radius:3px;border:2px solid var(--m4);background:var(--m6);font-weight:700;font-size:.8rem;cursor:pointer;transition:.15s;}
+.ttbtn.in.on{background:#DCFCE7;border-color:#16A34A;color:#15803D;}
+.ttbtn.out.on{background:#FEE2E2;border-color:var(--r);color:var(--r2);}
+.img-upload{border:2px dashed var(--m3);border-radius:3px;padding:14px;text-align:center;cursor:pointer;transition:.15s;color:var(--m);font-size:.8rem;}
+.img-upload:hover{border-color:var(--r);color:var(--r);}
+.img-upload i{display:block;font-size:1.2rem;margin-bottom:4px;}
+
+/* âââ FORM COMMON âââ */
+.fg{margin-bottom:11px;}
+.fg label{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--m);margin-bottom:3px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:8px 10px;border:1.5px solid var(--m4);border-radius:3px;font-family:var(--fb);font-size:.86rem;outline:none;transition:.15s;color:var(--k);background:var(--m6);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--r);background:var(--w);}
+.fg textarea{resize:vertical;min-height:70px;}
+.fg small{display:block;font-size:.7rem;color:var(--m);margin-top:2px;}
+.btsave{background:var(--r);color:#fff;width:100%;padding:9px;border-radius:3px;border:none;font-weight:700;font-size:.86rem;display:flex;align-items:center;justify-content:center;gap:6px;transition:.15s;}
+.btsave:hover{background:var(--r2);}
+
+/* âââ MOMO âââ */
+.momo-wrap{background:var(--k);min-height:100vh;}
+.momo-ph{background:linear-gradient(135deg,var(--k),#1a1a1a);padding:36px 16px 24px;border-bottom:1px solid rgba(255,255,255,.07);}
+.momo-ph-inner{max-width:1320px;margin:auto;}
+.momo-ph .phe{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:6px;}
+.momo-ph h1{font-family:var(--fh);color:#fff;font-size:1.7rem;font-weight:700;margin-bottom:4px;}
+.momo-ph p{font-size:.85rem;color:rgba(255,255,255,.45);}
+.momo-inner{max-width:1320px;margin:0 auto;padding:16px;}
+.momo-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.momo-left{display:flex;gap:7px;flex-wrap:wrap;flex:1;align-items:center;}
+.msc{padding:6px 13px;border-radius:2px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:rgba(255,255,255,.65);font-size:.75rem;font-weight:700;cursor:pointer;transition:.15s;letter-spacing:.3px;text-transform:uppercase;}
+.msc:hover{border-color:var(--g3);color:var(--g3);}
+.msc.on{background:var(--g3);color:var(--k);border-color:var(--g3);}
+.msrch input{padding:7px 11px;border-radius:2px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-family:var(--fb);font-size:.83rem;outline:none;min-width:140px;transition:.15s;}
+.msrch input::placeholder{color:rgba(255,255,255,.3);}
+.msrch input:focus{border-color:var(--g3);}
+.msrch input[type=month]{color-scheme:dark;}
+.btn-addmomo{background:var(--g3);color:var(--k);padding:8px 16px;border:none;border-radius:2px;font-weight:700;font-size:.8rem;display:flex;align-items:center;gap:5px;transition:.15s;}
+.btn-addmomo:hover{background:var(--g2);color:#fff;}
+.momo-stats{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.mst{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:2px;padding:5px 11px;font-size:.73rem;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:5px;}
+.mst i{color:var(--g3);}
+.mst strong{color:#fff;}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:13px;padding-bottom:40px;}
+.mc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;transition:.2s;}
+.mc:hover{background:rgba(255,255,255,.07);transform:translateY(-2px);border-color:rgba(245,158,11,.3);}
+.mc[data-session=pagi] .mc-bar{background:linear-gradient(90deg,var(--g),var(--g3));}
+.mc[data-session=malam] .mc-bar{background:linear-gradient(90deg,#3730a3,#6366f1);}
+.mc-bar{height:3px;}
+.mc-top{padding:13px 14px 11px;border-bottom:1px solid rgba(255,255,255,.06);}
+.mc-dt{display:inline-block;background:var(--g3);color:var(--k);font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:1px;margin-bottom:5px;letter-spacing:.3px;}
+.mc-st{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:999px;font-size:.62rem;font-weight:700;margin-left:4px;vertical-align:middle;}
+.mc-st.pagi{background:rgba(217,119,6,.18);color:#FCD34D;border:1px solid rgba(217,119,6,.25);}
+.mc-st.malam{background:rgba(99,102,241,.18);color:#A5B4FC;border:1px solid rgba(99,102,241,.25);}
+.mc-top h3{color:#fff;font-family:var(--fh);font-size:.9rem;font-weight:700;line-height:1.3;margin-top:4px;}
+.mc-body{padding:11px 14px 14px;}
+.mc-pr{display:flex;align-items:center;gap:5px;color:rgba(255,255,255,.5);font-size:.78rem;margin-bottom:6px;}
+.mc-pr i{color:var(--g3);}
+.mc-vrs{background:rgba(0,0,0,.22);border-left:3px solid var(--g3);padding:5px 9px;border-radius:0 3px 3px 0;font-size:.74rem;color:rgba(255,255,255,.55);font-style:italic;margin-bottom:10px;}
+.btn-pdf{width:100%;padding:8px;border-radius:2px;border:1.5px solid var(--g3);background:transparent;color:#FCD34D;font-weight:700;font-size:.78rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:.15s;font-family:var(--fb);}
+.btn-pdf:hover{background:var(--g3);color:var(--k);}
+.memo-empty{grid-column:1/-1;text-align:center;padding:48px;color:rgba(255,255,255,.2);}
+.memo-empty i{font-size:2.2rem;display:block;margin-bottom:10px;}
+
+/* âââ KONTAK âââ */
+.kontak-box{background:var(--w);border:1px solid var(--m4);border-radius:4px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07);display:grid;grid-template-columns:1fr 1fr;}
+.kb-left{padding:28px 28px;}
+.kb-left h2{font-family:var(--fh);font-size:1.2rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:7px;}
+.kb-row{display:flex;gap:11px;margin-bottom:16px;align-items:flex-start;}
+.ki{width:36px;height:36px;min-width:36px;border-radius:3px;background:var(--r);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.kl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--m);margin-bottom:2px;}
+.kv{font-size:.88rem;color:var(--k);line-height:1.55;}
+.kv a{color:var(--r);font-weight:600;}
+.kb-right iframe{width:100%;height:100%;min-height:380px;display:block;border:none;}
+.kontak-stripe{background:var(--r2);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.ks-txt{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.65);font-size:.78rem;}
+.ks-txt i{color:var(--g3);}
+.btn-maps{display:inline-flex;align-items:center;gap:6px;background:var(--g3);color:var(--k);padding:8px 16px;border-radius:2px;font-weight:700;font-size:.8rem;transition:.15s;}
+.btn-maps:hover{background:var(--g2);color:#fff;}
+.jam3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+.j3c{background:var(--w);border:1px solid var(--m4);border-radius:3px;padding:14px;text-align:center;border-top:3px solid var(--r);}
+.j3c i{font-size:1.3rem;color:var(--r);margin-bottom:7px;display:block;}
+.j3c h4{font-weight:700;font-size:.85rem;margin-bottom:3px;}
+.j3c p{font-size:.77rem;color:var(--k3);line-height:1.5;}
+
+/* âââ PDF MODAL âââ */
+.pmodal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:12px;}
+.pmodal.show{display:flex;}
+.pm-inner{background:var(--k2);border:1px solid rgba(255,255,255,.1);border-radius:6px;width:100%;max-width:920px;max-height:95vh;display:flex;flex-direction:column;}
+.pm-hd{background:var(--r2);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.pm-hd h4{color:#fff;font-family:var(--fh);font-size:.88rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pm-cls{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.15s;}
+.pm-cls:hover{background:var(--g3);color:var(--k);}
+.pm-frame{flex:1;}
+.pm-frame iframe{width:100%;height:75vh;border:none;display:block;}
+.pm-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;color:rgba(255,255,255,.3);gap:9px;}
+.pm-empty i{font-size:2.2rem;color:var(--g3);}
+
+/* âââ FMODAL (generic) âââ */
+.fmod{display:none;position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:16px;}
+.fmod.show{display:flex;}
+.fmi{background:var(--w);border-radius:6px;padding:24px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 70px rgba(0,0,0,.22);border-top:4px solid var(--r);}
+.fmi h3{font-family:var(--fh);font-size:1.05rem;color:var(--r);margin-bottom:18px;display:flex;align-items:center;gap:7px;}
+.f-acts{display:flex;gap:7px;justify-content:flex-end;margin-top:16px;}
+.f-cncl{background:var(--m5);color:var(--k);padding:8px 16px;border:none;border-radius:3px;font-weight:600;cursor:pointer;font-family:var(--fb);}
+.f-ok{background:var(--r);color:#fff;padding:8px 18px;border:none;border-radius:3px;font-weight:700;cursor:pointer;font-family:var(--fb);display:flex;align-items:center;gap:5px;transition:.15s;}
+.f-ok:hover{background:var(--r2);}
+
+/* BMODAL (berita â wider) */
+.bmod{display:none;position:fixed;inset:0;z-index:9002;background:rgba(0,0,0,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+.bmod.show{display:flex;}
+.bmi{background:var(--w);border-radius:6px;padding:24px;width:100%;max-width:600px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 70px rgba(0,0,0,.22);border-top:4px solid var(--r);margin:auto;}
+.bmi h3{font-family:var(--fh);font-size:1.05rem;color:var(--r);margin-bottom:18px;}
+
+/* âââ FOOTER âââ */
+footer{background:var(--k2);border-top:3px solid var(--r);}
+.footer-grid{max-width:1320px;margin:auto;padding:32px 16px 24px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;}
+.fg-brand img{width:40px;height:40px;border-radius:50%;border:2px solid var(--g3);object-fit:cover;margin-bottom:9px;}
+.fg-brand h3{font-family:var(--fh);color:#fff;font-size:.92rem;font-weight:700;margin-bottom:3px;}
+.fg-brand p{font-size:.77rem;color:rgba(255,255,255,.38);line-height:1.65;}
+.fg-brand .fv{font-style:italic;color:rgba(255,255,255,.28);font-size:.74rem;margin-top:8px;}
+.fg-col h4{color:#fff;font-size:.73rem;font-weight:700;margin-bottom:11px;text-transform:uppercase;letter-spacing:.8px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.08);}
+.fg-col ul{list-style:none;}
+.fg-col ul li{margin-bottom:5px;}
+.fg-col ul li a{color:rgba(255,255,255,.38);font-size:.8rem;transition:.15s;}
+.fg-col ul li a:hover{color:var(--g3);}
+.footer-bot{border-top:1px solid rgba(255,255,255,.06);padding:13px 16px;text-align:center;}
+.footer-bot p{font-size:.71rem;color:rgba(255,255,255,.18);}
+.footer-bot strong{color:var(--g3);}
+
+/* âââ RESPONSIVE âââ */
+@media(max-width:1024px){
+  .hero-news{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto;}
+  .hn.big{grid-column:1/3;grid-row:1;}
+  .hn.mid{grid-column:1;grid-row:2;}
+  .hn.mid2{grid-column:2;grid-row:2;}
+  .hn.sm{grid-column:1;grid-row:3;}
+  .hn.sm2{grid-column:2;grid-row:3;}
+  .hn.big .hn-img{height:260px;}
+  .b3col{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .keu-cards{grid-template-columns:repeat(2,1fr);}
+  .keu-body{grid-template-columns:1fr;}
+  .ren-layout{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .vid-grid{grid-template-columns:repeat(2,1fr);}
+  .berita-layout{grid-template-columns:1fr;}
+  .kontak-box{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .mh-nav{display:none;}.mh-hbg{display:block;}
+  .hero-news{grid-template-columns:1fr;}
+  .hn.big,.hn.mid,.hn.mid2,.hn.sm,.hn.sm2{grid-column:1;grid-row:auto;}
+  .hn.big{height:240px;}.hn.mid,.hn.mid2,.hn.sm,.hn.sm2{height:180px;}
+  .b3col{grid-template-columns:1fr;}
+  .g4{grid-template-columns:repeat(2,1fr);}
+  .keu-cards{grid-template-columns:repeat(2,1fr);}
+  .person-grid{grid-template-columns:repeat(2,1fr);}
+  .sk-person-grid{grid-template-columns:repeat(2,1fr);}
+  .mj-grid{grid-template-columns:repeat(2,1fr);}
+  .jam3{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .g4{grid-template-columns:1fr;}
+  .keu-cards{grid-template-columns:1fr;}
+  .bm-grid{grid-template-columns:1fr;}
+  .person-grid,.sk-person-grid{grid-template-columns:1fr 1fr;}
+  .vid-grid{grid-template-columns:1fr;}
+}
+
+/* âââ ULOS KARO ORNAMENT âââ */
+.ulos-band{height:22px;background:#B91C1C;position:relative;overflow:hidden;flex-shrink:0;}
+.ulos-band::before{content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0,transparent 8px,#F59E0B 8px,#F59E0B 10px,transparent 10px,transparent 18px,#fff 18px,#fff 19px,transparent 19px,transparent 27px,#9333EA 27px,#9333EA 29px,transparent 29px,transparent 37px,#F59E0B 37px,#F59E0B 39px,transparent 39px);}
+.ulos-zigzag{height:18px;background:#B91C1C;position:relative;overflow:hidden;}
+.ulos-zigzag::before{content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='18'%3E%3Cpolygon points='0,0 20,18 40,0' fill='%23F59E0B'/%3E%3C/svg%3E") repeat-x 0 0;
+  background-size:40px 18px;}
+.ulos-zigzag.inv::before{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='18'%3E%3Cpolygon points='0,18 20,0 40,18' fill='%23F59E0B'/%3E%3C/svg%3E") repeat-x 0 0;
+  background-size:40px 18px;}
+.ulos-border{background:#7F1D1D;height:4px;}
+
+/* âââ PHOTO CAROUSEL (background style) âââ */
+.photo-carousel-section{position:relative;overflow:hidden;min-height:480px;background:var(--k);}
+.pc-bg{position:absolute!important;inset:0!important;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;z-index:0;}
+.pc-bg-cell{overflow:hidden;position:relative;}
+.pc-bg-cell img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease;filter:brightness(.55) saturate(.8);}
+.pc-bg-cell:hover img{transform:scale(1.06);}
+.pc-bg-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(127,29,29,.88) 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.4) 100%);}
+.pc-content{position:relative;z-index:2;padding:56px 16px;max-width:1320px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;pointer-events:auto;}
+.pc-left h2{font-family:var(--fh);font-size:2.2rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:12px;}
+.pc-left h2 span{color:var(--g3);}
+.pc-left p{font-size:.92rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:20px;}
+.pc-left .verse-box{border-left:4px solid var(--g3);padding:10px 16px;background:rgba(255,255,255,.06);border-radius:0 4px 4px 0;font-style:italic;font-family:var(--fs);color:rgba(255,255,255,.85);font-size:.9rem;line-height:1.65;margin-bottom:24px;}
+.pc-left .verse-ref{font-size:.75rem;color:var(--g3);margin-top:6px;font-style:normal;font-weight:700;}
+.pc-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.pc-btn-gold{background:var(--g3);color:var(--k);padding:12px 24px;border:none;border-radius:3px;font-weight:700;font-size:.88rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s;}
+.pc-btn-gold:hover{background:var(--g2);color:#fff;}
+.pc-btn-outline{background:transparent;color:#fff;padding:12px 22px;border:2px solid rgba(255,255,255,.35);border-radius:3px;font-weight:600;font-size:.88rem;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s;}
+.pc-btn-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);}
+.pc-right{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pc-stat-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:18px;text-align:center;backdrop-filter:blur(6px);}
+.pc-stat-card .psn{font-family:var(--fh);font-size:1.8rem;font-weight:900;color:var(--g3);margin-bottom:3px;}
+.pc-stat-card .psl{font-size:.73rem;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;}
+
+/* Carousel strip di bawah hero */
+.carousel-strip{background:var(--k2);padding:0;overflow:hidden;border-top:3px solid var(--r);}
+.cs-track{display:flex;gap:3px;animation:csScroll 40s linear infinite;}
+.cs-track:hover{animation-play-state:paused;}
+.cs-img{width:220px;height:130px;min-width:220px;object-fit:cover;flex-shrink:0;opacity:.75;transition:.3s;border-radius:0;}
+.cs-img:hover{opacity:1;transform:scale(1.02);}
+@keyframes csScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%)}}
+
+/* âââ ABOUT SECTION âââ */
+.about-section{background:var(--w);padding:56px 0;position:relative;overflow:hidden;}
+.about-section::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--r),var(--g3),var(--r2));}
+.about-inner{max-width:1320px;margin:auto;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-img-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:360px;}
+.aig-main{grid-row:1/3;position:relative;overflow:hidden;border-radius:4px;}
+.aig-main img{width:100%;height:100%;object-fit:cover;}
+.aig-sub{position:relative;overflow:hidden;border-radius:4px;}
+.aig-sub img{width:100%;height:100%;object-fit:cover;}
+.about-right .ab-label{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);margin-bottom:8px;}
+.about-right h2{font-family:var(--fh);font-size:1.8rem;font-weight:700;color:var(--k);line-height:1.3;margin-bottom:14px;}
+.about-right p{font-size:.9rem;color:var(--k3);line-height:1.85;margin-bottom:14px;}
+.ab-verse{background:var(--rp);border-left:4px solid var(--r);padding:12px 16px;border-radius:0 4px 4px 0;font-family:var(--fs);font-style:italic;font-size:.9rem;color:var(--r2);line-height:1.65;margin-bottom:20px;}
+.ab-verse strong{color:var(--r);font-style:normal;font-size:.75rem;letter-spacing:.5px;text-transform:uppercase;display:block;margin-top:6px;}
+.ab-stats{display:flex;gap:20px;flex-wrap:wrap;}
+.ab-stat{text-align:center;}
+.ab-stat .sn{font-family:var(--fh);font-size:1.6rem;font-weight:700;color:var(--r);}
+.ab-stat .sl{font-size:.72rem;color:var(--m);text-transform:uppercase;letter-spacing:.8px;margin-top:2px;}
+
+/* âââ PROGRAM HIGHLIGHT âââ */
+.program-section{background:var(--k2);padding:48px 0;position:relative;}
+.prog-ulos{margin-bottom:0;}
+.program-grid{max-width:1320px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.pg-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:20px;transition:.2s;cursor:pointer;}
+.pg-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);border-color:rgba(245,158,11,.3);}
+.pg-card-icon{width:46px;height:46px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;}
+.pg-card h3{font-family:var(--fh);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.pg-card p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.65;}
+
+/* âââ KATEGORIAL PREVIEW âââ */
+.kat-section{background:var(--m6);padding:48px 0;}
+.kat-preview-grid{max-width:1320px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.kp-card{border-radius:6px;overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
+.kp-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.15);}
+.kp-card-top{padding:20px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.kp-emoji{font-size:2rem;margin-bottom:8px;}
+.kp-name{font-family:var(--fh);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:3px;}
+.kp-sub{font-size:.72rem;color:rgba(255,255,255,.65);}
+.kp-card-foot{padding:9px 12px;background:rgba(0,0,0,.2);font-size:.72rem;color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:space-between;}
+
+/* âââ GALERI KEGIATAN âââ */
+.galeri-section{padding:48px 0;background:var(--w);}
+.galeri-grid{max-width:1320px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.gal-item{position:relative;overflow:hidden;cursor:pointer;}
+.gal-item.tall{grid-row:span 2;}
+.gal-item img{width:100%;height:200px;object-fit:cover;transition:.4s;display:block;}
+.gal-item.tall img{height:403px;}
+.gal-item:hover img{transform:scale(1.06);}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);opacity:0;transition:.3s;}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-label{position:absolute;bottom:12px;left:12px;right:12px;color:#fff;font-size:.78rem;font-weight:600;opacity:0;transition:.3s;transform:translateY(6px);}
+.gal-item:hover .gal-label{opacity:1;transform:none;}
+
+/* âââ CTA STRIP âââ */
+.cta-strip{background:linear-gradient(135deg,var(--r2) 0%,var(--r) 50%,var(--k) 100%);padding:40px 0;position:relative;overflow:hidden;}
+.cta-strip::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.cta-inner{max-width:1320px;margin:auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1;}
+.cta-left h2{font-family:var(--fh);font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.cta-left p{font-size:.87rem;color:rgba(255,255,255,.65);}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+@media(max-width:1024px){
+  .pc-content{grid-template-columns:1fr;}
+  .pc-bg{grid-template-columns:repeat(2,1fr);}
+  .about-inner{grid-template-columns:1fr;}
+  .program-grid{grid-template-columns:repeat(2,1fr);}
+  .kat-preview-grid{grid-template-columns:repeat(3,1fr);}
+  .galeri-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .pc-content{padding:32px 16px;}
+  .pc-left h2{font-size:1.5rem;}
+  .pc-right{grid-template-columns:1fr 1fr;}
+  .pc-bg{grid-template-columns:repeat(2,1fr);}
+  .program-grid{grid-template-columns:1fr 1fr;}
+  .kat-preview-grid{grid-template-columns:repeat(2,1fr);}
+  .galeri-grid{grid-template-columns:1fr;}
+  .gal-item.tall img,.gal-item img{height:200px;}
+  .about-img-grid{height:240px;}
+  .cta-inner{flex-direction:column;text-align:center;}
+}
+
+/* ═══ ENHANCED CAROUSEL ═══ */
+.cs-track{display:flex;gap:4px;width:max-content;}
+.cs-img{width:240px;height:145px;min-width:240px;object-fit:cover;flex-shrink:0;opacity:.72;transition:opacity .3s,transform .3s;cursor:pointer;border-radius:2px;}
+.cs-img:hover{opacity:1;transform:scale(1.03);}
+
+/* ═══ GALERI SECTION ═══ */
+.galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:4px;}
+.gal-item.tall{grid-row:span 2;}
+.gal-item img{height:200px;display:block;}
+.gal-item.tall img{height:404px;}
+
+/* ═══ RENUNGAN ARCHIVE SCROLL ═══ */
+.ra-box .ra-list-scroll{max-height:360px;overflow-y:auto;}
+
+/* ═══ ORG MAJELIS CARDS grid ═══ */
+.mj-grid{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;}
+
+/* ═══ RESPONSIVE FIX ═══ */
+@media(max-width:960px){
+  .pc-content{grid-template-columns:1fr;}
+  .pc-right{grid-template-columns:repeat(4,1fr);}
+  .pc-bg{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){
+  .pc-right{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ═══ MOBILE NAV IMPROVEMENTS ═══ */
+@media(max-width:900px){
+  .mh-top{height:50px;padding:0 12px;}
+  .mh-logo{width:34px;height:34px;}
+  .mh-name .n1{font-size:12px;}
+  .mh-name .n2{font-size:7.5px;}
+}
+
+/* ═══ BETTER SCROLLBAR FOR PANELS ═══ */
+.org-wrap,.keu-wrap,.ren-wrap{min-height:60vh;}
+
+/* ═══ CHIP ACTIVE GLOW ═══ */
+.chip.on{box-shadow:0 2px 8px rgba(185,28,28,.25);}
+
+/* ═══ GALERI 3-COL FIXED HEIGHTS ═══ */
+.galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.gal-item{position:relative;overflow:hidden;cursor:pointer;height:200px;}
+.gal-item.tall{height:404px;grid-row:span 2;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+
+/* ═══ PN CARD PHOTO INITIALS ═══ */
+.pcard-photo{width:100%;height:110px;background:var(--r);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.3rem;font-weight:700;letter-spacing:.5px;}
+
+/* ═══ SEKTOR HEAD IMPROVED ═══ */
+.sk-hd{background:var(--m6);border-bottom:none;}
+.sk-item.open .sk-hd{background:var(--rp);}
+.sk-item.open .sk-hd h4{color:var(--r2);}
+.sk-item.open .sk-chev{color:var(--r);}
+
+/* ═══ TICKER PAUSE ON HOVER ═══ */
+.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+
+/* ═══ ULOS PATTERN IMPROVED ═══ */
+.ulos-band{
+  height:20px;
+  background:var(--r);
+  background-image:
+    repeating-linear-gradient(90deg,
+      transparent 0,transparent 6px,
+      rgba(245,158,11,.9) 6px,rgba(245,158,11,.9) 8px,
+      transparent 8px,transparent 14px,
+      rgba(255,255,255,.7) 14px,rgba(255,255,255,.7) 15px,
+      transparent 15px,transparent 21px,
+      rgba(147,51,234,.8) 21px,rgba(147,51,234,.8) 23px,
+      transparent 23px,transparent 29px,
+      rgba(245,158,11,.9) 29px,rgba(245,158,11,.9) 31px
+    );
+}
+
+/* ═══ WARTA MINI HOVER ═══ */
+.wm-item{transition:.15s;}
+
+/* ═══ KEUANGAN BAR CHART ANIMATE ═══ */
+.kc-bar-fill{transition:width .8s cubic-bezier(.25,.46,.45,.94);}
+
+/* ═══ PAGE TRANSITION ═══ */
+.page.on{animation:slideIn .3s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* ═══ HERO STAT CARDS HOVER ═══ */
+.pc-stat-card{transition:.2s;}
+.pc-stat-card:hover{background:rgba(255,255,255,.14);transform:translateY(-2px);}
+
+/* ═══ BERITA SIDEBAR MORE ELEGANT ═══ */
+.bs-box{border-top:3px solid var(--r);}
+.bs-head{background:none;padding:12px 14px 6px;}
+.bs-head span{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--r);}
+
+/* ═══ RESPONSIVE GALERI ═══ */
+@media(max-width:768px){
+  .galeri-grid{grid-template-columns:1fr 1fr;}
+  .gal-item.tall{height:200px;grid-row:auto;}
+}
+@media(max-width:480px){
+  .galeri-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- âââ MASTHEAD âââ -->
+<div class="masthead">
+  <div class="ulos-band" style="height:4px;position:absolute;bottom:0;left:0;right:0;z-index:1;"></div>
+  <div class="mh-top">
+    <div class="mh-brand" onclick="gp('beranda')">
+      <img class="mh-logo" src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCAAoACgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAABAUCAwYH/8QAKxAAAQMDAwMDBAMAAAAAAAAAAQIDBAAFERIhBjFBUWETFCIycZHR4f/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAHBEAAgMBAQEBAAAAAAAAAAAAAAECAxESITH/2gAMAwEAAhEDEQA/AOuTWNNQ6sFpCPvLdV5R+hVB/l5NMdF2ZK7i4iOFJVuIQDkZI7/GkNqS5IvExSSMsAgLJI4B4pqLJFjtqUpYAAycVWxpqnO1hVupXXbJghtovsoSCnBBCiPgVeNJqjy2CcpkpzklKXFgD6HFV3ZkAy4RUlQSWwgAA7qz0FNGmFq+GkS3W2ylYC8qBVj3B5H3p4eSSTGCuLuV2PBrKj6iKs3aSEyHSqQooBz/Y7q4PXjjp0FWDW9tIL7DwVGkJPKFg4Kh+D3HUe1Vq9LQ25iiSwEkqSoqP5CRlXyM05R0BNMrKhWl2+2Q16QiLIUhKCrIQtJA/wD09qKz9y3gQBvNxUYV0AUce9FUKVPNJIDdSS7x+OhBZLi0K2KBSRng9KuVmW6qE26VOFwqGf4x8VWCUhPhSnxBwKMBRJzuCc/Nap3U2pVJUSx7QNovCUvFpPK3FHKlEkknvVzpbNY1rTmU1YZCS6oEHIxn9dqiyIykNLILynQlQJJA4yAP36V0LZceLHAQ2k4ycA1qxK4lpfwYOLvVjm2S7OPrStfzFAcAhHcjipRMsqJbbXIyQM4UMEf4aKKTH1sxRdMj//2Q==" alt="">
+      <div class="mh-name"><span class="n1">GBKP Tanjung Sari</span><span class="n2">Portal Informasi Jemaat</span></div>
+    </div>
+    <div class="mh-sep"></div>
+    <div class="mh-nav" id="mhNav">
+      <button class="mh-btn on" onclick="gp('beranda',this)">Beranda</button>
+      <button class="mh-btn" onclick="gp('jadwal',this)">Jadwal</button>
+      <button class="mh-btn" onclick="gp('organisasi',this)">Organisasi</button>
+      <button class="mh-btn" onclick="gp('berita',this)">Berita</button>
+      <button class="mh-btn" onclick="gp('renungan',this)">Renungan</button>
+      <button class="mh-btn" onclick="gp('keuangan',this)">Keuangan</button>
+      <button class="mh-btn" onclick="gp('momo',this)">Warta</button>
+      <button class="mh-btn" onclick="gp('kontak',this)">Kontak</button>
+    </div>
+    <button class="mh-hbg" onclick="document.getElementById('mhMob').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div class="mh-mob" id="mhMob">
+    <a onclick="gp('beranda');this.closest('.mh-mob').classList.remove('show')">ð  Beranda</a>
+    <a onclick="gp('jadwal');this.closest('.mh-mob').classList.remove('show')">âª Jadwal Ibadah</a>
+    <a onclick="gp('organisasi');this.closest('.mh-mob').classList.remove('show')">ð Organisasi</a>
+    <a onclick="gp('berita');this.closest('.mh-mob').classList.remove('show')">ð° Berita</a>
+    <a onclick="gp('renungan');this.closest('.mh-mob').classList.remove('show')">ð Renungan</a>
+    <a onclick="gp('keuangan');this.closest('.mh-mob').classList.remove('show')">ð° Keuangan</a>
+    <a onclick="gp('momo');this.closest('.mh-mob').classList.remove('show')">ð Warta</a>
+    <a onclick="gp('kontak');this.closest('.mh-mob').classList.remove('show')">ð Kontak</a>
+  </div>
+</div>
+<div class="ulos-band"></div>
+<div class="ulos-zigzag"></div>
+<div class="ticker">
+  <div class="ticker-lbl"><i class="fa-solid fa-bolt" style="margin-right:4px;font-size:.75rem;"></i>INFO</div>
+  <div class="ticker-wrap"><div class="ticker-track">
+    <span>ð Ibadah Minggu Pagi: 08.00 â 10.30 WIB Â· Gedung Utama</span>
+    <span>ð Ibadah Minggu Malam: 18.00 â 19.30 WIB Â· B. Indonesia</span>
+    <span>â¨ HUT Runggun Tanjung Sari: 12 April 2026 â Selamat Ulang Tahun!</span>
+    <span>â½ Turnamen Futsal Permata 2026 â Pendaftaran masih dibuka</span>
+    <span>ð Renungan harian tersedia â Klik menu Renungan</span>
+  </div></div>
+</div>
+<div class="ulos-zigzag inv"></div>
+<div class="ulos-border"></div>
+
+<!-- âââââââââââââââ BERANDA âââââââââââââââ -->
+<div class="page on" id="page-beranda">
+<div class="wrap">
+  <!-- Filter + Hero Grid -->
+  <div style="margin-top:14px;">
+    <div class="sl"><span class="sl-main"><i class="fa-solid fa-newspaper" style="margin-right:5px;font-size:.8rem;"></i>Berita Terkini</span><span class="sl-more" onclick="gp('berita')">Lihat Semua <i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></span></div>
+    <div class="chips" id="homeChips">
+      <button class="chip on" onclick="filterHome('semua',this)">Semua</button>
+      <button class="chip" onclick="filterHome('majelis',this)">âª Majelis</button>
+      <button class="chip" onclick="filterHome('saitun',this)">ð¿ Saitun</button>
+      <button class="chip" onclick="filterHome('mamre',this)">ðª Mamre</button>
+      <button class="chip" onclick="filterHome('moria',this)">ðµ Moria</button>
+      <button class="chip" onclick="filterHome('permata',this)">â¨ Permata</button>
+      <button class="chip" onclick="filterHome('seraya',this)">ð± Seraya</button>
+    </div>
+    <div class="hero-news" id="heroNews"></div>
+  </div>
+
+  <!-- 3-COL -->
+  <div class="b3col">
+    <div>
+      <div class="sl"><span class="sl-main">Terbaru</span><span class="sl-more" onclick="gp('berita')">Semua âº</span></div>
+      <div class="nlist" id="homeNlist"></div>
+    </div>
+    <div>
+      <div class="sl"><span class="sl-main">Renungan Harian</span><span class="sl-more" onclick="gp('renungan')">Baca âº</span></div>
+      <div id="homeRenWidget"></div>
+      <div class="sl" style="margin-top:14px;"><span class="sl-main">Warta Terbaru</span><span class="sl-more" onclick="gp('momo')">Semua âº</span></div>
+      <div class="warta-mini" id="homeWartaMini"></div>
+    </div>
+    <div>
+      <div class="sl"><span class="sl-main">Jadwal Ibadah</span></div>
+      <div class="widget-box">
+        <div class="wb-head"><span>Ibadah Minggu</span></div>
+        <div class="wbi"><div class="wbi-icon sun"><i class="fa-solid fa-sun"></i></div><div><div class="wbi-t">08.00 â 10.30 WIB</div><div class="wbi-s">Pagi Â· B. Karo/Indonesia</div></div></div>
+        <div class="wbi"><div class="wbi-icon moon"><i class="fa-solid fa-moon"></i></div><div><div class="wbi-t">18.00 â 19.30 WIB</div><div class="wbi-s">Malam Â· B. Indonesia</div></div></div>
+      </div>
+      <div class="sl" style="margin-top:12px;"><span class="sl-main">Keuangan</span><span class="sl-more" onclick="gp('keuangan')">Detail âº</span></div>
+      <div class="widget-box" id="homeKeuWidget"></div>
+      <div class="sl" style="margin-top:12px;"><span class="sl-main">Video Terbaru</span><span class="sl-more" onclick="gp('renungan')">Semua âº</span></div>
+      <div id="homeVidSide"></div>
+    </div>
+  </div>
+
+  <!-- 4-GRID Kategorial -->
+  <div class="sl"><span class="sl-main"><i class="fa-solid fa-users" style="margin-right:4px;font-size:.8rem;"></i>Kegiatan Kategorial</span><span class="sl-more" onclick="gp('berita')">Semua âº</span></div>
+  <div class="g4" id="homeG4"></div>
+</div>
+
+<!-- âââ PHOTO CAROUSEL HERO SECTION âââ -->
+<div class="ulos-zigzag inv" style="background:#7F1D1D;margin-top:-1px;"></div>
+<div class="photo-carousel-section">
+  <div class="pc-bg" id="pcBg">
+    <!-- filled by JS -->
+  </div>
+  <div class="pc-content">
+    <div class="pc-left">
+      <div class="pc-left .ab-label" style="font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:10px;">GBKP Runggun Tanjung Sari</div>
+      <h2>Bersama dalam <span>Kasih Kristus</span> Melayani dengan Hati</h2>
+      <div class="verse-box">
+        "Supaya kamu seia sekata dan tidak ada perpecahan di antara kamu, tetapi sebaliknya kamu erat bersatu dan sehati sepikir."
+        <div class="verse-ref">â 1 Korintus 1:10</div>
+      </div>
+      <p class="pc-left p">Kami hadir di tengah kota Medan untuk melayani jemaat dan masyarakat sekitar dengan semangat <em>Ersada Ukur Ersada Ate</em> â satu hati dan satu pikiran.</p>
+      <div class="pc-btns">
+        <button class="pc-btn-gold" onclick="gp('jadwal')"><i class="fa-solid fa-church"></i>Jadwal Ibadah</button>
+        <button class="pc-btn-outline" onclick="gp('kontak')"><i class="fa-solid fa-location-dot"></i>Lokasi Gereja</button>
+      </div>
+    </div>
+    <div class="pc-right">
+      <div class="pc-stat-card"><div class="psn">2Ã</div><div class="psl">Ibadah / Minggu</div></div>
+      <div class="pc-stat-card"><div class="psn">5</div><div class="psl">Kategorial Aktif</div></div>
+      <div class="pc-stat-card"><div class="psn">8</div><div class="psl">Sektor Jemaat</div></div>
+      <div class="pc-stat-card"><div class="psn">SDG</div><div class="psl">Soli Deo Gloria</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Carousel foto strip -->
+<div class="carousel-strip">
+  <div class="cs-track" id="csTrack">
+    <!-- filled by JS -->
+  </div>
+</div>
+<div class="ulos-zigzag" style="background:#B91C1C;"></div>
+<div class="ulos-band"></div>
+
+<!-- âââ TENTANG GEREJA âââ -->
+<div class="about-section">
+  <div class="about-inner">
+    <div class="about-img-grid">
+      <div class="aig-main" style="position:relative;overflow:hidden;border-radius:6px;border:3px solid var(--r);">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=80" alt="Jemaat GBKP Tanjung Sari" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#fee2e2'">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(127,29,29,.85),transparent);padding:16px;">
+          <div style="color:var(--g3);font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;">Dokumentasi</div>
+          <div style="color:#fff;font-size:.85rem;font-weight:600;">Ibadah & Persekutuan Jemaat</div>
+        </div>
+      </div>
+      <div class="aig-sub" style="border-radius:6px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1548625149-720134f34f94?auto=format&fit=crop&w=400&q=80" alt="Ibadah" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#fef3c7'"></div>
+      <div class="aig-sub" style="border-radius:6px;overflow:hidden;"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=400&q=80" alt="Kegiatan" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.background='#eff6ff'"></div>
+    </div>
+    <div class="about-right">
+      <div class="ab-label">Tentang Kami</div>
+      <h2>GBKP Runggun Tanjung Sari â Gereja Batak Karo Protestan</h2>
+      <p>GBKP Runggun Tanjung Sari adalah bagian dari Gereja Batak Karo Protestan yang melayani jemaat di Klasis Medan Kampung Lalang. Berdiri dengan semangat pelayanan yang tulus, kami hadir untuk menjadi berkat bagi jemaat dan masyarakat sekitar.</p>
+      <div class="ab-verse">
+        "Ini aku, utuslah aku!"
+        <strong>â Yesaya 6:8 Â· Ayat Emas GBKP Runggun Tanjung Sari</strong>
+      </div>
+      <div class="ab-stats">
+        <div class="ab-stat"><div class="sn">5</div><div class="sl">Kategorial</div></div>
+        <div class="ab-stat"><div class="sn">2Ã</div><div class="sl">Ibadah/Minggu</div></div>
+        <div class="ab-stat"><div class="sn">8</div><div class="sl">Sektor</div></div>
+        <div class="ab-stat"><div class="sn">Medan</div><div class="sl">Kota Pelayanan</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- âââ ULOS + PROGRAM PELAYANAN âââ -->
+<div class="ulos-band"></div>
+<div class="ulos-zigzag inv" style="background:#1F2937;"></div>
+<div class="program-section">
+  <div style="max-width:1320px;margin:0 auto;padding:0 16px 24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;border-bottom:2px solid rgba(255,255,255,.1);padding-bottom:12px;">
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:4px;">Pelayanan Jemaat</div>
+      <h2 style="font-family:var(--fh);color:#fff;font-size:1.4rem;font-weight:700;">Program & Fasilitas</h2></div>
+      <button class="pc-btn-outline" style="font-size:.78rem;padding:8px 16px;" onclick="gp('organisasi')">Lihat Organisasi âº</button>
+    </div>
+  </div>
+  <div class="program-grid">
+    <div class="pg-card"><div class="pg-card-icon" style="background:rgba(185,28,28,.2);color:#FCA5A5;"><i class="fa-solid fa-church"></i></div><h3>Ibadah Minggu</h3><p>Dua sesi ibadah setiap Minggu â Pagi (08.00) dan Malam (18.00) dalam bahasa Karo dan Indonesia.</p></div>
+    <div class="pg-card"><div class="pg-card-icon" style="background:rgba(245,158,11,.15);color:#FCD34D;"><i class="fa-solid fa-users"></i></div><h3>Kategorial Aktif</h3><p>Lima kategorial aktif: Saitun, Mamre, Moria, Permata, dan Seraya dengan program kerja yang terstruktur.</p></div>
+    <div class="pg-card"><div class="pg-card-icon" style="background:rgba(29,78,216,.2);color:#93C5FD;"><i class="fa-solid fa-book-bible"></i></div><h3>Renungan Harian</h3><p>Renungan dan firman Tuhan tersedia setiap hari untuk memperkuat iman jemaat di mana saja berada.</p></div>
+    <div class="pg-card"><div class="pg-card-icon" style="background:rgba(21,128,61,.2);color:#86EFAC;"><i class="fa-solid fa-hand-holding-heart"></i></div><h3>Pelayanan Sosial</h3><p>Diakoni dan kunjungan kasih kepada jemaat yang membutuhkan sebagai wujud iman yang bekerja.</p></div>
+  </div>
+</div>
+<div class="ulos-zigzag" style="background:#1F2937;"></div>
+
+<!-- âââ KATEGORIAL PREVIEW âââ -->
+<div class="kat-section">
+  <div style="max-width:1320px;margin:0 auto;padding:0 16px 20px;">
+    <div class="sl"><span class="sl-main"><i class="fa-solid fa-sitemap" style="margin-right:5px;font-size:.8rem;"></i>Kategorial Jemaat</span><span class="sl-more" onclick="gp('organisasi')">Lihat Lengkap âº</span></div>
+  </div>
+  <div class="kat-preview-grid">
+    <div class="kp-card" onclick="gp('organisasi');setOT('saitun')" style="background:linear-gradient(135deg,#14532d,#15803d);">
+      <div class="kp-card-top"><div class="kp-emoji">ð¿</div><div class="kp-name">Saitun</div><div class="kp-sub">Persekutuan Perempuan</div></div>
+      <div class="kp-card-foot"><span>Kategorial</span><i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></div>
+    </div>
+    <div class="kp-card" onclick="gp('organisasi');setOT('mamre')" style="background:linear-gradient(135deg,#7c2d12,#c2410c);">
+      <div class="kp-card-top"><div class="kp-emoji">ðª</div><div class="kp-name">Mamre</div><div class="kp-sub">Persekutuan Pria</div></div>
+      <div class="kp-card-foot"><span>8 Sektor Aktif</span><i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></div>
+    </div>
+    <div class="kp-card" onclick="gp('organisasi');setOT('moria')" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);">
+      <div class="kp-card-top"><div class="kp-emoji">ðµ</div><div class="kp-name">Moria</div><div class="kp-sub">Persekutuan Ibu</div></div>
+      <div class="kp-card-foot"><span>8 Sektor Aktif</span><i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></div>
+    </div>
+    <div class="kp-card" onclick="gp('organisasi');setOT('permata')" style="background:linear-gradient(135deg,#581c87,#7e22ce);">
+      <div class="kp-card-top"><div class="kp-emoji">â¨</div><div class="kp-name">Permata</div><div class="kp-sub">Persekutuan Pemuda</div></div>
+      <div class="kp-card-foot"><span>BP Gereja</span><i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></div>
+    </div>
+    <div class="kp-card" onclick="gp('organisasi');setOT('seraya')" style="background:linear-gradient(135deg,#134e4a,#0f766e);">
+      <div class="kp-card-top"><div class="kp-emoji">ð±</div><div class="kp-name">Seraya</div><div class="kp-sub">Persekutuan Remaja</div></div>
+      <div class="kp-card-foot"><span>Kategorial</span><i class="fa-solid fa-arrow-right" style="font-size:.7rem;"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- âââ GALERI KEGIATAN âââ -->
+<div class="galeri-section">
+  <div style="max-width:1320px;margin:0 auto;padding:0 16px 20px;">
+    <div class="sl"><span class="sl-main"><i class="fa-solid fa-images" style="margin-right:5px;font-size:.8rem;"></i>Galeri Kegiatan</span><span class="sl-more" onclick="gp('berita')">Semua Berita âº</span></div>
+  </div>
+  <div class="galeri-grid" style="max-width:1320px;margin:0 auto;padding:0 16px;">
+    <div class="gal-item tall"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=600&q=80" alt="HUT Runggun"><div class="gal-overlay"></div><div class="gal-label">âª HUT Runggun Tanjung Sari</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=500&q=80" alt="Futsal Permata"><div class="gal-overlay"></div><div class="gal-label">â¨ Turnamen Futsal Permata</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1548625149-720134f34f94?auto=format&fit=crop&w=500&q=80" alt="Ibadah Pagi"><div class="gal-overlay"></div><div class="gal-label">ð Ibadah Minggu Pagi</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=500&q=80" alt="Paduan Suara Moria"><div class="gal-overlay"></div><div class="gal-label">ðµ Latihan Paduan Suara Moria</div></div>
+    <div class="gal-item"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=500&q=80" alt="Saitun"><div class="gal-overlay"></div><div class="gal-label">ð¿ Persekutuan Doa Saitun</div></div>
+  </div>
+</div>
+
+<!-- âââ CTA STRIP âââ -->
+<div class="ulos-band"></div>
+<div class="ulos-zigzag inv" style="background:#7F1D1D;"></div>
+<div class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>Bergabunglah Bersama Kami</h2>
+      <p>Setiap Minggu pukul 08.00 & 18.00 WIB Â· Gedung Utama GBKP Runggun Tanjung Sari</p>
+    </div>
+    <div class="cta-actions">
+      <button class="pc-btn-gold" onclick="gp('jadwal')"><i class="fa-solid fa-church"></i>Jadwal Ibadah</button>
+      <button class="pc-btn-outline" onclick="gp('kontak')"><i class="fa-solid fa-map-location-dot"></i>Temukan Kami</button>
+      <button class="pc-btn-outline" onclick="gp('momo')"><i class="fa-solid fa-file-pdf"></i>Warta Minggu</button>
+    </div>
+  </div>
+</div>
+<div class="ulos-zigzag" style="background:#7F1D1D;"></div>
+<div class="ulos-band"></div>
+
+</div>
+</div>
+
+<!-- âââââââââââââââ JADWAL âââââââââââââââ -->
+<!-- ═══════════════ JADWAL ═══════════════ -->
+<div class="page" id="page-jadwal">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">GBKP Runggun Tanjung Sari</div><h1 class="ph-title">Jadwal Ibadah</h1><p class="ph-sub">Bergabunglah bersama kami dalam ibadah yang penuh sukacita setiap hari Minggu</p></div></div>
+  <div style="background:var(--k2);padding:28px 16px;">
+    <div style="max-width:1320px;margin:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+      <div style="background:linear-gradient(155deg,#7F1D1D,#B91C1C);border-radius:8px;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:10px 10px;"></div>
+        <div style="padding:24px 22px;position:relative;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#FCD34D;font-size:22px;margin-bottom:14px;border:1px solid rgba(255,255,255,.2);"><i class="fa-solid fa-sun"></i></div>
+          <div style="font-size:.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px;">Ibadah Pertama</div>
+          <h3 style="font-family:var(--fh);color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:3px;">Ibadah Minggu Pagi</h3>
+          <div style="font-size:.73rem;color:rgba(255,255,255,.5);margin-bottom:18px;">Bahasa Karo &amp; Indonesia</div>
+          <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:14px;display:flex;flex-direction:column;gap:9px;">
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Hari</span><strong style="color:#fff;">Setiap Minggu</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Mulai</span><strong style="color:#FCD34D;font-size:1rem;">08.00 WIB</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Selesai</span><strong style="color:#fff;">10.30 WIB</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Lokasi</span><strong style="color:#fff;">Gedung Utama</strong></div>
+          </div>
+          <div style="margin-top:14px;background:rgba(0,0,0,.2);border-radius:4px;padding:9px 11px;font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.5;"><i class="fa-solid fa-circle-info" style="color:#FCD34D;margin-right:4px;"></i>Hadir 10 menit sebelum dimulai. Berpakaian rapi.</div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(155deg,#1e1b4b,#4338ca);border-radius:8px;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:10px 10px;"></div>
+        <div style="padding:24px 22px;position:relative;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#A5B4FC;font-size:22px;margin-bottom:14px;border:1px solid rgba(255,255,255,.2);"><i class="fa-solid fa-moon"></i></div>
+          <div style="font-size:.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px;">Ibadah Kedua</div>
+          <h3 style="font-family:var(--fh);color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:3px;">Ibadah Minggu Malam</h3>
+          <div style="font-size:.73rem;color:rgba(255,255,255,.5);margin-bottom:18px;">Bahasa Indonesia</div>
+          <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:14px;display:flex;flex-direction:column;gap:9px;">
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Hari</span><strong style="color:#fff;">Setiap Minggu</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Mulai</span><strong style="color:#A5B4FC;font-size:1rem;">18.00 WIB</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Selesai</span><strong style="color:#fff;">19.30 WIB</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.84rem;"><span style="color:rgba(255,255,255,.6);">Lokasi</span><strong style="color:#fff;">Gedung Utama</strong></div>
+          </div>
+          <div style="margin-top:14px;background:rgba(0,0,0,.2);border-radius:4px;padding:9px 11px;font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.5;"><i class="fa-solid fa-circle-info" style="color:#A5B4FC;margin-right:4px;"></i>Terbuka untuk semua jemaat dan tamu undangan.</div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(155deg,#78350f,#b45309);border-radius:8px;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:10px 10px;"></div>
+        <div style="padding:24px 22px;position:relative;">
+          <div style="width:52px;height:52px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#FCD34D;font-size:22px;margin-bottom:14px;border:1px solid rgba(255,255,255,.2);"><i class="fa-solid fa-star"></i></div>
+          <div style="font-size:.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px;">Ibadah Khusus</div>
+          <h3 style="font-family:var(--fh);color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:3px;">Kegiatan Gereja</h3>
+          <div style="font-size:.73rem;color:rgba(255,255,255,.5);margin-bottom:18px;">Sesuai Pengumuman</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;">
+            <li style="display:flex;align-items:center;gap:6px;font-size:.81rem;color:rgba(255,255,255,.85);"><i class="fa-solid fa-check-circle" style="color:#FCD34D;font-size:.72rem;"></i>Hari Besar Gerejawi (Paskah, Natal)</li>
+            <li style="display:flex;align-items:center;gap:6px;font-size:.81rem;color:rgba(255,255,255,.85);"><i class="fa-solid fa-check-circle" style="color:#FCD34D;font-size:.72rem;"></i>HUT Runggun Tanjung Sari</li>
+            <li style="display:flex;align-items:center;gap:6px;font-size:.81rem;color:rgba(255,255,255,.85);"><i class="fa-solid fa-check-circle" style="color:#FCD34D;font-size:.72rem;"></i>Konser Rohani Kategorial</li>
+            <li style="display:flex;align-items:center;gap:6px;font-size:.81rem;color:rgba(255,255,255,.85);"><i class="fa-solid fa-check-circle" style="color:#FCD34D;font-size:.72rem;"></i>Retret &amp; Seminar Jemaat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sl"><span class="sl-main"><i class="fa-solid fa-calendar-days" style="margin-right:5px;font-size:.8rem;"></i>Kalender Kegiatan April 2026</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:24px;">
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid var(--r);"><div style="background:var(--r);color:#fff;border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">6</div><div style="font-size:.58rem;text-transform:uppercase;letter-spacing:.3px;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">Ibadah Minggu Biasa</div><div style="font-size:.76rem;color:var(--m);">08.00 &amp; 18.00 WIB · Gedung Utama</div></div></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid #16a34a;"><div style="background:#16a34a;color:#fff;border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">9</div><div style="font-size:.58rem;text-transform:uppercase;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">Rabu Putih (Pra-Paskah)</div><div style="font-size:.76rem;color:var(--m);">19.00 WIB · Ibadah Khusus</div></div></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid var(--g3);"><div style="background:var(--g3);color:var(--k);border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">12</div><div style="font-size:.58rem;text-transform:uppercase;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">🎉 HUT Runggun Tanjung Sari</div><div style="font-size:.76rem;color:var(--m);">09.00 WIB · Ibadah Syukur &amp; Pesta</div></div></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid #7c3aed;"><div style="background:#7c3aed;color:#fff;border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">18</div><div style="font-size:.58rem;text-transform:uppercase;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">Jumat Agung</div><div style="font-size:.76rem;color:var(--m);">09.00 WIB · Peringatan Salib Kristus</div></div></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid #0891b2;"><div style="background:#0891b2;color:#fff;border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">20</div><div style="font-size:.58rem;text-transform:uppercase;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">🥚 Ibadah Paskah</div><div style="font-size:.76rem;color:var(--m);">07.00 WIB · Fajar Paskah</div></div></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:14px;display:flex;gap:13px;align-items:flex-start;border-left:4px solid var(--r);"><div style="background:var(--r);color:#fff;border-radius:3px;padding:5px 9px;text-align:center;min-width:46px;"><div style="font-size:1.2rem;font-weight:700;font-family:var(--fh);">27</div><div style="font-size:.58rem;text-transform:uppercase;opacity:.85;">Apr</div></div><div><div style="font-weight:700;font-size:.88rem;margin-bottom:2px;">Ibadah Minggu Biasa</div><div style="font-size:.76rem;color:var(--m);">08.00 &amp; 18.00 WIB · Gedung Utama</div></div></div>
+    </div>
+    <div class="sl"><span class="sl-main">Tata Cara Beribadah</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:12px;margin-bottom:24px;">
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-shirt"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">Berpakaian Rapi</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Kenakan pakaian sopan dan sesuai kepatutan gereja</p></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-mobile-screen-button"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">HP Silent / Mati</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Matikan atau senyapkan HP agar tidak mengganggu</p></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-clock"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">Tepat Waktu</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Hadir minimal 10 menit sebelum ibadah dimulai</p></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-hands-praying"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">Berpartisipasi Aktif</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Ikut dalam doa, pujian, dan firman Tuhan</p></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-hand-holding-heart"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">Persembahan</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Siapkan persembahan sebagai tanda syukur</p></div>
+      <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:16px;text-align:center;transition:.15s;" onmouseover="this.style.borderColor='var(--r)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--m4)';this.style.transform='none'"><div style="width:48px;height:48px;background:var(--rp);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;color:var(--r);"><i class="fa-solid fa-users"></i></div><strong style="font-size:.88rem;display:block;margin-bottom:4px;">Saling Menyapa</strong><p style="font-size:.75rem;color:var(--m);line-height:1.5;">Sambut sesama jemaat dengan kasih</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ORGANISASI ═══════════════ -->
+<div class="page" id="page-organisasi">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">Kepengurusan Periode 2024–2027</div><h1 class="ph-title">Struktur Organisasi</h1><p class="ph-sub">Majelis dan Kategorial GBKP Runggun Tanjung Sari</p></div></div>
+  <div class="org-wrap">
+    <div class="mj-box">
+      <div class="mj-hd"><div><h2>Majelis Jemaat</h2><span>Periode Pelayanan 2024–2027</span></div></div>
+      <div class="mj-grid" id="majelisGrid"></div>
+    </div>
+    <div class="org-tabs" id="orgTabs">
+      <button class="ot on" onclick="setOT('saitun',this)">🌿 Saitun</button>
+      <button class="ot" onclick="setOT('mamre',this)">💪 Mamre</button>
+      <button class="ot" onclick="setOT('moria',this)">🎵 Moria</button>
+      <button class="ot" onclick="setOT('permata',this)">✨ Permata</button>
+      <button class="ot" onclick="setOT('seraya',this)">🌱 Seraya</button>
+    </div>
+    <div id="orgPanels"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ BERITA ═══════════════ -->
+<div class="page" id="page-berita">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">Informasi &amp; Kegiatan</div><h1 class="ph-title">Berita Terkini</h1><p class="ph-sub">Informasi dan kegiatan dari seluruh kategorial GBKP Runggun Tanjung Sari</p></div></div>
+  <div class="wrap">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;justify-content:space-between;">
+      <div class="chips" id="beritaChips" style="margin-bottom:0;flex:1;">
+        <button class="chip on" onclick="filterBerita('semua',this)">Semua</button>
+        <button class="chip" onclick="filterBerita('majelis',this)">⛪ Majelis</button>
+        <button class="chip" onclick="filterBerita('saitun',this)">🌿 Saitun</button>
+        <button class="chip" onclick="filterBerita('mamre',this)">💪 Mamre</button>
+        <button class="chip" onclick="filterBerita('moria',this)">🎵 Moria</button>
+        <button class="chip" onclick="filterBerita('permata',this)">✨ Permata</button>
+        <button class="chip" onclick="filterBerita('seraya',this)">🌱 Seraya</button>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="beritaSrch" placeholder="🔍 Cari berita..." oninput="renderBerita()" style="padding:7px 12px;border:1.5px solid var(--m4);border-radius:4px;font-family:var(--fb);font-size:.83rem;outline:none;min-width:180px;background:var(--w);" onfocus="this.style.borderColor='var(--r)'" onblur="this.style.borderColor='var(--m4)'">
+        <button class="btn-addnews" onclick="openBmod()"><i class="fa-solid fa-plus"></i>Tambah</button>
+      </div>
+    </div>
+    <div class="berita-layout">
+      <div>
+        <div class="bm-grid" id="beritaGrid"></div>
+        <div class="nlist" id="beritaMore"></div>
+      </div>
+      <div>
+        <div class="bs-box"><div class="bs-head"><span>📌 Berita Pilihan</span></div><div id="beritaSide"></div></div>
+        <div class="bs-box" style="margin-top:14px;">
+          <div class="bs-head"><span>🏷️ Kategori</span></div>
+          <div style="padding:10px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <button onclick="filterBerita('semua',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:var(--m3);display:inline-block;"></span>Semua Berita</button>
+              <button onclick="filterBerita('majelis',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#B91C1C;display:inline-block;"></span>⛪ Majelis</button>
+              <button onclick="filterBerita('saitun',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#15803D;display:inline-block;"></span>🌿 Saitun</button>
+              <button onclick="filterBerita('mamre',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#C2410C;display:inline-block;"></span>💪 Mamre</button>
+              <button onclick="filterBerita('moria',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#1D4ED8;display:inline-block;"></span>🎵 Moria</button>
+              <button onclick="filterBerita('permata',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#7E22CE;display:inline-block;"></span>✨ Permata</button>
+              <button onclick="filterBerita('seraya',null)" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.81rem;cursor:pointer;text-align:left;font-family:var(--fb);"><span style="width:9px;height:9px;border-radius:50%;background:#0F766E;display:inline-block;"></span>🌱 Seraya</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ RENUNGAN ═══════════════ -->
+<div class="page" id="page-renungan">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">Firman Tuhan Setiap Hari</div><h1 class="ph-title">Renungan &amp; Video</h1><p class="ph-sub">Perkuat imanmu dengan renungan harian dan video pelayanan GBKP Runggun Tanjung Sari</p></div></div>
+  <div class="wrap">
+    <div class="ren-layout">
+      <div>
+        <div class="ren-featured" id="renFeatured"></div>
+        <div style="margin-top:20px;">
+          <div class="sl"><span class="sl-main"><i class="fa-brands fa-youtube" style="margin-right:5px;"></i>Video Pelayanan &amp; Ibadah</span></div>
+          <div class="vid-grid" id="renVids"></div>
+          <button class="btn-addnews" style="margin-top:8px;" onclick="openVidMod()"><i class="fa-solid fa-plus"></i>Tambah Video</button>
+        </div>
+      </div>
+      <div>
+        <div class="uf-box">
+          <div class="uf-hd"><span>📤 Upload Renungan</span></div>
+          <div class="uf-body">
+            <div class="fg"><label>Tanggal</label><input type="date" id="rdDate"></div>
+            <div class="fg"><label>Ayat Alkitab</label><input type="text" id="rdVerse" placeholder="Yohanes 3:16"></div>
+            <div class="fg"><label>Judul Renungan</label><input type="text" id="rdTitle" placeholder="Judul renungan..."></div>
+            <div class="fg"><label>Isi Renungan</label><textarea id="rdText" style="min-height:100px;" placeholder="Tulis isi renungan..."></textarea></div>
+            <div class="fg"><label>Penulis</label><input type="text" id="rdAuthor" placeholder="Pdt. / Ev. / Diaken..."></div>
+            <button class="btsave" onclick="saveRen()"><i class="fa-solid fa-floppy-disk"></i>Simpan Renungan</button>
+          </div>
+        </div>
+        <div class="ra-box" style="margin-top:14px;">
+          <div class="ra-hd"><span>📚 Arsip Renungan</span></div>
+          <div id="renArchive" class="ra-list-scroll"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ KEUANGAN ═══════════════ -->
+<div class="page" id="page-keuangan">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">Laporan Keuangan Jemaat</div><h1 class="ph-title">Transparansi Keuangan</h1><p class="ph-sub">Pemasukan dan pengeluaran GBKP Runggun Tanjung Sari secara transparan dan akuntabel</p></div></div>
+  <div class="keu-wrap">
+    <div class="keu-cards" id="keuCards"></div>
+    <div style="background:var(--w);border:1px solid var(--m4);border-radius:6px;padding:20px;margin-bottom:18px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;"><h3 style="font-family:var(--fh);font-size:.95rem;font-weight:700;">Kategori Pemasukan Maret 2026</h3><span style="font-size:.73rem;color:var(--m);background:var(--m6);padding:4px 10px;border-radius:999px;border:1px solid var(--m4);">Bulan Berjalan</span></div>
+      <div id="keuBarChart" style="display:flex;flex-direction:column;gap:11px;"></div>
+    </div>
+    <div class="keu-body">
+      <div class="ktable-wrap">
+        <div class="kth">
+          <h3>Riwayat Transaksi</h3>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select id="keuFil" onchange="renderKeu()"><option value="semua">Semua Transaksi</option><option value="masuk">Pemasukan Saja</option><option value="keluar">Pengeluaran Saja</option></select>
+            <button onclick="window.print()" style="padding:6px 12px;border:1px solid var(--m4);border-radius:3px;background:var(--m6);font-size:.78rem;cursor:pointer;font-family:var(--fb);display:flex;align-items:center;gap:4px;" title="Cetak laporan"><i class="fa-solid fa-print" style="color:var(--m);"></i></button>
+          </div>
+        </div>
+        <div style="overflow-x:auto;"><table class="ktbl" id="keuTbl"></table></div>
+      </div>
+      <div class="kform-wrap">
+        <div class="kf-hd"><h3>+ Tambah Transaksi</h3></div>
+        <div class="kf-body">
+          <div class="type-toggle">
+            <button class="ttbtn in on" id="ttIn" onclick="setKT('masuk')">📈 Pemasukan</button>
+            <button class="ttbtn out" id="ttOut" onclick="setKT('keluar')">📉 Pengeluaran</button>
+          </div>
+          <div class="fg"><label>Tanggal</label><input type="date" id="kDate"></div>
+          <div class="fg"><label>Keterangan</label><input type="text" id="kKet" placeholder="Kolekte Minggu..."></div>
+          <div class="fg"><label>Jumlah (Rp)</label><input type="number" id="kAmt" placeholder="0" min="0"></div>
+          <div class="fg"><label>Kategori</label><select id="kKat"><option>Kolekte Ibadah</option><option>Persembahan Khusus</option><option>Perpuluhan</option><option>Sumbangan</option><option>Operasional Gereja</option><option>Listrik &amp; Air</option><option>Honorarium</option><option>Kegiatan Kategorial</option><option>Diakoni / Sosial</option><option>Lain-lain</option></select></div>
+          <div class="fg"><label>Catatan</label><textarea id="kNote" style="min-height:50px;" placeholder="Catatan..."></textarea></div>
+          <div class="fg"><label>Upload Bukti</label>
+            <div class="img-upload" onclick="document.getElementById('kImg').click()"><i class="fa-solid fa-cloud-arrow-up"></i>Klik untuk upload gambar bukti<input type="file" id="kImg" accept="image/*" style="display:none;" onchange="prevKImg(this)"></div>
+            <img id="kImgPrev" src="" style="display:none;width:100%;border-radius:4px;margin-top:7px;max-height:110px;object-fit:cover;">
+          </div>
+          <button class="btsave" onclick="saveKeu()"><i class="fa-solid fa-floppy-disk"></i>Simpan Transaksi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MOMO ═══════════════ -->
+<div class="page" id="page-momo">
+  <div class="momo-wrap">
+    <div class="momo-ph"><div class="momo-ph-inner"><div class="phe">Dokumen Ibadah Mingguan</div><h1>Momo / Warta Jemaat</h1><p>PDF tata ibadah setiap Minggu — Pagi &amp; Malam tersedia untuk diunduh</p></div></div>
+    <div class="momo-inner">
+      <div class="momo-toolbar">
+        <div class="momo-left">
+          <div style="display:flex;gap:5px;">
+            <button class="msc on" onclick="setMS('semua',this)">📅 Semua</button>
+            <button class="msc" onclick="setMS('pagi',this)">☀ Pagi</button>
+            <button class="msc" onclick="setMS('malam',this)">🌙 Malam</button>
+          </div>
+          <div class="msrch" style="display:flex;gap:7px;">
+            <input type="month" id="mMonth" onchange="renderMomo()">
+            <input type="text" id="mSrch" placeholder="🔍 Cari tema..." oninput="renderMomo()">
+          </div>
+        </div>
+        <button class="btn-addmomo" onclick="openMomoMod()"><i class="fa-solid fa-plus"></i>Tambah Warta</button>
+      </div>
+      <div class="momo-stats" id="momoStats"></div>
+      <div class="mgrid" id="momoGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ KONTAK ═══════════════ -->
+<div class="page" id="page-kontak">
+  <div class="ph"><div class="ph-inner"><div class="ph-eyebrow">Hubungi Kami</div><h1 class="ph-title">Lokasi &amp; Kontak</h1><p class="ph-sub">GBKP Runggun Tanjung Sari — Kec. Medan Selayang, Kota Medan</p></div></div>
+  <div class="wrap" style="max-width:1000px;">
+    <div class="kontak-box">
+      <div class="kb-left">
+        <h2><i class="fa-solid fa-church" style="color:var(--r);"></i>Informasi Gereja</h2>
+        <div class="kb-row"><div class="ki"><i class="fa-solid fa-location-dot"></i></div><div><div class="kl">Alamat Lengkap</div><div class="kv">GJVF+3R3, Jl. Tanjung Sari<br>Kel. Sempakata, Kec. Medan Selayang<br>Kota Medan, Sumatera Utara 20133</div></div></div>
+        <div class="kb-row"><div class="ki"><i class="fa-brands fa-whatsapp"></i></div><div><div class="kl">WhatsApp Sekretariat</div><div class="kv"><a href="https://wa.me/6281234567890">+62 812-3456-7890</a></div></div></div>
+        <div class="kb-row"><div class="ki"><i class="fa-solid fa-phone"></i></div><div><div class="kl">Telepon Gereja</div><div class="kv">061-8765-4321</div></div></div>
+        <div class="kb-row"><div class="ki"><i class="fa-solid fa-envelope"></i></div><div><div class="kl">Email</div><div class="kv"><a href="mailto:gbkp.tanjungsari@gmail.com">gbkp.tanjungsari@gmail.com</a></div></div></div>
+        <div class="kb-row"><div class="ki"><i class="fa-solid fa-map-pin"></i></div><div><div class="kl">Koordinat GPS</div><div class="kv" style="font-family:monospace;font-size:.81rem;">3.5426388, 98.6245348</div></div></div>
+      </div>
+      <div class="kb-right"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.8!2d98.6245348!3d3.5426388!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312f87a64539d7%3A0xcb68077110b05047!2sGBKP%20Tanjung%20Sari!5e0!3m2!1sid!2sid!4v1710800000000!5m2!1sid!2sid" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+    <div class="kontak-stripe">
+      <div class="ks-txt"><i class="fa-solid fa-clock"></i>Sekretariat: Sen–Jum 09.00–15.00 | Sab 09.00–12.00 WIB</div>
+      <a href="https://www.google.com/maps/place/GBKP+Tanjung+Sari/@3.5426388,98.6245348,19z" target="_blank" class="btn-maps"><i class="fa-solid fa-map-location-dot"></i>Buka di Google Maps</a>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="sl"><span class="sl-main">Fasilitas Gereja</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin-bottom:20px;">
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-square-parking"></i></div><div><div style="font-weight:700;font-size:.84rem;">Area Parkir Luas</div><div style="font-size:.73rem;color:var(--m);">Parkir gratis jemaat</div></div></div>
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-wind"></i></div><div><div style="font-weight:700;font-size:.84rem;">Ruang Ber-AC</div><div style="font-size:.73rem;color:var(--m);">Gedung utama ber-AC</div></div></div>
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-wifi"></i></div><div><div style="font-weight:700;font-size:.84rem;">Wi-Fi Gratis</div><div style="font-size:.73rem;color:var(--m);">Area gereja</div></div></div>
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-wheelchair"></i></div><div><div style="font-weight:700;font-size:.84rem;">Akses Difabel</div><div style="font-size:.73rem;color:var(--m);">Ramah kursi roda</div></div></div>
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-baby"></i></div><div><div style="font-weight:700;font-size:.84rem;">Ruang Sekolah Minggu</div><div style="font-size:.73rem;color:var(--m);">Untuk anak-anak</div></div></div>
+        <div style="background:var(--w);border:1px solid var(--m4);border-radius:5px;padding:13px;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;background:var(--rp);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--r);font-size:14px;flex-shrink:0;"><i class="fa-solid fa-music"></i></div><div><div style="font-weight:700;font-size:.84rem;">Sound System</div><div style="font-size:.73rem;color:var(--m);">Sistem audio modern</div></div></div>
+      </div>
+    </div>
+    <div class="jam3">
+      <div class="j3c"><i class="fa-solid fa-calendar-week"></i><h4>Senin – Jumat</h4><p>09.00 – 15.00 WIB<br>Sekretariat Gereja</p></div>
+      <div class="j3c"><i class="fa-solid fa-calendar-day"></i><h4>Sabtu</h4><p>09.00 – 12.00 WIB<br>Sekretariat</p></div>
+      <div class="j3c"><i class="fa-solid fa-church"></i><h4>Minggu</h4><p>Ibadah: 08.00 &amp; 18.00 WIB</p></div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer>
+  <div class="footer-grid">
+    <div class="fg-brand">
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/wAARCAAoACgDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAABAUCAwYH/8QAKxAAAQMDAwMDBAMAAAAAAAAAAQIDBAAFERIhBjFBUWETFCIycZHR4f/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAHBEAAgMBAQEBAAAAAAAAAAAAAAECAxESITH/2gAMAwEAAhEDEQA/AOuTWNNQ6sFpCPvLdV5R+hVB/l5NMdF2ZK7i4iOFJVuIQDkZI7/GkNqS5IvExSSMsAgLJI4B4pqLJFjtqUpYAAycVWxpqnO1hVupXXbJghtovsoSCnBBCiPgVeNJqjy2CcpkpzklKXFgD6HFV3ZkAy4RUlQSWwgAA7qz0FNGmFq+GkS3W2ylYC8qBVj3B5H3p4eSSTGCuLuV2PBrKj6iKs3aSEyHSqQooBz/Y7q4PXjjp0FWDW9tIL7DwVGkJPKFg4Kh+D3HUe1Vq9LQ25iiSwEkqSoqP5CRlXyM05R0BNMrKhWl2+2Q16QiLIUhKCrIQtJA/wD09qKz9y3gQBvNxUYV0AUce9FUKVPNJIDdSS7x+OhBZLi0K2KBSRng9KuVmW6qE26VOFwqGf4x8VWCUhPhSnxBwKMBRJzuCc/Nap3U2pVJUSx7QNovCUvFpPK3FHKlEkknvVzpbNY1rTmU1YZCS6oEHIxn9dqiyIykNLILynQlQJJA4yAP36V0LZceLHAQ2k4ycA1qxK4lpfwYOLvVjm2S7OPrStfzFAcAhHcjipRMsqJbbXIyQM4UMEf4aKKTH1sxRdMj//2Q==" alt="">
+      <h3>GBKP Runggun Tanjung Sari</h3>
+      <p>Klasis Medan Kampung Lalang<br>Gereja Batak Karo Protestan</p>
+      <p class="fv">"Ini aku, utuslah aku!" â Yesaya 6:8</p>
+    </div>
+    <div class="fg-col"><h4>Navigasi</h4><ul>
+      <li><a href="#" onclick="gp('beranda')">Beranda</a></li>
+      <li><a href="#" onclick="gp('jadwal')">Jadwal Ibadah</a></li>
+      <li><a href="#" onclick="gp('organisasi')">Organisasi</a></li>
+      <li><a href="#" onclick="gp('berita')">Berita</a></li>
+      <li><a href="#" onclick="gp('keuangan')">Keuangan</a></li>
+    </ul></div>
+    <div class="fg-col"><h4>Kategorial</h4><ul>
+      <li><a href="#" onclick="gp('organisasi');setOT('saitun')">ð¿ Saitun</a></li>
+      <li><a href="#" onclick="gp('organisasi');setOT('mamre')">ðª Mamre</a></li>
+      <li><a href="#" onclick="gp('organisasi');setOT('moria')">ðµ Moria</a></li>
+      <li><a href="#" onclick="gp('organisasi');setOT('permata')">â¨ Permata</a></li>
+      <li><a href="#" onclick="gp('organisasi');setOT('seraya')">ð± Seraya</a></li>
+    </ul></div>
+    <div class="fg-col"><h4>Kontak</h4><ul>
+      <li><a href="#">Kec. Medan Selayang</a></li>
+      <li><a href="tel:081234567890">0812-3456-7890</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#ddbabfb6adf3a9bcb3b7a8b3baaebcafb49dbab0bcb4b1f3beb2b0">Email Kami</a></li>
+      <li><a href="#" onclick="gp('momo')">Warta / Momo</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bot"><p>Â© 2026 <strong>GBKP Runggun Tanjung Sari</strong> Â· Klasis Medan Kampung Lalang Â· Soli Deo Gloria</p></div>
+</footer>
+
+<!-- âââ MODALS âââ -->
+<div class="dmodal" id="dmodal">
+  <div class="dmi">
+    <img id="dImg" src="" alt="" class="dmi-img" onerror="this.style.display='none'">
+    <div class="dmi-body">
+      <span class="dmi-kat" id="dKat"></span>
+      <h2 class="dmi-title" id="dTitle"></h2>
+      <div class="dmi-meta" id="dMeta"></div>
+      <div class="dmi-content" id="dContent"></div>
+    </div>
+    <div class="dmi-close"><button class="btn-cls" onclick="closeDmod()"><i class="fa-solid fa-xmark" style="margin-right:4px;"></i>Tutup</button></div>
+  </div>
+</div>
+
+<div class="pmodal" id="pmodal">
+  <div class="pm-inner">
+    <div class="pm-hd"><h4 id="pmTitle"></h4><button class="pm-cls" onclick="closePmod()"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="pm-frame" id="pmFrame"></div>
+  </div>
+</div>
+
+<div class="fmod" id="momoMod">
+  <div class="fmi">
+    <h3><i class="fa-solid fa-file-circle-plus"></i>Tambah Warta</h3>
+    <div class="fg"><label>Sesi</label><select id="mSess"><option value="pagi">â Ibadah Pagi</option><option value="malam">ð Ibadah Malam</option></select></div>
+    <div class="fg"><label>Tanggal</label><input type="date" id="mDate"></div>
+    <div class="fg"><label>Tema Khotbah</label><input type="text" id="mTitle" placeholder="Tema..."></div>
+    <div class="fg"><label>Pengkhotbah</label><input type="text" id="mPreach" placeholder="Pdt. / Ev. ..."></div>
+    <div class="fg"><label>Ayat Alkitab</label><input type="text" id="mVerse" placeholder="Yohanes 3:16"></div>
+    <div class="fg"><label>Link PDF Google Drive</label><input type="url" id="mPdf" placeholder="https://drive.google.com/..."><small>Share â Anyone with link can view</small></div>
+    <div class="f-acts"><button class="f-cncl" onclick="closeMomoMod()">Batal</button><button class="f-ok" onclick="saveMomo()"><i class="fa-solid fa-floppy-disk"></i>Simpan</button></div>
+  </div>
+</div>
+
+<div class="bmod" id="bmod">
+  <div class="bmi">
+    <h3>ð° Tambah Berita / Kegiatan</h3>
+    <div class="fg"><label>Kategorial</label><select id="bKat"><option value="majelis">âª Majelis</option><option value="saitun">ð¿ Saitun</option><option value="mamre">ðª Mamre</option><option value="moria">ðµ Moria</option><option value="permata">â¨ Permata</option><option value="seraya">ð± Seraya</option><option value="umum">ð Umum</option></select></div>
+    <div class="fg"><label>Judul</label><input type="text" id="bJudul" placeholder="Judul berita..."></div>
+    <div class="fg"><label>Tanggal</label><input type="date" id="bTgl"></div>
+    <div class="fg"><label>Penulis</label><input type="text" id="bPenulis" placeholder="Nama penulis..."></div>
+    <div class="fg"><label>Lokasi</label><input type="text" id="bLokasi" placeholder="Lokasi kegiatan"></div>
+    <div class="fg"><label>Jam</label><input type="text" id="bJam" placeholder="09.00 WIB"></div>
+    <div class="fg"><label>URL Gambar (opsional)</label><input type="url" id="bImg" placeholder="https://..."></div>
+    <div class="fg"><label>Ringkasan</label><textarea id="bRingkas" placeholder="Ringkasan singkat..."></textarea></div>
+    <div class="fg"><label>Isi Lengkap</label><textarea id="bIsi" style="min-height:110px;" placeholder="Isi berita lengkap..."></textarea></div>
+    <div class="f-acts"><button class="f-cncl" onclick="closeBmod()">Batal</button><button class="f-ok" onclick="saveBerita()"><i class="fa-solid fa-floppy-disk"></i>Simpan</button></div>
+  </div>
+</div>
+
+<div class="fmod" id="vidMod">
+  <div class="fmi">
+    <h3><i class="fa-brands fa-youtube" style="color:var(--r);"></i>Tambah Video YouTube</h3>
+    <div class="fg"><label>Judul Video</label><input type="text" id="vTitle" placeholder="Judul video..."></div>
+    <div class="fg"><label>Link YouTube</label><input type="url" id="vUrl" placeholder="https://youtube.com/watch?v=..."><small>Paste link video YouTube langsung</small></div>
+    <div class="fg"><label>Tanggal</label><input type="date" id="vDate"></div>
+    <div class="fg"><label>Kategori</label><select id="vKat"><option>Ibadah Minggu Pagi</option><option>Ibadah Minggu Malam</option><option>Khotbah Khusus</option><option>Kegiatan Kategorial</option></select></div>
+    <div class="f-acts"><button class="f-cncl" onclick="closeVidMod()">Batal</button><button class="f-ok" onclick="saveVid()"><i class="fa-solid fa-floppy-disk"></i>Simpan</button></div>
+  </div>
+</div>
+
+<script>
+// âââââââââââ DATA âââââââââââ
+const KAT_COLOR={majelis:'#B91C1C',saitun:'#15803D',mamre:'#C2410C',moria:'#1D4ED8',permata:'#7E22CE',seraya:'#0F766E',umum:'#374151'};
+const KAT_NAME={majelis:'âª Majelis',saitun:'ð¿ Saitun',mamre:'ðª Mamre',moria:'ðµ Moria',permata:'â¨ Permata',seraya:'ð± Seraya',umum:'ð Umum'};
+
+let beritaData=JSON.parse(localStorage.getItem('gbkp_berita4')||'[]');
+if(!beritaData.length){beritaData=[
+  {id:1,kat:'permata',judul:'Turnamen Futsal Permata 2026 Digelar Meriah',tgl:'2026-03-15',penulis:'Pengurus Permata',lokasi:'GOR Futsal Medan',jam:'08.00 WIB',img:'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80',ringkas:'Permata GBKP menggelar turnamen futsal antar runggun klasis. 8 tim bertanding dalam semangat persaudaraan Kristen.',isi:'Permata GBKP Runggun Tanjung Sari sukses menggelar Turnamen Futsal 2026. Diikuti 8 tim dari klasis Medan Kampung Lalang.\n\nAcara berlangsung penuh semangat pada 14-15 Maret 2026 di GOR Futsal Medan.\n\nKegiatan ini mempererat persaudaraan pemuda GBKP sekaligus menggali talenta olahraga generasi muda.'},
+  {id:2,kat:'saitun',judul:'Persekutuan Doa Saitun: Berdoa Tanpa Henti',tgl:'2026-03-12',penulis:'Pengurus Saitun',lokasi:'Gedung Gereja',jam:'09.00 WIB',img:'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80',ringkas:'Persekutuan doa Saitun bulan Maret dihadiri lebih dari 30 anggota dengan tema Berdoa Tanpa Henti.',isi:'Persekutuan Doa Saitun GBKP Runggun Tanjung Sari berlangsung penuh berkat.\n\nTema bulan ini: "Berdoa Tanpa Henti" (1 Tesalonika 5:17).\n\nHadir lebih dari 30 anggota. Dipimpin Ketua Saitun dengan pujian, doa syafaat, dan kesaksian.'},
+  {id:3,kat:'mamre',judul:'Mamre Gotong Royong Perbaiki Taman Gereja',tgl:'2026-03-08',penulis:'Pengurus Mamre',lokasi:'Area Gereja',jam:'07.00 WIB',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',ringkas:'Kaum pria Mamre bergotong royong mempercantik area taman dan parkir gereja sebagai wujud pelayanan.',isi:'Mamre GBKP melaksanakan kerja bakti renovasi taman gereja pada Sabtu, 8 Maret 2026.\n\nSekitar 25 anggota hadir membersihkan, menanam tanaman hias, dan mengecat pagar.\n\nIni bagian dari program pemeliharaan fasilitas gereja tahun 2026.'},
+  {id:4,kat:'majelis',judul:'Pengumuman: Ibadah HUT Runggun 12 April 2026',tgl:'2026-03-05',penulis:'Majelis Jemaat',lokasi:'Gedung Utama',jam:'09.00 WIB',img:'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80',ringkas:'Majelis jemaat mengumumkan HUT Runggun Tanjung Sari pada 12 April 2026 dengan tema Bertumbuh dalam Kasih Kristus.',isi:'Majelis Jemaat GBKP mengumumkan HUT Runggun pada 12 April 2026.\n\nTema: "Bertumbuh dalam Kasih Kristus."\n\nAcara 09.00 WIB dilanjutkan ramah tamah. Seluruh jemaat dan kategorial diundang hadir.'},
+  {id:5,kat:'moria',judul:'Latihan Paduan Suara Moria Jelang Paskah',tgl:'2026-03-01',penulis:'Pengurus Moria',lokasi:'Gedung Gereja',jam:'15.00 WIB',img:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80',ringkas:'Moria giat berlatih paduan suara setiap Sabtu sore untuk persembahan ibadah Paskah 2026.',isi:'Moria GBKP Runggun Tanjung Sari semakin semangat berlatih menyambut Paskah 2026.\n\nLatihan setiap Sabtu 15.00 WIB dipimpin dirigen berpengalaman.\n\nTiga lagu khusus Paskah dalam bahasa Karo dan Indonesia disiapkan.'},
+  {id:6,kat:'seraya',judul:'Outbound Remaja Seraya di Bukit Lawang',tgl:'2026-02-22',penulis:'Pengurus Seraya',lokasi:'Bukit Lawang, Sumut',jam:'06.00 WIB',img:'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',ringkas:'40 remaja Seraya mengikuti outbound di Bukit Lawang untuk membangun kebersamaan dan karakter Kristen.',isi:'Seraya GBKP menggelar Outbound Remaja 2026 di Bukit Lawang.\n\nDiikuti 40 remaja dan 5 pendamping dengan kegiatan flying fox, arung jeram, dan api unggun refleksi rohani.\n\nTema: "Growing Together in Christ."'},
+  {id:7,kat:'moria',judul:'Moria Sabet Juara 2 Festival Paduan Suara Klasis',tgl:'2026-02-15',penulis:'Pengurus Moria',lokasi:'Aula GBKP Klasis Medan',jam:'09.00 WIB',img:'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80',ringkas:'Paduan suara Moria GBKP Runggun Tanjung Sari meraih Juara 2 dalam Festival Paduan Suara Klasis Medan Kampung Lalang.',isi:'Selamat! Paduan suara Moria GBKP Runggun Tanjung Sari berhasil meraih Juara 2 dalam Festival Paduan Suara Klasis 2026.\n\nDengan berlatih intensif setiap Sabtu selama 2 bulan, tim Moria mempersembahkan 3 lagu terbaik mereka di hadapan juri dan ratusan penonton.\n\nPrestasi ini menjadi kebanggaan seluruh jemaat dan mendorong semangat pelayanan Moria ke depannya.'},
+  {id:8,kat:'mamre',judul:'Mamre Klasis Gelar Seminar Kepemimpinan Pria Kristen',tgl:'2026-02-10',penulis:'Pengurus Mamre Klasis',lokasi:'Gedung GBKP Klasis',jam:'08.00 WIB',img:'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',ringkas:'Mamre Klasis Medan Kampung Lalang menggelar seminar kepemimpinan untuk memperkuat peran pria Kristen dalam keluarga dan gereja.',isi:'Mamre Klasis Medan Kampung Lalang sukses menggelar Seminar Kepemimpinan Pria Kristen 2026 yang dihadiri lebih dari 120 peserta.\n\nTema seminar: "Pria Kristen sebagai Kepala Keluarga yang Melayani." Narasumber dari pendeta senior GBKP dan pembicara tamu.\n\nKegiatan ini memotivasi para pria untuk lebih aktif dalam pelayanan gereja dan keluarga masing-masing.'},
+  {id:9,kat:'majelis',judul:'Majelis Rapat Evaluasi Program Triwulan I 2026',tgl:'2026-02-05',penulis:'Sekretaris Majelis',lokasi:'Ruang Rapat Sekretariat',jam:'16.00 WIB',img:'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80',ringkas:'Majelis Jemaat menggelar rapat evaluasi program triwulan pertama 2026 untuk memastikan semua kegiatan berjalan sesuai rencana.',isi:'Majelis Jemaat GBKP Runggun Tanjung Sari mengadakan rapat evaluasi program Triwulan I 2026.\n\nRapat membahas pencapaian program kerja Januari-Maret, evaluasi keuangan, dan perencanaan kegiatan Paskah serta HUT Runggun April mendatang.\n\nSeluruh anggota majelis hadir dan memberikan laporan bidang masing-masing.'},
+  {id:10,kat:'saitun',judul:'Saitun Gelar Bazaar Amal untuk Dana Sosial',tgl:'2026-01-28',penulis:'Pengurus Saitun',lokasi:'Halaman Gereja',jam:'08.00 WIB',img:'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80',ringkas:'Saitun GBKP Runggun Tanjung Sari menggelar bazaar amal yang berhasil mengumpulkan dana untuk pelayanan sosial jemaat.',isi:'Saitun GBKP Runggun Tanjung Sari menggelar Bazaar Amal pada Minggu, 28 Januari 2026 di halaman gereja.\n\nBerbagai produk buatan anggota Saitun seperti kue, makanan tradisional Karo, kerajinan tangan, dan pakaian dijual dengan harga terjangkau.\n\nHasil bazaar sebesar Rp 4.200.000 akan digunakan untuk dana diakoni dan pelayanan sosial jemaat yang membutuhkan.'},
+];localStorage.setItem('gbkp_berita4',JSON.stringify(beritaData));}
+
+let renData=JSON.parse(localStorage.getItem('gbkp_ren4')||'[]');
+if(!renData.length){renData=[
+  {id:1,date:'2026-03-30',verse:'Filipi 4:13',title:'Kuat di Dalam Kristus',text:'Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.\n\nKalimat ini bukan tentang kemampuan kita sendiri, melainkan tentang sumber kekuatan yang tidak pernah habis â Yesus Kristus.\n\nHari ini, apa pun yang sedang kamu hadapi, ingatlah bahwa kamu tidak sendirian. Bersandarlah kepada-Nya.',author:'Pdt. [Nama Pendeta]'},
+  {id:2,date:'2026-03-29',verse:'Yohanes 15:5',title:'Tinggal dalam Yesus',text:'Akulah pokok anggur dan kamulah ranting-rantingnya. Tanpa Yesus kita tidak dapat berbuat apa-apa.\n\nTinggallah dalam-Nya setiap hari melalui doa, firman, dan persekutuan bersama saudara seiman.',author:'Ev. [Nama]'},
+  {id:3,date:'2026-03-28',verse:'Mazmur 46:1',title:'Allah adalah Penolong Kita',text:'Allah itu bagi kita tempat perlindungan dan kekuatan.\n\nDi tengah dunia penuh ketidakpastian, kita memiliki kepastian: Allah selalu hadir dan siap menolong setiap umat-Nya.',author:'Diaken [Nama]'},
+  {id:4,date:'2026-03-27',verse:'Roma 8:28',title:'Semua Mendatangkan Kebaikan',text:'Kita tahu sekarang, bahwa Allah turut bekerja dalam segala sesuatu untuk mendatangkan kebaikan bagi mereka yang mengasihi Dia.\n\nKalimat ini bukan berarti bahwa segala sesuatu itu baik. Ada hal-hal yang menyakitkan, mengecewakan, bahkan menghancurkan. Namun Allah yang berdaulat mampu mengubah semuanya menjadi kebaikan.\n\nPercayakanlah hidupmu kepada-Nya hari ini.',author:'Ev. [Nama Evangelis]'},
+  {id:5,date:'2026-03-26',verse:'Yesaya 40:31',title:'Kekuatan Bagi yang Menanti',text:'"Orang-orang yang menanti-nantikan TUHAN mendapat kekuatan baru." — Yesaya 40:31\n\nBanyak di antara kita merasa lelah dengan beban kehidupan. Menunggu jawaban doa, menunggu pemulihan, menunggu perubahan.\n\nTetapi firman Tuhan berjanji: mereka yang menanti kepada Tuhan akan mendapat kekuatan baru. Seperti rajawali yang naik terbang.',author:'Pdt. [Nama Pendeta]'},
+  {id:6,date:'2026-03-25',verse:'Yeremia 29:11',title:'Rancangan Damai Sejahtera',text:'"Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan."\n\nSering kita bertanya: mengapa ini terjadi padaku? Tapi Tuhan punya rancangan yang indah untuk setiap kita.\n\nPercayalah pada rencana-Nya, bukan pada keterbatasan pandangan kita.',author:'Diaken [Nama]'},
+  {id:7,date:'2026-03-24',verse:'Matius 11:28',title:'Istirahat di Dalam Kristus',text:'"Marilah kepada-Ku, semua yang letih lesu dan berbeban berat, Aku akan memberi kelegaan kepadamu."\n\nYesus tidak berkata: selesaikan dulu masalahmu, lalu datang kepada-Ku. Ia mengundang kita SEKARANG, dalam kondisi apa pun.\n\nLetakkan bebanmu di hadapan-Nya hari ini.',author:'Ev. [Nama Evangelis]'},
+];localStorage.setItem('gbkp_ren4',JSON.stringify(renData));}
+
+let keuData=JSON.parse(localStorage.getItem('gbkp_keu4')||'[]');
+if(!keuData.length){keuData=[
+  {id:1,date:'2026-03-30',type:'masuk',ket:'Kolekte Ibadah Pagi Minggu ke-5',amt:1380000,kat:'Kolekte Ibadah',note:'Termasuk persembahan khusus HUT',img:''},
+  {id:2,date:'2026-03-30',type:'masuk',ket:'Kolekte Ibadah Malam Minggu ke-5',amt:720000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:3,date:'2026-03-28',type:'keluar',ket:'Pembelian Alat Tulis & Fotokopi Warta',amt:215000,kat:'Operasional Gereja',note:'Kertas HVS, tinta printer, stempel',img:''},
+  {id:4,date:'2026-03-27',type:'masuk',ket:'Sumbangan Dana HUT Runggun dari Jemaat',amt:3500000,kat:'Sumbangan',note:'Dikumpulkan oleh panitia HUT',img:''},
+  {id:5,date:'2026-03-23',type:'masuk',ket:'Kolekte Ibadah Pagi Minggu ke-4',amt:1250000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:6,date:'2026-03-23',type:'masuk',ket:'Persembahan Khusus Diakoni',amt:500000,kat:'Persembahan Khusus',note:'Untuk keluarga yang membutuhkan bantuan',img:''},
+  {id:7,date:'2026-03-22',type:'keluar',ket:'Honorarium Pendeta & Majelis Maret',amt:800000,kat:'Honorarium',note:'Termasuk transport pelayanan',img:''},
+  {id:8,date:'2026-03-20',type:'keluar',ket:'Tagihan Listrik Bulan Maret',amt:485000,kat:'Listrik & Air',note:'Gedung utama + secretariat',img:''},
+  {id:9,date:'2026-03-20',type:'keluar',ket:'Tagihan Air PDAM Maret',amt:95000,kat:'Listrik & Air',note:'',img:''},
+  {id:10,date:'2026-03-16',type:'masuk',ket:'Kolekte Ibadah Pagi Minggu ke-3',amt:1180000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:11,date:'2026-03-16',type:'masuk',ket:'Kolekte Ibadah Malam Minggu ke-3',amt:680000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:12,date:'2026-03-15',type:'keluar',ket:'Pembelian Sound System (Mikrofon)',amt:1200000,kat:'Operasional Gereja',note:'2 unit mikrofon wireless merk Shure',img:''},
+  {id:13,date:'2026-03-09',type:'masuk',ket:'Perpuluhan Jemaat Maret',amt:2500000,kat:'Perpuluhan',note:'',img:''},
+  {id:14,date:'2026-03-09',type:'masuk',ket:'Kolekte Ibadah Pagi Minggu ke-2',amt:1320000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:15,date:'2026-03-08',type:'keluar',ket:'Dana Diakoni Keluarga Tarigan',amt:300000,kat:'Diakoni / Sosial',note:'Bantuan biaya rumah sakit anggota jemaat',img:''},
+  {id:16,date:'2026-03-05',type:'keluar',ket:'Konsumsi Rapat Majelis Bulanan',amt:350000,kat:'Operasional Gereja',note:'Rapat evaluasi program bulan Februari',img:''},
+  {id:17,date:'2026-03-02',type:'masuk',ket:'Kolekte Ibadah Pagi Minggu ke-1',amt:1150000,kat:'Kolekte Ibadah',note:'',img:''},
+  {id:18,date:'2026-03-02',type:'masuk',ket:'Sumbangan Anonim via Transfer',amt:1000000,kat:'Sumbangan',note:'Transfer BCA atas nama tidak diketahui',img:''},
+];localStorage.setItem('gbkp_keu4',JSON.stringify(keuData));}
+
+let momoData=JSON.parse(localStorage.getItem('gbkp_momo4')||'[]');
+if(!momoData.length){momoData=[
+  {id:1,date:'2026-03-16',sess:'pagi',title:'Hidup yang Bersyukur kepada Tuhan',preacher:'Pdt. [Nama Pendeta]',verse:'Filipi 4:6-7',pdf:''},
+  {id:2,date:'2026-03-16',sess:'malam',title:'Bertahan dalam Pencobaan',preacher:'Diaken [Nama]',verse:'Yakobus 1:12',pdf:''},
+  {id:3,date:'2026-03-09',sess:'pagi',title:'Iman yang Memindahkan Gunung',preacher:'Ev. [Nama]',verse:'Matius 17:20',pdf:''},
+  {id:4,date:'2026-03-09',sess:'malam',title:'Damai Sejahtera dari Allah',preacher:'Pdt. [Nama Pendeta]',verse:'Yohanes 14:27',pdf:''},
+  {id:5,date:'2026-03-02',sess:'pagi',title:'Kasih Karunia yang Cukup Bagiku',preacher:'Ev. Rina Br Tarigan',verse:'2 Korintus 12:9',pdf:''},
+  {id:6,date:'2026-03-02',sess:'malam',title:'Bersandar Penuh kepada Tuhan',preacher:'Pdt. [Nama Pendeta]',verse:'Amsal 3:5-6',pdf:''},
+  {id:7,date:'2026-02-23',sess:'pagi',title:'Keselamatan Adalah Anugerah',preacher:'Pdt. [Nama Pendeta]',verse:'Efesus 2:8-9',pdf:''},
+  {id:8,date:'2026-02-23',sess:'malam',title:'Pelita bagi Kakiku',preacher:'Diaken Barus',verse:'Mazmur 119:105',pdf:''},
+  {id:9,date:'2026-02-16',sess:'pagi',title:'Pengharapan yang Tidak Mengecewakan',preacher:'Ev. Karo Sitepu',verse:'Roma 5:5',pdf:''},
+  {id:10,date:'2026-02-16',sess:'malam',title:'Berkat Tuhan bagi Orang Setia',preacher:'Pdt. [Nama Pendeta]',verse:'Maleakhi 3:10',pdf:''},
+  {id:11,date:'2026-02-09',sess:'pagi',title:'Hidup sebagai Anak Terang',preacher:'Pdt. [Nama Pendeta]',verse:'Efesus 5:8',pdf:''},
+  {id:12,date:'2026-02-09',sess:'malam',title:'Doa yang Menggerakkan Surga',preacher:'Diaken Ginting',verse:'Yakobus 5:16',pdf:''},
+];localStorage.setItem('gbkp_momo4',JSON.stringify(momoData));}
+
+let vidData=JSON.parse(localStorage.getItem('gbkp_vid4')||'[]');
+if(!vidData.length){vidData=[
+  {id:1,title:'Ibadah Minggu Pagi 23 Maret 2026',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2026-03-23',kat:'Ibadah Minggu Pagi'},
+  {id:2,title:'Khotbah: Hidup dalam Kasih Kristus',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2026-03-16',kat:'Khotbah Khusus'},
+  {id:3,title:'Ibadah Minggu Malam 9 Maret 2026',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2026-03-09',kat:'Ibadah Minggu Malam'},
+  {id:4,title:'Khotbah: Kasih Karunia yang Memerdekakan',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2026-03-02',kat:'Khotbah Khusus'},
+  {id:5,title:'Paskah 2025 — Ibadah Fajar Kebangkitan',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2025-04-20',kat:'Ibadah Minggu Pagi'},
+  {id:6,title:'Konser Rohani Moria GBKP Tanjung Sari 2025',url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ',date:'2025-11-15',kat:'Kegiatan Kategorial'},
+];localStorage.setItem('gbkp_vid4',JSON.stringify(vidData));}
+
+// Organisasi data
+const majelisD=[
+  {role:'Pendeta Jemaat',name:'Pdt. Mariani Br Karo-Karo, M.Th'},
+  {role:'Ketua Majelis',name:'Ir. Belman Ginting'},
+  {role:'Wakil Ketua',name:'dr. Rosalinda Br Sembiring'},
+  {role:'Sekretaris I',name:'Drs. Rahmat Tarigan'},
+  {role:'Sekretaris II',name:'Yuni Kristin Br Sitepu'},
+  {role:'Bendahara I',name:'Hendrik Bangun, S.E.'},
+  {role:'Bendahara II',name:'Merry Br Perangin-angin'},
+  {role:'Bid. Peribadahan',name:'Pnt. Samuel Purba'},
+  {role:'Bid. Pendidikan',name:'Pnt. Felicia Br Karo'},
+  {role:'Bid. Kemasyarakatan',name:'Pnt. Dedy Sinulingga'},
+  {role:'Bid. Keuangan',name:'Pnt. Hetty Br Ginting'},
+  {role:'Bid. Pembangunan',name:'Ir. Kasim Tarigan'},
+];
+const sektorNames=['Jl. Setia Budi','Jl. Tanjung Sari','Komplek Johor','Jl. Gaperta','Jl. Lembaga','Perumnas Simalingkar','Jl. Flamboyan','Jl. Bunga Raya'];
+const SK_SAITUN=[[{role:'Ketua',name:'Nelly Br Sembiring',wa:'08127890001'},{role:'Sekretaris',name:'Rini Br Tarigan',wa:''},{role:'Bendahara',name:'Desi Br Ginting',wa:''}],[{role:'Ketua',name:'Kartini Br Perangin-angin',wa:'08127890011'},{role:'Sekretaris',name:'Marta Br Sitepu',wa:''},{role:'Bendahara',name:'Lisna Br Karo',wa:''}],[{role:'Ketua',name:'Eva Br Sinulingga',wa:'08127890021'},{role:'Sekretaris',name:'Lilis Br Purba',wa:''},{role:'Bendahara',name:'Yani Br Bangun',wa:''}],[{role:'Ketua',name:'Murni Br Sembiring',wa:'08127890031'},{role:'Sekretaris',name:'Sri Br Barus',wa:''},{role:'Bendahara',name:'Enny Br Ginting',wa:''}],[{role:'Ketua',name:'Tina Br Tarigan',wa:'08127890041'},{role:'Sekretaris',name:'Lena Br Milala',wa:''},{role:'Bendahara',name:'Susi Br Karo',wa:''}],[{role:'Ketua',name:'Rina Br Sembiring',wa:'08127890051'},{role:'Sekretaris',name:'Dina Br Sitepu',wa:''},{role:'Bendahara',name:'Fitri Br Tarigan',wa:''}],[{role:'Ketua',name:'Yuna Br Ginting',wa:'08127890061'},{role:'Sekretaris',name:'Nita Br Perangin-angin',wa:''},{role:'Bendahara',name:'Ria Br Sinulingga',wa:''}],[{role:'Ketua',name:'Meli Br Purba',wa:'08127890071'},{role:'Sekretaris',name:'Kris Br Barus',wa:''},{role:'Bendahara',name:'Tati Br Sembiring',wa:''}]];
+const SK_MAMRE=[[{role:'Ketua',name:'Ridwan Tarigan',wa:'08128900001'},{role:'Sekretaris',name:'Benny Sembiring',wa:''},{role:'Bendahara',name:'Anto Ginting',wa:''}],[{role:'Ketua',name:'Darman Sinulingga',wa:'08128900011'},{role:'Sekretaris',name:'Efendi Sitepu',wa:''},{role:'Bendahara',name:'Hendra Karo',wa:''}],[{role:'Ketua',name:'Kasim Purba',wa:'08128900021'},{role:'Sekretaris',name:'Liber Tarigan',wa:''},{role:'Bendahara',name:'Wahyu Ginting',wa:''}],[{role:'Ketua',name:'Makmur Perangin-angin',wa:'08128900031'},{role:'Sekretaris',name:'Risky Sembiring',wa:''},{role:'Bendahara',name:'Doni Bangun',wa:''}],[{role:'Ketua',name:'Togap Barus',wa:'08128900041'},{role:'Sekretaris',name:'Sahala Tarigan',wa:''},{role:'Bendahara',name:'Ferdy Milala',wa:''}],[{role:'Ketua',name:'Jansen Sitepu',wa:'08128900051'},{role:'Sekretaris',name:'Joni Ginting',wa:''},{role:'Bendahara',name:'Rudi Tarigan',wa:''}],[{role:'Ketua',name:'Parlaungan Sembiring',wa:'08128900061'},{role:'Sekretaris',name:'Agus Sinulingga',wa:''},{role:'Bendahara',name:'Andre Purba',wa:''}],[{role:'Ketua',name:'Nopen Karo-Karo',wa:'08128900071'},{role:'Sekretaris',name:'Tota Sitepu',wa:''},{role:'Bendahara',name:'Mario Tarigan',wa:''}]];
+const SK_MORIA=[[{role:'Ketua',name:'Heberlina Br Sembiring',wa:'08129000001'},{role:'Sekretaris',name:'Mastiur Br Tarigan',wa:''},{role:'Bendahara',name:'Santi Br Ginting',wa:''}],[{role:'Ketua',name:'Rotua Br Sinulingga',wa:'08129000011'},{role:'Sekretaris',name:'Nurmaini Br Sitepu',wa:''},{role:'Bendahara',name:'Lastri Br Karo',wa:''}],[{role:'Ketua',name:'Erna Br Purba',wa:'08129000021'},{role:'Sekretaris',name:'Ribka Br Tarigan',wa:''},{role:'Bendahara',name:'Yusnida Br Bangun',wa:''}],[{role:'Ketua',name:'Lindawati Br Sembiring',wa:'08129000031'},{role:'Sekretaris',name:'Rosma Br Barus',wa:''},{role:'Bendahara',name:'Hotma Br Ginting',wa:''}],[{role:'Ketua',name:'Tiamina Br Tarigan',wa:'08129000041'},{role:'Sekretaris',name:'Eliana Br Milala',wa:''},{role:'Bendahara',name:'Surya Br Karo',wa:''}],[{role:'Ketua',name:'Dersina Br Sembiring',wa:'08129000051'},{role:'Sekretaris',name:'Melina Br Sitepu',wa:''},{role:'Bendahara',name:'Fitriani Br Tarigan',wa:''}],[{role:'Ketua',name:'Asnida Br Ginting',wa:'08129000061'},{role:'Sekretaris',name:'Neldawati Br Perangin-angin',wa:''},{role:'Bendahara',name:'Ria Br Sinulingga',wa:''}],[{role:'Ketua',name:'Sariati Br Purba',wa:'08129000071'},{role:'Sekretaris',name:'Krisnawati Br Barus',wa:''},{role:'Bendahara',name:'Tina Br Sembiring',wa:''}]];
+
+const katData={
+  saitun:{color:'#15803D',numColor:'#15803D',label:'Saitun',desc:'Persekutuan Perempuan GBKP',
+    bpGereja:[{role:'Ketua',name:'Dra. Herawati Br Ginting',wa:'08127800001'},{role:'Wakil Ketua',name:'Nelly Br Karo-Karo',wa:'08127800002'},{role:'Sekretaris I',name:'Rosaline Br Tarigan',wa:'08127800003'},{role:'Sekretaris II',name:'Maya Br Sembiring',wa:''},{role:'Bendahara I',name:'Dra. Lely Br Sitepu',wa:'08127800005'},{role:'Bendahara II',name:'Yuna Br Purba',wa:''},{role:'Bid. Kerohanian',name:'Pdt. Muda Br Karo',wa:''},{role:'Bid. Sosial',name:'Melan Br Sinulingga',wa:''}],
+    sektor:sektorNames.map((area,i)=>({num:i+1,nama:'Sektor '+(i+1),area,pengurus:SK_SAITUN[i]})),
+    prog:['Persekutuan doa rutin setiap Rabu pagi','Pendalaman Alkitab bulanan bersama','Kunjungan kasih jemaat sakit & lansia','Bazaar amal untuk dana sosial','HUT Saitun & retreat tahunan'],
+    progIcon:['fa-hands-praying','fa-book-open','fa-heart','fa-store','fa-cake-candles'],
+    emoji:'plant'
+  },
+  mamre:{color:'#C2410C',numColor:'#C2410C',label:'Mamre',desc:'Persekutuan Pria GBKP',
+    bpKlasis:[{role:'Ketua Klasis',name:'Bachtiar Sembiring, S.H.',wa:'08128800001'},{role:'Wakil Ketua',name:'Ir. Togap Tarigan',wa:'08128800002'},{role:'Sekretaris',name:'Maruli Ginting',wa:'08128800003'},{role:'Bendahara',name:'Drs. Renold Sitepu',wa:''}],
+    bpGereja:[{role:'Ketua',name:'Drs. Belman Bangun',wa:'08128800010'},{role:'Wakil Ketua',name:'Ir. Kasim Tarigan',wa:'08128800011'},{role:'Sekretaris I',name:'Fernanda Sembiring',wa:'08128800012'},{role:'Sekretaris II',name:'Agus Sinulingga',wa:''},{role:'Bendahara I',name:'Hendrik Purba, S.E.',wa:'08128800014'},{role:'Bendahara II',name:'Eko Karo-Karo',wa:''},{role:'Bid. Kerohanian',name:'Jonni Tarigan, S.Th.',wa:''},{role:'Bid. Olahraga',name:'Ricky Sembiring',wa:'08128800018'}],
+    sektor:sektorNames.map((area,i)=>({num:i+1,nama:'Sektor '+(i+1),area,pengurus:SK_MAMRE[i]})),
+    prog:['Turnamen olahraga antar runggun klasis','Kerja bakti & pemeliharaan gedung gereja','Kelompok studi Alkitab pria bulanan','Seminar kepemimpinan keluarga Kristen','Kegiatan sosial & bakti masyarakat'],
+    progIcon:['fa-futbol','fa-tools','fa-book-open','fa-users','fa-handshake'],
+    emoji:'muscle'
+  },
+  moria:{color:'#1D4ED8',numColor:'#1D4ED8',label:'Moria',desc:'Persekutuan Ibu GBKP',
+    bpKlasis:[{role:'Ketua Klasis',name:'Dra. Hertina Br Sembiring',wa:'08129100001'},{role:'Wakil Ketua',name:'Mariana Br Tarigan',wa:'08129100002'},{role:'Sekretaris',name:'Suryani Br Ginting',wa:'08129100003'},{role:'Bendahara',name:'Lina Br Sitepu',wa:''}],
+    bpGereja:[{role:'Ketua',name:'dr. Rosalinda Br Sembiring',wa:'08129100010'},{role:'Wakil Ketua',name:'Hotmauli Br Tarigan',wa:'08129100011'},{role:'Sekretaris I',name:'Merry Br Perangin-angin',wa:'08129100012'},{role:'Sekretaris II',name:'Yetti Br Karo',wa:''},{role:'Bendahara I',name:'Yuni Br Sitepu',wa:'08129100014'},{role:'Bendahara II',name:'Dormauli Br Sinulingga',wa:''},{role:'Bid. Kerohanian',name:'Nelly Br Purba',wa:''},{role:'Dirigen',name:'Roida Br Tarigan, S.Sn.',wa:'08129100018'}],
+    sektor:sektorNames.map((area,i)=>({num:i+1,nama:'Sektor '+(i+1),area,pengurus:SK_MORIA[i]})),
+    prog:['Latihan paduan suara setiap Sabtu sore','Pembinaan sekolah minggu & parenting','Pelayanan dapur saat kegiatan jemaat','Pesta paduan suara antar runggun','Kunjungan kasih & doa bersama'],
+    progIcon:['fa-music','fa-child','fa-utensils','fa-trophy','fa-ribbon'],
+    emoji:'musical_note'
+  },
+  permata:{color:'#7E22CE',numColor:'#7E22CE',label:'Permata',desc:'Persekutuan Pemuda GBKP',
+    bpGereja:[{role:'Ketua',name:'Kevin Chandra Tarigan',wa:'08126600001'},{role:'Wakil Ketua',name:'Claudia Br Sembiring',wa:'08126600002'},{role:'Sekretaris I',name:'Albert Ginting',wa:'08126600003'},{role:'Sekretaris II',name:'Shinta Br Sitepu',wa:''},{role:'Bendahara I',name:'Reinhard Purba',wa:'08126600005'},{role:'Bendahara II',name:'Jesica Br Karo',wa:''},{role:'Bid. Kerokhanian',name:'Rezky Tarigan',wa:''},{role:'Bid. Olahraga & Seni',name:'Bryan Sembiring',wa:'08126600008'}],
+    prog:['Turnamen futsal & olahraga antar runggun','Praise & worship dan band rohani','Retret pemuda tahunan ke luar kota','Bakti sosial & kunjungan panti asuhan','Seminar karir & kepemimpinan Kristen'],
+    progIcon:['fa-futbol','fa-guitar','fa-tent','fa-hands-helping','fa-graduation-cap'],
+    emoji:'sparkles'
+  },
+  seraya:{color:'#0F766E',numColor:'#0F766E',label:'Seraya',desc:'Persekutuan Remaja GBKP',
+    bpGereja:[{role:'Ketua',name:'Stefano Tarigan',wa:'08125500001'},{role:'Wakil Ketua',name:'Melisa Br Ginting',wa:'08125500002'},{role:'Sekretaris',name:'Dito Sembiring',wa:'08125500003'},{role:'Bendahara',name:'Ayu Br Sitepu',wa:''},{role:'Bid. Kerohanian',name:'Nando Karo-Karo',wa:''},{role:'Bid. Kreatif',name:'Selly Br Tarigan',wa:'08125500006'}],
+    prog:['Persekutuan remaja setiap Minggu sore','Outbound & kegiatan alam terbuka','Kreativitas seni rohani & drama','Bimbingan belajar & beasiswa pendidikan','Kunjungan lintas sekolah & pelayanan'],
+    progIcon:['fa-seedling','fa-mountain','fa-palette','fa-graduation-cap','fa-school'],
+    emoji:'seedling'
+  },
+}
+
+// âââââââââââ HELPERS âââââââââââ
+const fmtD=(d,opt)=>{try{return new Date(d+'T00:00:00').toLocaleDateString('id-ID',opt||{day:'numeric',month:'long',year:'numeric'});}catch{return d;}};
+const fmtRP=n=>'Rp '+Number(n).toLocaleString('id-ID');
+const ytID=u=>{const m=u.match(/(?:v=|youtu\.be\/)([^&\?\/]+)/);return m?m[1]:null;};
+const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
+// âââââââââââ NAV âââââââââââ
+function gp(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById('page-'+id).classList.add('on');
+  document.querySelectorAll('.mh-btn').forEach(b=>b.classList.remove('on'));
+  if(el)el.classList.add('on');
+  else{const mp={beranda:0,jadwal:1,organisasi:2,berita:3,renungan:4,keuangan:5,momo:6,kontak:7};const btns=document.querySelectorAll('.mh-btn');if(mp[id]!==undefined&&btns[mp[id]])btns[mp[id]].classList.add('on');}
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('mhMob').classList.remove('show');
+  if(id==='momo')renderMomo();
+  if(id==='berita')renderBerita();
+  if(id==='renungan')renderRen();
+  if(id==='keuangan')renderKeu();
+  if(id==='beranda')renderHome();
+  if(id==='organisasi')renderOrg();
+}
+
+// âââââââââââ BERANDA âââââââââââ
+let homeFilter='semua',activeRen=0;
+
+function filterHome(f,el){
+  homeFilter=f;
+  document.querySelectorAll('#homeChips .chip').forEach(c=>c.classList.remove('on'));
+  if(el) el.classList.add('on');
+  renderHomeHero();
+}
+
+function renderHome(){
+  renderHomeHero();
+  renderHomeNlist();
+  renderHomeRenWidget();
+  renderHomeWartaMini();
+  renderHomeKeuWidget();
+  renderHomeVidSide();
+  renderHomeG4();
+  renderPhotoCarousel();
+}
+
+// Photo carousel bg + strip
+const carouselPhotos=[
+  'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1548625149-720134f34f94?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1566501206188-5dd0cf160a0e?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',
+];
+
+function renderPhotoCarousel(){
+  const bg=document.getElementById('pcBg');
+  if(bg){
+    // 4-grid background photos
+    const bgHtml=carouselPhotos.slice(0,4).map((u,i)=>`<div class="pc-bg-cell" style="position:relative;overflow:hidden;">
+      <img src="${u}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 8s ease;" 
+        onload="setTimeout(()=>{this.style.transform='scale(1.08)'},${i*1200})">
+    </div>`).join('');
+    bg.innerHTML=bgHtml+`<div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(127,29,29,.9) 0%,rgba(0,0,0,.6) 40%,rgba(0,0,0,.45) 70%,rgba(0,0,0,.3) 100%);z-index:1;pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,transparent 30%,transparent 70%,rgba(0,0,0,.4) 100%);z-index:1;pointer-events:none;"></div>`;
+    bg.style.position='absolute';bg.style.inset='0';
+  }
+  const strip=document.getElementById('csTrack');
+  if(strip){
+    const all=[...carouselPhotos,...carouselPhotos,...carouselPhotos]; // tripled for seamless loop
+    strip.innerHTML=all.map((u,i)=>`<img class="cs-img" src="${u}" alt="" loading="lazy" title="Kegiatan GBKP Runggun Tanjung Sari">`).join('');
+  }
+}
+
+function renderHomeHero(){
+  const list=homeFilter==='semua'?beritaData:beritaData.filter(b=>b.kat===homeFilter);
+  const sl=[...list].sort((a,b)=>new Date(b.tgl)-new Date(a.tgl)).slice(0,5);
+  const grid=document.getElementById('heroNews');
+  if(!sl.length){grid.innerHTML='<div style="padding:40px;text-align:center;color:var(--m);grid-column:1/-1;background:var(--w);">Belum ada berita untuk kategori ini.</div>';return;}
+  const hnCls=['big','mid','mid2','sm','sm2'];
+  grid.innerHTML=sl.map((b,i)=>{
+    const c=KAT_COLOR[b.kat]||'#374151';
+    const d=fmtD(b.tgl,{day:'numeric',month:'short',year:'numeric'});
+    return`<div class="hn ${hnCls[i]||'sm'}" onclick="openDmod(${b.id})">
+      <div class="hn-img-wrap">${b.img?`<img class="hn-img" src="${b.img}" alt="" onerror="this.style.display='none'">` :`<div class="hn-placeholder">ð°</div>`}</div>
+      <div class="hn-overlay"></div>
+      <div class="hn-body">
+        <span class="hn-kat" style="background:${c}">${KAT_NAME[b.kat]||b.kat}</span>
+        <div class="hn-title">${b.judul}</div>
+        <div class="hn-meta"><span>${d}</span><span>Â·</span><span>${b.penulis}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderHomeNlist(){
+  const el=document.getElementById('homeNlist');
+  const list=[...beritaData].sort((a,b)=>new Date(b.tgl)-new Date(a.tgl)).slice(0,6);
+  el.innerHTML=list.map(b=>{
+    const c=KAT_COLOR[b.kat]||'#374151';
+    return`<div class="ni" onclick="openDmod(${b.id})">
+      ${b.img?`<img class="ni-img" src="${b.img}" alt="" onerror="this.style.display='none'">`:'<div class="ni-img" style="background:var(--m5);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">ð°</div>'}
+      <div><div class="ni-kat" style="color:${c}">${KAT_NAME[b.kat]||b.kat}</div><div class="ni-t">${b.judul}</div><div class="ni-meta">${fmtD(b.tgl,{day:'numeric',month:'short'})}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderHomeRenWidget(){
+  const el=document.getElementById('homeRenWidget');
+  if(!renData.length){el.innerHTML='';return;}
+  const r=[...renData].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
+  el.innerHTML=`<div class="rw">
+    <div class="rw-head"><span class="rh-lbl">Renungan Harian</span><span class="rh-date">${fmtD(r.date,{day:'numeric',month:'long'})}</span></div>
+    <div class="rw-body">
+      <div class="rw-verse">"${r.verse}"</div>
+      <div class="rw-ref">â ${r.title}</div>
+      <div class="rw-text">${r.text.replace(/\n/g,' ')}</div>
+    </div>
+    <div class="rw-ft"><span>${r.author}</span><a onclick="gp('renungan')">Baca Selengkapnya âº</a></div>
+  </div>`;
+}
+
+function renderHomeWartaMini(){
+  const el=document.getElementById('homeWartaMini');
+  const list=[...momoData].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,4);
+  el.innerHTML=list.map(m=>`<div class="wm-item" onclick="openPmod(${JSON.stringify(m).replace(/"/g,'&quot;')})">
+    <div class="wm-sess ${m.sess}">${m.sess==='pagi'?'â Pagi':'ð Malam'}</div>
+    <div class="wm-t">${m.title}</div>
+    <div class="wm-meta">${fmtD(m.date,{day:'numeric',month:'short',year:'numeric'})}</div>
+  </div>`).join('');
+}
+
+function renderHomeKeuWidget(){
+  const el=document.getElementById('homeKeuWidget');
+  const masuk=keuData.filter(k=>k.type==='masuk').reduce((s,k)=>s+Number(k.amt),0);
+  const keluar=keuData.filter(k=>k.type==='keluar').reduce((s,k)=>s+Number(k.amt),0);
+  const last3=[...keuData].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,3);
+  el.innerHTML=`<div class="wb-head" style="background:var(--b);padding:8px 12px;"><span>Keuangan Bulan Ini</span></div>
+  ${last3.map(k=>`<div class="wbi"><div class="wbi-icon ${k.type==='masuk'?'in':'out'}"><i class="fa-solid fa-${k.type==='masuk'?'arrow-up':'arrow-down'}"></i></div><div><div class="wbi-t" style="font-size:.78rem;">${k.ket.substring(0,30)}${k.ket.length>30?'...':''}</div><div class="wbi-s" style="color:${k.type==='masuk'?'#16A34A':'var(--r)'};">${k.type==='masuk'?'+':'-'} ${fmtRP(k.amt)}</div></div></div>`).join('')}
+  <div style="padding:8px 12px;background:var(--m6);border-top:1px solid var(--m4);display:flex;justify-content:space-between;font-size:.72rem;color:var(--m);"><span>Saldo:</span><strong style="color:var(--b);">${fmtRP(masuk-keluar)}</strong></div>`;
+}
+
+function renderHomeVidSide(){
+  const el=document.getElementById('homeVidSide');
+  const list=vidData.slice(0,2);
+  el.innerHTML=list.map(v=>{
+    const yid=ytID(v.url);
+    const th=yid?`https://img.youtube.com/vi/${yid}/mqdefault.jpg`:'';
+    return`<div class="wm-item" style="display:flex;gap:8px;align-items:center;" onclick="window.open('${v.url}','_blank')">
+      <div style="width:60px;height:44px;min-width:60px;border-radius:2px;overflow:hidden;background:var(--m4);position:relative;display:flex;align-items:center;justify-content:center;">
+        ${th?`<img src="${th}" style="width:100%;height:100%;object-fit:cover;">`:'<i class="fa-brands fa-youtube" style="color:var(--r);"></i>'}
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:18px;height:18px;background:rgba(185,28,28,.8);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:6px;"><i class="fa-solid fa-play"></i></div></div>
+      </div>
+      <div><div style="font-size:.79rem;font-weight:600;color:var(--k);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${v.title}</div><div style="font-size:.68rem;color:var(--m);margin-top:1px;">${v.kat}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderHomeG4(){
+  const list=[...beritaData].sort((a,b)=>new Date(b.tgl)-new Date(a.tgl));
+  const katItems=['saitun','mamre','moria','permata'].map(k=>{const found=list.find(b=>b.kat===k);return found;}).filter(Boolean);
+  const el=document.getElementById('homeG4');
+  el.innerHTML=katItems.map(b=>{
+    const c=KAT_COLOR[b.kat]||'#374151';
+    return`<div class="g4c" onclick="openDmod(${b.id})">
+      <div class="g4c-imgw">${b.img?`<img class="g4c-img" src="${b.img}" alt="">`:'<div class="g4c-img" style="background:var(--m5);display:flex;align-items:center;justify-content:center;font-size:2rem;">ð°</div>'}
+        <span class="g4c-kat" style="background:${c}">${KAT_NAME[b.kat]||b.kat}</span>
+      </div>
+      <div class="g4c-body">
+        <div class="g4c-t">${b.judul}</div>
+        <div class="g4c-meta"><i class="fa-regular fa-calendar" style="color:var(--r);font-size:.65rem;"></i>${fmtD(b.tgl,{day:'numeric',month:'short'})}<span style="color:var(--m3);">Â·</span>${b.penulis}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// âââââââââââ BERITA âââââââââââ
+let beritaFilter='semua';
+
+function filterBerita(f,el){
+  beritaFilter=f;
+  document.querySelectorAll('#beritaChips .chip, #homeChips .chip').forEach(c=>{
+    if(c.getAttribute('onclick')&&c.getAttribute('onclick').includes(f)&&f!=='semua') c.classList.add('on');
+    else if(f==='semua'&&c.getAttribute('onclick')&&c.getAttribute('onclick').includes("'semua'")) c.classList.add('on');
+    else c.classList.remove('on');
+  });
+  if(el) {document.querySelectorAll('#beritaChips .chip').forEach(c=>c.classList.remove('on')); el.classList.add('on');}
+  renderBerita();
+}
+
+function renderBerita(){
+  const s=(document.getElementById('beritaSrch')?.value||'').toLowerCase();
+  let list=beritaData.filter(b=>{
+    const mK=beritaFilter==='semua'||b.kat===beritaFilter;
+    const mS=!s||b.judul.toLowerCase().includes(s);
+    return mK&&mS;
+  }).sort((a,b)=>new Date(b.tgl)-new Date(a.tgl));
+  const top4=list.slice(0,4),rest=list.slice(4);
+  const grid=document.getElementById('beritaGrid');
+  grid.innerHTML=top4.map(b=>{
+    const c=KAT_COLOR[b.kat]||'#374151';
+    return`<div class="bn-card" onclick="openDmod(${b.id})">
+      <div class="bn-imgw">${b.img?`<img class="bn-img" src="${b.img}" alt="">`:'<div class="bn-img" style="background:var(--m5);display:flex;align-items:center;justify-content:center;font-size:2rem;">ð°</div>'}
+        <span class="bn-kat" style="background:${c}">${KAT_NAME[b.kat]||b.kat}</span>
+      </div>
+      <div class="bn-body">
+        <div class="bn-t">${b.judul}</div>
+        <div class="bn-desc">${b.ringkas}</div>
+        <div class="bn-meta"><i class="fa-regular fa-calendar"></i>${fmtD(b.tgl,{day:'numeric',month:'short',year:'numeric'})}<span style="color:var(--m3);">Â·</span><i class="fa-solid fa-user"></i>${b.penulis}</div>
+      </div>
+    </div>`;
+  }).join('');
+  const more=document.getElementById('beritaMore');
+  more.innerHTML=rest.map(b=>{
+    const c=KAT_COLOR[b.kat]||'#374151';
+    return`<div class="ni" onclick="openDmod(${b.id})">
+      ${b.img?`<img class="ni-img" src="${b.img}" alt="">`:'<div class="ni-img" style="background:var(--m5);display:flex;align-items:center;justify-content:center;font-size:1.5rem;">ð°</div>'}
+      <div><div class="ni-kat" style="color:${c}">${KAT_NAME[b.kat]||b.kat}</div><div class="ni-t">${b.judul}</div><div class="ni-meta">${fmtD(b.tgl,{day:'numeric',month:'short',year:'numeric'})} Â· ${b.penulis}</div></div>
+    </div>`;
+  }).join('');
+  const side=document.getElementById('beritaSide');
+  side.innerHTML=[...beritaData].sort((a,b)=>new Date(b.tgl)-new Date(a.tgl)).slice(0,6).map(b=>`<div class="bs-item" onclick="openDmod(${b.id})">
+    ${b.img?`<img class="bs-thumb" src="${b.img}" alt="">`:'<div class="bs-thumb" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem;">ð°</div>'}
+    <div><div class="bs-t">${b.judul}</div><div class="bs-meta">${fmtD(b.tgl,{day:'numeric',month:'short'})}</div></div>
+  </div>`).join('');
+}
+
+function openDmod(id){
+  const b=beritaData.find(x=>x.id===id);if(!b)return;
+  const c=KAT_COLOR[b.kat]||'#374151';
+  document.getElementById('dImg').src=b.img||'';
+  document.getElementById('dImg').style.display=b.img?'block':'none';
+  document.getElementById('dKat').textContent=KAT_NAME[b.kat]||b.kat;
+  document.getElementById('dKat').style.background=c;
+  document.getElementById('dTitle').textContent=b.judul;
+  document.getElementById('dMeta').innerHTML=`<span><i class="fa-regular fa-calendar"></i>${fmtD(b.tgl,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</span><span><i class="fa-solid fa-user"></i>${b.penulis}</span>${b.lokasi?`<span><i class="fa-solid fa-location-dot"></i>${b.lokasi}</span>`:''}${b.jam?`<span><i class="fa-solid fa-clock"></i>${b.jam}</span>`:''}`;
+  document.getElementById('dContent').innerHTML='<p>'+b.isi.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>';
+  document.getElementById('dmodal').classList.add('show');
+}
+function closeDmod(){document.getElementById('dmodal').classList.remove('show');}
+document.getElementById('dmodal').addEventListener('click',e=>{if(e.target===document.getElementById('dmodal'))closeDmod();});
+
+function openBmod(){document.getElementById('bTgl').value=new Date().toISOString().split('T')[0];document.getElementById('bmod').classList.add('show');}
+function closeBmod(){document.getElementById('bmod').classList.remove('show');}
+function saveBerita(){
+  const kat=document.getElementById('bKat').value;
+  const j=document.getElementById('bJudul').value.trim();
+  const t=document.getElementById('bTgl').value;
+  const p=document.getElementById('bPenulis').value.trim();
+  if(!j||!t||!p){alert('Isi Judul, Tanggal, dan Penulis!');return;}
+  beritaData.push({id:Date.now(),kat,judul:j,tgl:t,penulis:p,lokasi:document.getElementById('bLokasi').value.trim(),jam:document.getElementById('bJam').value.trim(),img:document.getElementById('bImg').value.trim(),ringkas:document.getElementById('bRingkas').value.trim(),isi:document.getElementById('bIsi').value.trim()});
+  save('gbkp_berita4',beritaData);closeBmod();renderBerita();renderHome();
+  ['bJudul','bTgl','bPenulis','bLokasi','bJam','bImg','bRingkas','bIsi'].forEach(id=>document.getElementById(id).value='');
+}
+
+// âââââââââââ RENUNGAN âââââââââââ
+function renderRen(){
+  const sorted=[...renData].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!sorted.length)return;
+  if(activeRen>=sorted.length)activeRen=0;
+  const r=sorted[activeRen];
+  document.getElementById('renFeatured').innerHTML=`
+    <div class="rf-top">
+      <div class="rf-lbl">Renungan Harian</div>
+      <div class="rf-date">${fmtD(r.date,{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+      <div class="rf-verse">"${r.verse}"</div>
+      <div class="rf-ref">â ${r.title}</div>
+    </div>
+    <div class="rf-body"><div class="rf-text">${'<p>'+r.text.replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>'}</div></div>
+    <div class="rf-author"><span>Penulis: ${r.author}</span><span style="font-size:.75rem;color:var(--r);"><i class="fa-solid fa-book-open" style="margin-right:3px;"></i>${r.verse}</span></div>`;
+  document.getElementById('renArchive').innerHTML=sorted.map((x,i)=>{
+    const d=new Date(x.date+'T00:00:00');
+    return`<div class="ra-item ${i===activeRen?'on':''}" onclick="activeRen=${i};renderRen()">
+      <div class="ra-d">${d.getDate()}<br><span style="font-size:.6rem;">${d.toLocaleDateString('id-ID',{month:'short'})}</span></div>
+      <div><div class="ra-t">${x.title}</div><div class="ra-ref">${x.verse} Â· ${x.author}</div></div>
+    </div>`;
+  }).join('');
+  renderVids();
+}
+
+function saveRen(){
+  const d=document.getElementById('rdDate').value;
+  const v=document.getElementById('rdVerse').value.trim();
+  const t=document.getElementById('rdTitle').value.trim();
+  const tx=document.getElementById('rdText').value.trim();
+  const a=document.getElementById('rdAuthor').value.trim();
+  if(!d||!t||!tx){alert('Isi Tanggal, Judul, dan Teks Renungan!');return;}
+  renData.push({id:Date.now(),date:d,verse:v||'â',title:t,text:tx,author:a||'Tim Pelayanan'});
+  save('gbkp_ren4',renData);activeRen=0;renderRen();
+  ['rdDate','rdVerse','rdTitle','rdText','rdAuthor'].forEach(id=>document.getElementById(id).value='');
+  alert('Renungan berhasil disimpan!');
+}
+
+function renderVids(){
+  const el=document.getElementById('renVids');if(!el)return;
+  if(!vidData.length){el.innerHTML='<p style="color:var(--m);font-size:.83rem;grid-column:1/-1">Belum ada video.</p>';return;}
+  el.innerHTML=vidData.map(v=>{
+    const yid=ytID(v.url);
+    const th=yid?`https://img.youtube.com/vi/${yid}/mqdefault.jpg`:'';
+    return`<div class="vc" onclick="window.open('${v.url}','_blank')">
+      <div class="vc-thumb">${th?`<img src="${th}" alt="">`:'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--k3);"><i class="fa-brands fa-youtube" style="color:rgba(255,255,255,.3);font-size:2rem;"></i></div>'}
+        <div class="vc-play"><div class="vc-pb"><i class="fa-solid fa-play" style="margin-left:2px;"></i></div></div>
+      </div>
+      <div class="vc-body"><div class="vc-t">${v.title}</div><div class="vc-meta">${fmtD(v.date,{day:'numeric',month:'short',year:'numeric'})} Â· ${v.kat}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function openVidMod(){document.getElementById('vDate').value=new Date().toISOString().split('T')[0];document.getElementById('vidMod').classList.add('show');}
+function closeVidMod(){document.getElementById('vidMod').classList.remove('show');}
+function saveVid(){
+  const t=document.getElementById('vTitle').value.trim();
+  const u=document.getElementById('vUrl').value.trim();
+  const d=document.getElementById('vDate').value;
+  const k=document.getElementById('vKat').value;
+  if(!t||!u){alert('Isi Judul dan Link YouTube!');return;}
+  vidData.unshift({id:Date.now(),title:t,url:u,date:d,kat:k});
+  save('gbkp_vid4',vidData);closeVidMod();renderVids();
+  ['vTitle','vUrl','vDate'].forEach(id=>document.getElementById(id).value='');
+}
+
+// âââââââââââ KEUANGAN âââââââââââ
+let keuType='masuk';
+
+function setKT(t){keuType=t;document.getElementById('ttIn').classList.toggle('on',t==='masuk');document.getElementById('ttOut').classList.toggle('on',t==='keluar');}
+
+function renderKeu(){
+  const f=document.getElementById('keuFil')?.value||'semua';
+  let list=f==='semua'?keuData:keuData.filter(k=>k.type===f);
+  list=[...list].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const masuk=keuData.filter(k=>k.type==='masuk').reduce((s,k)=>s+Number(k.amt),0);
+  const keluar=keuData.filter(k=>k.type==='keluar').reduce((s,k)=>s+Number(k.amt),0);
+  const saldo=masuk-keluar;
+  const ded=keuData.filter(k=>k.kat==='Diakoni / Sosial').reduce((s,k)=>s+Number(k.amt),0);
+  document.getElementById('keuCards').innerHTML=`
+    <div class="kc in"><div class="kc-stripe"></div><div class="kc-icon"><i class="fa-solid fa-arrow-trend-up"></i></div><div class="kc-lbl">Total Pemasukan</div><div class="kc-amt">${fmtRP(masuk)}</div><div class="kc-sub">${keuData.filter(k=>k.type==='masuk').length} transaksi</div></div>
+    <div class="kc out"><div class="kc-stripe"></div><div class="kc-icon"><i class="fa-solid fa-arrow-trend-down"></i></div><div class="kc-lbl">Total Pengeluaran</div><div class="kc-amt">${fmtRP(keluar)}</div><div class="kc-sub">${keuData.filter(k=>k.type==='keluar').length} transaksi</div></div>
+    <div class="kc bal"><div class="kc-stripe"></div><div class="kc-icon"><i class="fa-solid fa-wallet"></i></div><div class="kc-lbl">Saldo Berjalan</div><div class="kc-amt">${fmtRP(saldo)}</div><div class="kc-sub">${saldo>=0?'â Surplus':'â  Defisit'}</div></div>
+    <div class="kc ded"><div class="kc-stripe"></div><div class="kc-icon"><i class="fa-solid fa-hand-holding-heart"></i></div><div class="kc-lbl">Dana Diakoni</div><div class="kc-amt">${fmtRP(ded)}</div><div class="kc-sub">Pelayanan sosial</div></div>`;
+  // Bar chart
+  const chartEl=document.getElementById('keuBarChart');
+  if(chartEl){
+    const cats=[...new Set(keuData.filter(k=>k.type==='masuk').map(k=>k.kat))];
+    const maxAmt=Math.max(...cats.map(c=>keuData.filter(k=>k.type==='masuk'&&k.kat===c).reduce((s,k)=>s+Number(k.amt),0)),1);
+    chartEl.innerHTML=cats.map(c=>{const amt=keuData.filter(k=>k.type==='masuk'&&k.kat===c).reduce((s,k)=>s+Number(k.amt),0);const pct=Math.round((amt/maxAmt)*100);return`<div><div style="display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:4px;"><span style="color:var(--k3);">${c}</span><strong style="color:#15803D;">${fmtRP(amt)}</strong></div><div style="height:8px;background:var(--m5);border-radius:4px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#16a34a,#15803d);border-radius:4px;class="kc-bar-fill";transition:width 1s ease;"></div></div></div>`;}).join('');
+  }
+  const tbl=document.getElementById('keuTbl');
+  tbl.innerHTML=`<thead><tr><th>Tanggal</th><th>Keterangan</th><th>Kategori</th><th>Jumlah</th><th>Tipe</th></tr></thead><tbody>${
+    list.map(k=>{const d=fmtD(k.date,{day:'2-digit',month:'short',year:'numeric'});const amtC=k.type==='masuk'?'#15803D':'#B91C1C';return`<tr><td style="white-space:nowrap;color:var(--m);font-size:.8rem;">${d}</td><td><strong style="font-size:.85rem;">${k.ket}</strong>${k.note?`<br><span style="font-size:.74rem;color:var(--m);">${k.note}</span>`:''}</td><td style="font-size:.8rem;color:var(--m);">${k.kat}</td><td style="font-weight:700;color:${amtC};white-space:nowrap;font-size:.85rem;">${k.type==='masuk'?'+':'-'} ${fmtRP(k.amt)}</td><td><span class="kbadge ${k.type}">${k.type==='masuk'?'ð Masuk':'ð Keluar'}</span></td></tr>`;}).join('')
+  }</tbody>`;
+}
+
+function prevKImg(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{const p=document.getElementById('kImgPrev');p.src=e.target.result;p.style.display='block';};r.readAsDataURL(f);}
+
+function saveKeu(){
+  const d=document.getElementById('kDate').value;
+  const ket=document.getElementById('kKet').value.trim();
+  const amt=document.getElementById('kAmt').value;
+  const kat=document.getElementById('kKat').value;
+  const note=document.getElementById('kNote').value.trim();
+  if(!d||!ket||!amt){alert('Isi Tanggal, Keterangan, dan Jumlah!');return;}
+  const ip=document.getElementById('kImgPrev');
+  keuData.push({id:Date.now(),date:d,type:keuType,ket,amt:Number(amt),kat,note,img:ip.src&&ip.src.startsWith('data:')?ip.src:''});
+  save('gbkp_keu4',keuData);
+  ['kDate','kKet','kAmt','kNote'].forEach(id=>document.getElementById(id).value='');
+  ip.style.display='none';renderKeu();alert('Transaksi disimpan!');
+}
+
+// âââââââââââ MOMO âââââââââââ
+let momoSess='semua';
+function setMS(s,el){momoSess=s;document.querySelectorAll('.msc').forEach(c=>c.classList.remove('on'));el.classList.add('on');renderMomo();}
+
+function renderMomo(){
+  const mo=document.getElementById('mMonth')?.value||'';
+  const s=(document.getElementById('mSrch')?.value||'').toLowerCase();
+  let list=momoData.filter(x=>{
+    const ms=momoSess==='semua'||x.sess===momoSess;
+    const mm=!mo||x.date.startsWith(mo);
+    const ms2=!s||x.title.toLowerCase().includes(s)||x.preacher.toLowerCase().includes(s);
+    return ms&&mm&&ms2;
+  }).sort((a,b)=>new Date(b.date)-new Date(a.date)||(a.sess==='malam'?1:-1));
+  const stats=document.getElementById('momoStats');
+  stats.innerHTML=`<div class="mst"><i class="fa-solid fa-list"></i><strong>${momoData.length}</strong> Total</div><div class="mst"><i class="fa-solid fa-sun"></i><strong>${momoData.filter(x=>x.sess==='pagi').length}</strong> Pagi</div><div class="mst"><i class="fa-solid fa-moon"></i><strong>${momoData.filter(x=>x.sess==='malam').length}</strong> Malam</div><div class="mst"><i class="fa-solid fa-filter"></i>Tampil: <strong>${list.length}</strong></div>`;
+  const grid=document.getElementById('momoGrid');
+  if(!list.length){grid.innerHTML='<div class="memo-empty"><i class="fa-regular fa-folder-open"></i><p>Belum ada warta.</p></div>';return;}
+  grid.innerHTML=list.map(m=>{
+    const d=fmtD(m.date,{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    const st=m.sess==='pagi'?'<span class="mc-st pagi">â Pagi</span>':'<span class="mc-st malam">ð Malam</span>';
+    return`<div class="mc" data-session="${m.sess}"><div class="mc-bar"></div><div class="mc-top"><div><span class="mc-dt">${d}</span>${st}</div><h3>${m.title}</h3></div><div class="mc-body"><div class="mc-pr"><i class="fa-solid fa-user-tie"></i>${m.preacher}</div><div class="mc-vrs"><i class="fa-solid fa-book-open" style="margin-right:5px;"></i>${m.verse}</div><button class="btn-pdf" onclick='openPmod(${JSON.stringify(m).replace(/'/g,"\\'")})'><i class="fa-solid fa-file-pdf"></i>Buka Warta PDF</button></div></div>`;
+  }).join('');
+}
+
+function openPmod(m){
+  if(typeof m==='string')m=JSON.parse(m);
+  const sn=m.sess==='pagi'?'â Pagi':'ð Malam';
+  document.getElementById('pmTitle').textContent=m.title+' â '+sn;
+  const fr=document.getElementById('pmFrame');
+  if(!m.pdf){fr.innerHTML='<div class="pm-empty"><i class="fa-solid fa-file-pdf"></i><span>PDF belum diunggah untuk warta ini.</span></div>';}
+  else{let src=m.pdf;const dm=src.match(/\/file\/d\/([^/]+)/);if(dm)src=`https://drive.google.com/file/d/${dm[1]}/preview`;fr.innerHTML=`<iframe src="${src}" allowfullscreen></iframe>`;}
+  document.getElementById('pmodal').classList.add('show');
+}
+function closePmod(){document.getElementById('pmodal').classList.remove('show');document.getElementById('pmFrame').innerHTML='';}
+document.getElementById('pmodal').addEventListener('click',e=>{if(e.target===document.getElementById('pmodal'))closePmod();});
+
+function openMomoMod(){
+  const nx=new Date();const dy=nx.getDay();const diff=(7-dy)%7||7;nx.setDate(nx.getDate()+diff);
+  document.getElementById('mDate').value=nx.toISOString().split('T')[0];
+  document.getElementById('momoMod').classList.add('show');
+}
+function closeMomoMod(){document.getElementById('momoMod').classList.remove('show');}
+function saveMomo(){
+  const s=document.getElementById('mSess').value,d=document.getElementById('mDate').value,t=document.getElementById('mTitle').value.trim(),p=document.getElementById('mPreach').value.trim(),v=document.getElementById('mVerse').value.trim(),pdf=document.getElementById('mPdf').value.trim();
+  if(!d||!t||!p){alert('Isi Sesi, Tanggal, Tema, dan Pengkhotbah!');return;}
+  momoData.push({id:Date.now(),date:d,sess:s,title:t,preacher:p,verse:v||'â',pdf});
+  save('gbkp_momo4',momoData);closeMomoMod();renderMomo();
+  ['mDate','mTitle','mPreach','mVerse','mPdf'].forEach(id=>document.getElementById(id).value='');
+}
+document.getElementById('momoMod').addEventListener('click',e=>{if(e.target===document.getElementById('momoMod'))closeMomoMod();});
+
+// âââââââââââ ORGANISASI âââââââââââ
+let orgTab='saitun';
+
+function setOT(id,el){
+  orgTab=id;
+  document.querySelectorAll('.ot').forEach(t=>t.classList.remove('on'));
+  if(el)el.classList.add('on');
+  else{const tabs=document.querySelectorAll('.ot');const order=['saitun','mamre','moria','permata','seraya'];const i=order.indexOf(id);if(i>=0&&tabs[i])tabs[i].classList.add('on');}
+  renderOrgPanel();
+}
+
+function renderOrg(){
+  // Majelis
+  const mg=document.getElementById('majelisGrid');
+  mg.innerHTML=majelisD.map(m=>`<div class="mj-card"><div class="mj-role">${m.role}</div><div class="mj-name">${m.name}</div></div>`).join('');
+  renderOrgPanel();
+}
+
+function getInitials(name){
+  const parts=name.replace(/[\u0000-\u007F\d,\.]/g,'').trim().length>0?name.replace(/[^a-zA-Z\s]/g,'').trim().split(/\s+/):name.trim().split(/\s+/);
+  if(parts.length>=2)return(parts[0][0]+(parts[parts.length-1][0]||'')).toUpperCase();
+  return name.replace(/\s/g,'').substring(0,2).toUpperCase();
+}
+
+function mkPersonCards(arr,color){
+  return`<div class="person-grid">${arr.map(p=>{
+    const initials=getInitials(p.name);
+    return`<div class="pcard">
+      <div class="pcard-photo" style="background:${color};color:#fff;font-family:var(--fh);font-size:1.2rem;font-weight:700;">${initials}</div>
+      <div class="pcard-body">
+        <div class="pcard-role" style="color:${color};">${p.role}</div>
+        <div class="pcard-name">${p.name}</div>
+        ${p.wa?`<a href="https://wa.me/62${p.wa.replace(/^0+/,'')}" target="_blank" class="pcard-wa"><i class="fa-brands fa-whatsapp"></i>${p.wa}</a>`:'<span style="font-size:.71rem;color:var(--m2);margin-top:4px;display:block;">WA belum tersedia</span>'}
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+const katEmoji={saitun:'🌿',mamre:'💪',moria:'🎵',permata:'✨',seraya:'🌱'};
+
+function renderOrgPanel(){
+  const d=katData[orgTab];if(!d)return;
+  const color=d.color;
+  const emoji=katEmoji[orgTab]||'';
+  let html=`<div class="kh ${orgTab}">
+    <div><h2 style="display:flex;align-items:center;gap:10px;">${emoji} ${d.label}</h2><p>${d.desc}</p></div>
+    <span class="kh-badge">Kategorial GBKP</span>
+  </div>`;
+
+  // BP Klasis (mamre & moria)
+  // BP Klasis (mamre & moria)
+  if(d.bpKlasis){
+    html+=`<div class="bp-sec">
+      <div class="bp-hd"><h3>Badan Pengurus ${d.label.split(' ').slice(1).join(' ')} Klasis Medan Kampung Lalang</h3><span class="bp-badge" style="background:${color}80;color:${color};">Klasis</span></div>
+      ${mkPersonCards(d.bpKlasis,color)}
+    </div>`;
+  }
+
+  // BP Gereja
+  html+=`<div class="bp-sec">
+    <div class="bp-hd"><h3>Badan Pengurus ${d.label.split(' ').slice(1).join(' ')} Runggun Tanjung Sari</h3><span class="bp-badge" style="background:${color};">Gereja</span></div>
+    ${orgTab==='permata'?`<div style="padding:8px 14px;background:var(--bp);border-bottom:1px solid var(--m4);font-size:.78rem;color:var(--b);"><i class="fa-solid fa-circle-info" style="margin-right:4px;"></i>Permata hanya memiliki satu badan pengurus tingkat gereja.</div>`:''}
+    ${mkPersonCards(d.bpGereja,color)}
+  </div>`;
+
+  // Sektor (bukan permata)
+  if(d.sektor){
+    html+=`<div style="background:var(--m6);border:1px solid var(--m4);border-radius:4px;overflow:hidden;margin-bottom:12px;">
+      <div style="padding:9px 14px;border-bottom:1px solid var(--m4);display:flex;align-items:center;gap:7px;">
+        <h3 style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;">Sektor â Sektor (${d.sektor.length} Sektor)</h3>
+        <span class="bp-badge" style="background:${color};">Per Sektor</span>
+      </div>
+      <div class="sk-list" style="padding:8px;">
+        ${d.sektor.map(sk=>`<div class="sk-item" id="sk-${orgTab}-${sk.num}">
+          <div class="sk-hd" onclick="toggleSk('${orgTab}',${sk.num})">
+            <div class="sk-num" style="background:${color};">${sk.num}</div>
+            <div class="sk-info"><h4>${sk.nama}</h4><span class="sk-sub">${sk.area}</span></div>
+            <i class="fa-solid fa-chevron-down sk-chev"></i>
+          </div>
+          <div class="sk-body">
+            <div class="sk-body-inner">
+              <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--m);margin-bottom:8px;">Badan Pengurus ${sk.nama}</div>
+              <div class="sk-person-grid">${sk.pengurus.map(p=>`<div class="pcard">
+                <div class="pcard-photo" style="background:${color}20;color:${color};"><i class="fa-solid fa-user"></i></div>
+                <div class="pcard-body">
+                  <div class="pcard-role" style="color:${color};">${p.role}</div>
+                  <div class="pcard-name">${p.name}</div>
+                  ${p.wa?`<a href="https://wa.me/62${p.wa.replace(/^0/,'').replace(/\D/,'')}" target="_blank" class="pcard-wa"><i class="fa-brands fa-whatsapp"></i>${p.wa}</a>`:`<span style="font-size:.72rem;color:var(--m2);">â Belum ada no. WA</span>`}
+                </div>
+              </div>`).join('')}</div>
+            </div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Program
+  html+=`<div class="bp-sec"><div class="bp-hd"><h3>Program Kerja</h3></div>
+    <div class="prog-grid">${d.prog.map((p,i)=>`<div class="pg-item"><i class="fa-solid ${d.progIcon[i]}"></i>${p}</div>`).join('')}</div>
+  </div>`;
+
+  document.getElementById('orgPanels').innerHTML=html;
+}
+
+function toggleSk(kat,num){
+  const el=document.getElementById(`sk-${kat}-${num}`);
+  el.classList.toggle('open');
+}
+
+// âââââââââââ CLOSE MODALS âââââââââââ
+document.getElementById('bmod').addEventListener('click',e=>{if(e.target===document.getElementById('bmod'))closeBmod();});
+document.getElementById('vidMod').addEventListener('click',e=>{if(e.target===document.getElementById('vidMod'))closeVidMod();});
+
+// âââââââââââ INIT âââââââ// ═══════════ INIT ═══════════
+(function initAll(){
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('kDate').value = today;
+  document.getElementById('rdDate').value = today;
+  document.getElementById('vDate').value = today;
+
+  // Render all pages
+  renderHome();
+  renderMomo();
+  renderKeu();
+
+  // Pre-render berita and renungan for faster tab switching
+  setTimeout(()=>{
+    renderBerita();
+    renderRen();
+    renderOrg();
+  }, 300);
+
+  // Add keyboard ESC to close modals
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape'){
+      closeDmod(); closePmod(); closeBmod(); closeMomoMod(); closeVidMod();
+    }
+  });
+
+  // Animate elements on scroll (simple intersection observer)
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity='1';
+        entry.target.style.transform='translateY(0)';
+      }
+    });
+  },{threshold:0.1});
+
+  // Apply to cards
+  document.querySelectorAll('.g4c,.n4-card,.bn-card,.vc,.kc,.pc-stat-card').forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(16px)';
+    el.style.transition='opacity .4s ease, transform .4s ease';
+    observer.observe(el);
+  });
+})();
+</script>
+
+<!-- Back to Top -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+  style="display:none;position:fixed;bottom:24px;right:24px;z-index:7000;width:44px;height:44px;background:var(--r);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:16px;box-shadow:0 4px 16px rgba(185,28,28,.35);transition:.3s;"
+  title="Kembali ke atas">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('backToTop').style.display=window.scrollY>400?'flex':'none';
+  document.getElementById('backToTop').style.alignItems='center';
+  document.getElementById('backToTop').style.justifyContent='center';
+});
+</script>
+</body>
+</html>

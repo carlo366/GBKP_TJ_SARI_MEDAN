@@ -1,89 +1,84 @@
 'use client';
-import type { Page } from '@/app/page';
-import KaroDiv from '@/components/KaroDiv';
 import { useSiteConfig } from '@/lib/useSiteConfig';
 
-export default function Jadwal({ setPage }: { setPage: (p: Page) => void }) {
+export default function Jadwal() {
   const { config } = useSiteConfig();
 
   return (
-    <div className="page-enter">
-      <div className="momo-page-header">
-        <div className="badge"><i className="fa-solid fa-church" />&nbsp;Jadwal Ibadah</div>
-        <h1>Jadwal Ibadah</h1>
-        <p>GBKP Runggun Tanjung Sari &mdash; Setiap Minggu</p>
-      </div>
-
-      <div className="section" style={{ background: 'var(--cream)' }}>
-        <div className="sh"><h2>Ibadah Minggu</h2><p>Hadir dan beribadah bersama kami setiap hari Minggu</p><KaroDiv /></div>
-        <div className="jadwal-grid">
-          <div className="jcard">
-            <div className="jcard-top red">
-              <div className="jcard-icon"><i className="fa-solid fa-sun" /></div>
-              <h3>Ibadah Pagi</h3>
-              <div className="lang">{config.pagiBahasa}</div>
-            </div>
-            <div className="jcard-body">
-              <div className="trow"><div className="tday">HARI</div><span className="tlabel" style={{ flex: 1 }}>Setiap Minggu</span></div>
-              <div className="trow"><div className="tday">MULAI</div><span className="tlabel">Pukul</span><span className="tval">{config.pagiMulai} WIB</span></div>
-              <div className="trow"><div className="tday">SELESAI</div><span className="tlabel">Pukul</span><span className="tval">{config.pagiSelesai} WIB</span></div>
-              <div className="trow"><div className="tday g">LOKASI</div><span className="tlabel" style={{ flex: 1 }}>Gedung Utama Gereja</span></div>
-              <div className="jnote"><i className="fa-solid fa-info-circle" style={{ color: 'var(--gold)', marginRight: 5 }} />Ibadah dalam bahasa Karo dan Indonesia. Semua jemaat dipersilakan hadir.</div>
-            </div>
-          </div>
-
-          <div className="jcard">
-            <div className="jcard-top night">
-              <div className="jcard-icon" style={{ background: 'rgba(155,63,200,.25)', borderColor: 'rgba(155,63,200,.35)' }}><i className="fa-solid fa-moon" /></div>
-              <h3>Ibadah Sore</h3>
-              <div className="lang">{config.soreBahasa}</div>
-            </div>
-            <div className="jcard-body">
-              <div className="trow"><div className="tday">HARI</div><span className="tlabel" style={{ flex: 1 }}>Setiap Minggu</span></div>
-              <div className="trow"><div className="tday">MULAI</div><span className="tlabel">Pukul</span><span className="tval">{config.soreMulai} WIB</span></div>
-              <div className="trow"><div className="tday">SELESAI</div><span className="tlabel">Pukul</span><span className="tval">{config.soreSelesai} WIB</span></div>
-              <div className="trow"><div className="tday g">LOKASI</div><span className="tlabel" style={{ flex: 1 }}>Gedung Utama Gereja</span></div>
-              <div className="jnote"><i className="fa-solid fa-info-circle" style={{ color: 'var(--gold)', marginRight: 5 }} />Ibadah sore dalam bahasa Indonesia. Cocok untuk keluarga muda.</div>
-            </div>
-          </div>
-
-          <div className="jcard">
-            <div className="jcard-top special">
-              <div className="jcard-icon"><i className="fa-solid fa-calendar-star" /></div>
-              <h3>Kegiatan Khusus</h3>
-              <div className="lang">Sesuai pengumuman</div>
-            </div>
-            <div className="jcard-body">
-              <p style={{ fontSize: '.86rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: 14 }}>Hari besar gerejawi, HUT Runggun, Konser Rohani, Paskah, Natal, dan kegiatan khusus lainnya.</p>
-              <div className="jnote"><i className="fa-solid fa-bullhorn" style={{ color: 'var(--gold)', marginRight: 5 }} />Cek <strong>Warta (Momo)</strong> tiap Minggu untuk jadwal terkini.</div>
-              <button onClick={() => setPage('momo')} style={{ marginTop: 12, width: '100%', padding: 10, borderRadius: 9, border: '1.5px solid var(--red-deep)', background: 'transparent', color: 'var(--red-deep)', fontWeight: 700, fontSize: '.86rem', cursor: 'pointer', fontFamily: 'Nunito,sans-serif' }}>
-                <i className="fa-solid fa-file-pdf" /> Buka Warta Minggu
-              </button>
-            </div>
-          </div>
+    <div className="page-enter" style={{ background: 'var(--w)', minHeight: '100vh' }}>
+      <div className="ph">
+        <div className="ph-inner">
+          <div className="ph-eyebrow">Informasi Kegiatan</div>
+          <h1 className="ph-title">Jadwal Ibadah & Kegiatan</h1>
+          <p className="ph-sub">Berikut adalah jadwal ibadah dan kegiatan rutin GBKP Runggun Tanjung Sari</p>
         </div>
       </div>
 
-      <div style={{ background: 'var(--red-deep)', padding: '56px 20px' }}>
-        <div className="sh white"><h2>Ibadah Kategorial</h2><p>Persekutuan khusus untuk setiap kelompok jemaat</p><KaroDiv white /></div>
-        <div className="jadwal-grid">
-          {[
-            { icon: 'fa-child', title: 'Sekolah Minggu', time: 'Minggu, 08.00 WIB', desc: 'Ibadah anak-anak bersamaan dengan ibadah pagi', color: '#F5A623' },
-            { icon: 'fa-users', title: 'Pemuda (PERMATA)', time: 'Sabtu, 17.00 WIB', desc: 'Persekutuan pemuda GBKP setiap Sabtu sore', color: '#9B3FC8' },
-            { icon: 'fa-female', title: 'Moria (Ibu-Ibu)', time: 'Rabu, 15.00 WIB', desc: 'Persekutuan kaum ibu setiap Rabu siang', color: '#FF2D6E' },
-            { icon: 'fa-male', title: 'Mamre (Bapak-Bapak)', time: 'Jumat, 19.00 WIB', desc: 'Persekutuan kaum bapak setiap Jumat malam', color: '#E8620A' },
-          ].map(({ icon, title, time, desc, color }) => (
-            <div key={title} className="jcard">
-              <div className="jcard-top red" style={{ background: `linear-gradient(135deg, var(--dark), var(--red-deep))` }}>
-                <div className="jcard-icon" style={{ color }}><i className={`fa-solid ${icon}`} /></div>
-                <h3>{title}</h3>
-                <div className="lang">{time}</div>
-              </div>
-              <div className="jcard-body">
-                <p style={{ fontSize: '.86rem', color: 'var(--muted)', lineHeight: 1.75 }}>{desc}</p>
-              </div>
+      <div className="wrap" style={{ padding: '40px 16px' }}>
+        {/* Ibadah Pagi */}
+        <div style={{ background: 'var(--w)', border: '1px solid var(--m4)', borderRadius: 8, padding: 24, marginBottom: 20 }}>
+          <h2 style={{ fontFamily: 'var(--fh)', color: 'var(--r)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <i className="fa-solid fa-sun" style={{ color: 'var(--g3)' }} /> Ibadah Pagi
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div>
+              <div style={{ fontSize: '.75rem', color: 'var(--m)', marginBottom: 4 }}>Hari & Waktu</div>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>Minggu, {config.pagiMulai} – {config.pagiSelesai} WIB</div>
             </div>
-          ))}
+            <div>
+              <div style={{ fontSize: '.75rem', color: 'var(--m)', marginBottom: 4 }}>Bahasa</div>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{config.pagiBahasa}</div>
+            </div>
+          </div>
+          <div style={{ marginTop: 16, padding: '12px 16px', background: 'var(--bp)', borderRadius: 6 }}>
+            <i className="fa-solid fa-location-dot" style={{ color: 'var(--b2)', marginRight: 8 }} />
+            Gedung Utama GBKP Tanjung Sari
+          </div>
+        </div>
+
+        {/* Ibadah Sore/Malam */}
+        <div style={{ background: 'var(--w)', border: '1px solid var(--m4)', borderRadius: 8, padding: 24, marginBottom: 20 }}>
+          <h2 style={{ fontFamily: 'var(--fh)', color: 'var(--b)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <i className="fa-solid fa-moon" style={{ color: '#6366F1' }} /> Ibadah Malam
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div>
+              <div style={{ fontSize: '.75rem', color: 'var(--m)', marginBottom: 4 }}>Hari & Waktu</div>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>Minggu, {config.malamMulai} – {config.malamSelesai} WIB</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '.75rem', color: 'var(--m)', marginBottom: 4 }}>Bahasa</div>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{config.malamBahasa || 'Bahasa Indonesia'}</div>
+            </div>
+          </div>
+          <div style={{ marginTop: 16, padding: '12px 16px', background: 'var(--bp)', borderRadius: 6 }}>
+            <i className="fa-solid fa-location-dot" style={{ color: 'var(--b2)', marginRight: 8 }} />
+            Gedung Utama GBKP Tanjung Sari
+          </div>
+        </div>
+
+        {/* Jam Sekretariat */}
+        <div style={{ background: 'var(--w)', border: '1px solid var(--m4)', borderRadius: 8, padding: 24 }}>
+          <h2 style={{ fontFamily: 'var(--fh)', color: 'var(--r)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <i className="fa-solid fa-clock" /> Jam Sekretariat
+          </h2>
+          <div className="jam3">
+            <div className="j3c">
+              <i className="fa-solid fa-calendar-week" />
+              <h4>Senin – Jumat</h4>
+              <p>08.00 – 15.00 WIB</p>
+            </div>
+            <div className="j3c">
+              <i className="fa-solid fa-calendar-day" />
+              <h4>Sabtu</h4>
+              <p>08.00 – 12.00 WIB</p>
+            </div>
+            <div className="j3c">
+              <i className="fa-solid fa-church" />
+              <h4>Hari Minggu</h4>
+              <p>Ibadah saja</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

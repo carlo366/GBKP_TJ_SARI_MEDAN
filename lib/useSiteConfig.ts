@@ -8,6 +8,8 @@ export interface SiteConfig {
   soreMulai: string;
   soreSelesai: string;
   soreBahasa: string;
+  malamMulai: string;
+  malamSelesai: string;
   alamat: string;
   telepon: string;
   whatsapp: string;
@@ -21,9 +23,11 @@ export const defaultConfig: SiteConfig = {
   pagiMulai: '08.00',
   pagiSelesai: '10.30',
   pagiBahasa: 'Bahasa Karo / Indonesia',
-  soreMulai: '17.00',
-  soreSelesai: '19.00',
+  soreMulai: '18.00',
+  soreSelesai: '19.30',
   soreBahasa: 'Bahasa Indonesia',
+  malamMulai: '18.00',
+  malamSelesai: '19.30',
   alamat: 'GJVF+3R3, Sempakata, Kec. Medan Selayang, Kota Medan, Sumatera Utara 20133',
   telepon: '',
   whatsapp: '',

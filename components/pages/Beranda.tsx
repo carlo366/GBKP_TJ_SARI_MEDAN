@@ -1,113 +1,244 @@
 'use client';
+import { useEffect, useState } from 'react';
 import type { Page } from '@/app/page';
-import KaroDiv from '@/components/KaroDiv';
-import { useSiteConfig } from '@/lib/useSiteConfig';
+
+interface Berita {
+  id: number;
+  kategori: string;
+  sektor: number | null;
+  judul: string;
+  ringkasan: string | null;
+  imgUrl: string | null;
+  tanggal: string;
+}
+
+interface Renungan {
+  id: number;
+  tanggal: string;
+  ayat: string;
+  judul: string;
+  isi: string;
+  penulis: string;
+  imgUrl: string | null;
+}
+
+interface Keuangan {
+  id: number;
+  tanggal: string;
+  tipe: string;
+  keterangan: string;
+  jumlah: number;
+}
 
 export default function Beranda({ setPage }: { setPage: (p: Page) => void }) {
-  const { config } = useSiteConfig();
-  const logo = config.logoUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/GBKP_logo.png/240px-GBKP_logo.png';
+  const [berita, setBerita] = useState<Berita[]>([]);
+  const [renungan, setRenungan] = useState<Renungan | null>(null);
+  const [keuangan, setKeuangan] = useState<Keuangan[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/api/berita?limit=6').then(r => r.json()),
+      fetch('/api/renungan/latest').then(r => r.json()),
+      fetch('/api/keuangan?limit=5').then(r => r.json()),
+    ]).then(([b, r, k]) => {
+      setBerita(Array.isArray(b) ? b : []);
+      setRenungan(r || null);
+      setKeuangan(Array.isArray(k) ? k : []);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, []);
+
+  const fmt = (d: string) => new Date(d).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
 
   return (
-    <div className="page-enter">
-      <div className="hero">
-        <div className="side-karo left" /><div className="side-karo right" />
-        <img className="hero-logo" src={logo} alt="GBKP Logo" width={120} height={120} />
-        <div className="hero-badge"><i className="fa-solid fa-cross" />&nbsp;Gereja Batak Karo Protestan</div>
-        <h1>GBKP Runggun<em>Tanjung Sari</em></h1>
-        <div className="hero-verse">&ldquo;Ini aku, utuslah aku!&rdquo; &mdash; Yesaya 6:8</div>
-        <p>Klasis Medan Kampung Lalang &middot; Melayani dengan kasih, bertumbuh dalam iman bersama seluruh jemaat di kota Medan.</p>
-        <div className="hero-actions">
-          <button className="btn btn-gold" onClick={() => setPage('jadwal')}><i className="fa-solid fa-church" />Jadwal Ibadah</button>
-          <button className="btn btn-outline" onClick={() => setPage('momo')}><i className="fa-solid fa-file-pdf" />Warta Minggu</button>
-        </div>
-      </div>
-
-      <div className="info-strip">
-        <div className="zig-down" style={{ background: 'var(--cream)' }} />
-        <div className="istrip-inner">
-          <div className="is-col"><div className="is-num">2&times;</div><div className="is-lbl">Ibadah per Minggu</div></div>
-          <div className="is-col"><div className="is-num">GBKP</div><div className="is-lbl">Gereja Batak Karo Protestan</div></div>
-          <div className="is-col"><div className="is-num">Medan</div><div className="is-lbl">Klasis Kampung Lalang</div></div>
-        </div>
-        <div className="zig-up" style={{ background: 'var(--cream)' }} />
-      </div>
-
-      <div className="section" style={{ background: 'var(--cream)' }}>
-        <div className="sh"><h2>Tentang Runggun Kami</h2><p>Bersama bertumbuh dalam iman di Medan, Sumatera Utara</p><KaroDiv /></div>
-        <div style={{ maxWidth: 760, margin: 'auto', textAlign: 'center' }}>
-          <p style={{ fontSize: '.98rem', color: '#5a2020', lineHeight: 1.95, marginBottom: 18 }}>
-            GBKP Runggun Tanjung Sari adalah bagian dari Gereja Batak Karo Protestan yang berdiri dengan semangat <em>Ersada Ukur Ersada Ate</em> &mdash; satu hati dan satu pikiran.
-          </p>
-          <div style={{ display: 'inline-block', background: 'rgba(192,20,10,.06)', border: '1px solid rgba(192,20,10,.14)', borderRadius: 14, padding: '16px 24px' }}>
-            <p style={{ fontSize: '.9rem', color: 'var(--red-deep)', lineHeight: 1.85, fontStyle: 'italic' }}>&ldquo;Supaya kamu seia sekata dan tidak ada perpecahan di antara kamu, tetapi sebaliknya kamu erat bersatu dan sehati sepikir.&rdquo;</p>
-            <p style={{ fontSize: '.79rem', color: 'var(--muted)', marginTop: 7, fontWeight: 700 }}>&mdash; 1 Korintus 1:10</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="section" style={{ background: 'var(--cream)', paddingTop: 16 }}>
-        <div className="sh"><h2>Jadwal Ibadah Minggu</h2><p>Datanglah dan beribadah bersama kami</p><KaroDiv /></div>
-        <div className="jadwal-grid">
-          <div className="jcard">
-            <div className="jcard-top red"><div className="jcard-icon"><i className="fa-solid fa-sun" /></div><h3>Ibadah Pagi</h3><div className="lang">{config.pagiBahasa}</div></div>
-            <div className="jcard-body">
-              <div className="trow"><div className="tday">HARI</div><span className="tlabel" style={{ flex: 1 }}>Setiap Minggu</span></div>
-              <div className="trow"><div className="tday">MULAI</div><span className="tlabel">Pukul</span><span className="tval">{config.pagiMulai} WIB</span></div>
-              <div className="trow"><div className="tday">SELESAI</div><span className="tlabel">Pukul</span><span className="tval">{config.pagiSelesai} WIB</span></div>
-              <div className="trow"><div className="tday g">LOKASI</div><span className="tlabel" style={{ flex: 1 }}>Gedung Utama Gereja</span></div>
+    <>
+      {/* HERO CAROUSEL SECTION */}
+      <section className="photo-carousel-section">
+        <div className="pc-bg">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="pc-bg-cell">
+              <img src={`/hero-${i}.jpg`} alt={`Hero ${i}`} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
             </div>
-          </div>
-          <div className="jcard">
-            <div className="jcard-top night"><div className="jcard-icon" style={{ background: 'rgba(155,63,200,.25)', borderColor: 'rgba(155,63,200,.35)' }}><i className="fa-solid fa-moon" /></div><h3>Ibadah Sore</h3><div className="lang">{config.soreBahasa}</div></div>
-            <div className="jcard-body">
-              <div className="trow"><div className="tday">HARI</div><span className="tlabel" style={{ flex: 1 }}>Setiap Minggu</span></div>
-              <div className="trow"><div className="tday">MULAI</div><span className="tlabel">Pukul</span><span className="tval">{config.soreMulai} WIB</span></div>
-              <div className="trow"><div className="tday">SELESAI</div><span className="tlabel">Pukul</span><span className="tval">{config.soreSelesai} WIB</span></div>
-              <div className="trow"><div className="tday g">LOKASI</div><span className="tlabel" style={{ flex: 1 }}>Gedung Utama Gereja</span></div>
+          ))}
+        </div>
+        <div className="pc-bg-overlay" />
+        <div className="pc-content">
+          <div className="pc-left">
+            <h2>GBKP Runggun Tanjung Sari<br /><span>Portal Informasi Jemaat</span></h2>
+            <p>Website resmi GBKP Runggun Tanjung Sari - Medan. Informasi ibadah, warta, renungan, dan kegiatan jemaat.</p>
+            <div className="verse-box">
+              "Aku mengumpulkan kamu di sini sebagai warga yang rela menjalani kehidupan yang sama."
+              <div className="verse-ref">Roma 12:5</div>
             </div>
-          </div>
-          <div className="jcard">
-            <div className="jcard-top special"><div className="jcard-icon"><i className="fa-solid fa-calendar-star" /></div><h3>Kegiatan Khusus</h3><div className="lang">Sesuai pengumuman</div></div>
-            <div className="jcard-body">
-              <p style={{ fontSize: '.86rem', color: 'var(--muted)', lineHeight: 1.75, marginBottom: 14 }}>Hari besar gerejawi, HUT Runggun, Konser Rohani, dan kegiatan khusus lainnya.</p>
-              <div className="jnote"><i className="fa-solid fa-bullhorn" style={{ color: 'var(--gold)', marginRight: 5 }} />Cek <strong>Warta (Momo)</strong> tiap Minggu untuk jadwal terkini.</div>
-              <button onClick={() => setPage('momo')} style={{ marginTop: 12, width: '100%', padding: 10, borderRadius: 9, border: '1.5px solid var(--red-deep)', background: 'transparent', color: 'var(--red-deep)', fontWeight: 700, fontSize: '.86rem', cursor: 'pointer', fontFamily: 'Nunito,sans-serif' }}>
-                <i className="fa-solid fa-file-pdf" /> Buka Warta Minggu
+            <div className="pc-btns">
+              <button className="pc-btn-gold" onClick={() => setPage('jadwal')}>
+                <i className="fa-solid fa-calendar-days" /> Jadwal Ibadah
+              </button>
+              <button className="pc-btn-outline" onClick={() => setPage('kontak')}>
+                <i className="fa-solid fa-location-dot" /> Lokasi Gereja
               </button>
             </div>
           </div>
+          <div className="pc-right">
+            <div className="pc-stat-card">
+              <div className="psn">25+</div>
+              <div className="psl">Tahun Berdiak</div>
+            </div>
+            <div className="pc-stat-card">
+              <div className="psn">500+</div>
+              <div className="psl">Jemaat</div>
+            </div>
+            <div className="pc-stat-card">
+              <div className="psn">8</div>
+              <div className="psl">Sektor</div>
+            </div>
+            <div className="pc-stat-card">
+              <div className="psn">24</div>
+              <div className="psl">Tim Pengurus</div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div style={{ background: 'var(--red-deep)', padding: '56px 20px' }}>
-        <div className="sh white"><h2>Fasilitas Kami</h2><p>Kami menyediakan kenyamanan dalam beribadah</p><KaroDiv white /></div>
-        <div className="fac-grid">
-          {[['fa-square-parking','Parkir Luas'],['fa-wind','AC / Kipas'],['fa-wheelchair','Akses Difabel'],['fa-baby','Gedung KKR'],['fa-wifi','WiFi'],['fa-restroom','Toilet Bersih']].map(([icon, label]) => (
-            <div key={label} className="fac-item"><i className={`fa-solid ${icon}`} /><p>{label}</p></div>
+      {/* CAROUSEL STRIP */}
+      <div className="carousel-strip">
+        <div className="cs-track">
+          {['Foto Kegiatan 1', 'Foto Kegiatan 2', 'Foto Kegiatan 3', 'Foto Kegiatan 4', 'Foto Kegiatan 5'].map((t, i) => (
+            <img key={i} className="cs-img" src={`/carousel-${(i % 5) + 1}.jpg`} alt={t} />
           ))}
         </div>
       </div>
 
-      <div style={{ background: 'var(--cream)', padding: '64px 20px 72px' }}>
-        <div className="sh"><h2>Temukan Kami</h2><p>Kunjungi GBKP Runggun Tanjung Sari di Medan Selayang</p><KaroDiv /></div>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ borderRadius: 20, overflow: 'hidden', border: '4px solid var(--red-deep)', boxShadow: '0 16px 48px rgba(139,0,0,.25)' }}>
-            <div style={{ background: 'var(--red-deep)', padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0, flex: 1 }}>
-                <i className="fa-solid fa-location-dot" style={{ color: 'var(--gold)', fontSize: 16, flexShrink: 0 }} />
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ color: '#fff', fontWeight: 700, fontSize: '.9rem' }}>GBKP Tanjung Sari</div>
-                  <div style={{ color: 'rgba(255,255,255,.6)', fontSize: '.78rem', wordBreak: 'break-word' as const }}>{config.alamat}</div>
+      {/* BERITA SECTION */}
+      <section style={{ padding: '48px 0', background: 'var(--w)' }}>
+        <div className="wrap">
+          <div className="sl">
+            <div className="sl-main">BERITA TERKINI</div>
+            <div className="sl-more" onClick={() => setPage('berita')}>Lihat Semua <i className="fa-solid fa-arrow-right" /></div>
+          </div>
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: 60 }}>Loading...</div>
+          ) : (
+            <div className="b3col" style={{ marginTop: 10 }}>
+              <div className="nlist">
+                {berita.slice(0, 5).map(item => (
+                  <div key={item.id} className="ni" onClick={() => setPage('berita')}>
+                    <img className="ni-img" src={item.imgUrl || '/placeholder.jpg'} alt={item.judul} onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/84x60?text=No+Image'; }} />
+                    <div>
+                      <div className="ni-kat">{item.kategori.toUpperCase()}</div>
+                      <div className="ni-t">{item.judul}</div>
+                      <div className="ni-meta">{fmt(item.tanggal)}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {renungan && (
+                <div className="rw">
+                  <div className="rw-head">
+                    <span className="rh-lbl">RENUNGAN HARI INI</span>
+                    <span className="rh-date">{fmt(renungan.tanggal)}</span>
+                  </div>
+                  <div className="rw-body">
+                    <div className="rw-verse">"{renungan.ayat}"</div>
+                    <div className="rw-ref">— {renungan.penulis}</div>
+                    <div className="rw-text">{renungan.isi.substring(0, 120)}...</div>
+                  </div>
+                  <div className="rw-ft">
+                    <span>{renungan.judul}</span>
+                    <a onClick={() => setPage('renungan')}>Baca Selengkapnya</a>
+                  </div>
+                </div>
+              )}
+              <div>
+                <div className="widget-box">
+                  <div className="wb-head"><span><i className="fa-solid fa-clock" /> JADWAL IBADAH</span></div>
+                  <div className="wbi">
+                    <div className="wbi-icon sun"><i className="fa-solid fa-sun" /></div>
+                    <div>
+                      <div className="wbi-t">Ibadah Pagi</div>
+                      <div className="wbi-s">Minggu, 08.00–10.30 WIB</div>
+                    </div>
+                  </div>
+                  <div className="wbi">
+                    <div className="wbi-icon moon"><i className="fa-solid fa-moon" /></div>
+                    <div>
+                      <div className="wbi-t">Ibadah Malam</div>
+                      <div className="wbi-s">Minggu, 18.00–19.30 WIB</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <a href={config.mapsUrl} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(245,166,35,.2)', border: '1px solid rgba(245,166,35,.4)', color: 'var(--gold-2)', padding: '8px 16px', borderRadius: 8, fontWeight: 700, fontSize: '.8rem', textDecoration: 'none', flexShrink: 0 }}>
-                <i className="fa-solid fa-arrow-up-right-from-square" />Perbesar Peta
-              </a>
             </div>
-            <iframe src={config.mapsEmbed} width="100%" height="400" style={{ display: 'block', border: 'none' }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Peta GBKP" />
+          )}
+        </div>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section className="about-section">
+        <div className="about-inner">
+          <div className="about-img-grid">
+            <div className="aig-main">
+              <img src="/about-main.jpg" alt="Gereja" onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x360?text=Gereja'; }} />
+            </div>
+            <div className="aig-sub"><img src="/about-1.jpg" alt="Kegiatan" onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150x180?text=1'; }} /></div>
+            <div className="aig-sub"><img src="/about-2.jpg" alt="Kegiatan" onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150x180?text=2'; }} /></div>
+          </div>
+          <div className="about-right">
+            <div className="ab-label">Tentang Kami</div>
+            <h2>GBKP Runggun Tanjung Sari</h2>
+            <p>GBKP Runggun Tanjung Sari adalah satu dari banyak runggun GBKP yang berada di Kota Medan. Kami berkomitmen untuk menjadi komunitas yang melayani dan menjangkau.</p>
+            <div className="ab-verse">
+              "Tetapi nabi-nabi itu menganiaya mereka dengan cara yang paling tidak baik."
+              <strong>Yohanes 10:15</strong>
+            </div>
+            <div className="ab-stats">
+              <div className="ab-stat"><div className="sn">25+</div><div className="sl">Tahun Melayani</div></div>
+              <div className="ab-stat"><div className="sn">500+</div><div className="sl">Jemaat</div></div>
+              <div className="ab-stat"><div className="sn">8</div><div className="sl">Sektor</div></div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* PROGRAM SECTION */}
+      <section className="program-section">
+        <div className="ulos-zigzag inv" />
+        <div className="ulos-border prog-ulos" />
+        <div className="program-grid">
+          {[
+            { icon: 'fa-church', title: 'Ibadah Minggu', desc: 'Pagi & malam dengan pujian dan khotbah' },
+            { icon: 'fa-children', title: 'Pemuda & Remaja', desc: 'Kegiatan pemuda karismatik' },
+            { icon: 'fa-hands-praying', title: 'Doa Berdoa', desc: 'Persekutuhan doa jemaat' },
+            { icon: 'fa-music', title: 'Pujian', desc: 'Persiapan pujian rohani' },
+          ].map((p, i) => (
+            <div key={i} className="pg-card">
+              <div className="pg-card-icon" style={{ background: i === 0 ? 'rgba(185,28,28,.2)' : i === 1 ? 'rgba(217,119,6,.2)' : i === 2 ? 'rgba(22,163,74,.2)' : 'rgba(99,102,241,.2)', color: i === 0 ? 'var(--r)' : i === 1 ? 'var(--g3)' : i === 2 ? '#16A34A' : '#6366F1' }}>
+                <i className={`fa-solid ${p.icon}`} />
+              </div>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="ulos-border" style={{ marginTop: 20 }} />
+        <div className="ulos-zigzag" />
+      </section>
+
+      {/* CTA STRIP */}
+      <section className="cta-strip">
+        <div className="cta-inner">
+          <div className="cta-left">
+            <h2>GBKP Runggun Tanjung Sari</h2>
+            <p>Siap menyambut Anda dalam kehadirat Tuhan</p>
+          </div>
+          <div className="cta-actions">
+            <button className="pc-btn-outline" style={{ background: 'rgba(255,255,255,.15)', borderColor: 'rgba(255,255,255,.5)', color: '#fff' }} onClick={() => setPage('kontak')}>
+              <i className="fa-solid fa-map-location-dot" /> Lihat Lokasi
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
